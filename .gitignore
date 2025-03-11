@@ -1,0 +1,56 @@
+# R-related files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Logs and temporary files
+*.log
+*.out
+*.tmp
+*.swp
+*.swo
+
+# Compiled files and caches
+*.o
+*.so
+*.dll
+__pycache__/
+*.pyc
+*.pyo
+*.rds
+
+# Remote sensing and large data files
+*.las
+*.lax
+*.tif
+*.tiff
+*.vrt
+*.aux.xml
+*.ovr
+*.gz
+*.zip
+*.tar
+*.7z
+*.rar
+
+# GIS software files
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.sbn
+*.sbx
+*.qpj
+*.cpg
+*.gdb
+
+# R packages and dependencies
+renv/
+pkgdown/
+*.Rprofile
+
+# MacOS and system files
+.DS_Store
+Thumbs.db

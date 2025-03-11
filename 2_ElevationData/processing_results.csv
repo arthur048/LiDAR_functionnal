@@ -1,0 +1,80 @@
+status,plot_ref,message
+success,41,NA
+success,53,NA
+success,M2P15,NA
+success,M2P14,NA
+success,M2P16,NA
+success,151,NA
+success,162,NA
+success,199,NA
+success,123,NA
+success,148,NA
+success,166,NA
+success,180,NA
+success,184,NA
+success,189,NA
+success,PARAP_SwaKibula_234,NA
+success,PARAP_Mashambio_26,NA
+success,PARAP_Mampulu_28,NA
+success,M2P2,NA
+success,M2P1,NA
+success,M2P9,NA
+success,M2P13,NA
+success,M2P12,NA
+success,M2P11,NA
+success,M2P10,NA
+success,PARAP_Lukolela_53,NA
+success,WWF-DIAF_supp1_Principal,NA
+success,WWF-DIAF_supp2_Principal,NA
+error,WWF-DIAF_11_05_Principal,LAS file not found
+success,WWF-DIAF_12_06_Principal,NA
+success,WWF-DIAF_15_09_Principal,NA
+success,WWF-DIAF_17_11_Principal,NA
+success,Lokofa_1,NA
+success,Lokofa_2,NA
+success,Lokofa_3,NA
+success,Lokofa_4,NA
+success,PARAP_Mangai_16,NA
+error,WWF-DIAF_13_07_Principal,LAS file not found
+success,WWF-DIAF_14_08_Principal,NA
+success,Modele_2406_Principal,NA
+success,FRM 162,NA
+success,FRM 227,NA
+success,FRM 627,NA
+success,FRM 546,NA
+success,FRM 102,NA
+success,FRM 15,NA
+success,FRM 39,NA
+success,FRM 80,NA
+success,FRM 408,NA
+success,FRM 373,NA
+success,FRM 289,NA
+success,PARAP_Gungu_5,NA
+success,Betamba_1,NA
+error,Betamba_2,LAS file not found
+error,Betamba_3,LAS file not found
+success,Betamba_4,NA
+success,PARAP_Idiofa_6,NA
+success,MIX6,NA
+success,GIL3,NA
+success,GIL2,NA
+success,MIX2,NA
+success,GIL1,NA
+success,JEU4,NA
+success,JEU5,NA
+success,JEU3,NA
+success,JEU2,NA
+success,JEU-L2,NA
+success,JEU-L6B,NA
+success,MIX-L6A,NA
+success,MIX-L7A,NA
+success,Model_OR_lidar_87_Principal,NA
+success,Modele_4301_Principal,NA
+success,WWF-DIAF_16_10_Principal,NA
+success,PARAP_Luhudi_5,NA
+success,WWF-DIAF_07_01_Principal,NA
+success,WWF-DIAF_08_02_Principal,NA
+success,Modele_4402_Principal,NA
+success,Modele_4503_Principal,NA
+success,PARAP_Maniema_178,NA
+success,Modele_MA_lidar_205_principal,NA

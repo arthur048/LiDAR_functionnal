@@ -1,0 +1,63 @@
+metric;correlation;p_value;method;metric_label
+prop_at_10m;-0,432314960894888;6,60819877433256e-07;Pearson;Proportion de trouées à 10m
+prop_at_10m;-0,450280136342997;1,95222441164944e-07;Spearman;Proportion de trouées à 10m
+prop_at_20m;-0,531828103125011;2,91064758609754e-10;Pearson;Proportion de trouées à 20m
+prop_at_20m;-0,486565704296794;1,32931968024179e-08;Spearman;Proportion de trouées à 20m
+prop_at_30m;-0,315952308650168;0,000392401402528879;Pearson;Proportion de trouées à 30m
+prop_at_30m;-0,411687241582877;2,46431198860128e-06;Spearman;Proportion de trouées à 30m
+h10;0,31995383941213;0,00032747100180059;Pearson;Hauteur à 10% de trouées
+h10;0,459746679840461;9,97735554317792e-08;Spearman;Hauteur à 10% de trouées
+h25;0,384676239140815;1,21599047556911e-05;Pearson;Hauteur à 25% de trouées
+h25;0,472145026287006;4,01460301229472e-08;Spearman;Hauteur à 25% de trouées
+h50;0,41693429454523;1,77773720278664e-06;Pearson;Hauteur à 50% de trouées
+h50;0,464181269640904;7,23427790640547e-08;Spearman;Hauteur à 50% de trouées
+h75;0,459092974890703;1,04575568732103e-07;Pearson;Hauteur à 75% de trouées
+h75;0,454889118732672;1,41156426263422e-07;Spearman;Hauteur à 75% de trouées
+h90;0,475403855257235;3,14120145778757e-08;Pearson;Hauteur à 90% de trouées
+h90;0,453137753163198;1,59756516805219e-07;Spearman;Hauteur à 90% de trouées
+P0;-0,308584989847739;0,000543920662783294;Pearson;Proportion initiale de trouées
+P0;-0,375312718842855;2,04817647940904e-05;Spearman;Proportion initiale de trouées
+Pmax;-0,0949243969028705;0,298325374218687;Pearson;Proportion maximale de trouées
+Pmax;-0,132941301442367;0,144357139305529;Spearman;Proportion maximale de trouées
+Smax;-0,385555405034432;1,1569405930532e-05;Pearson;Pente maximale
+Smax;-0,228622978284995;0,0113133865735726;Spearman;Pente maximale
+hSmax;0,329525146411123;0,000210286151714779;Pearson;Hauteur à pente maximale
+hSmax;0,321157159882536;0,000309981491107891;Spearman;Hauteur à pente maximale
+decay_rate;0,483137372737926;1,7368461520492e-08;Pearson;Taux de changement
+decay_rate;0,482778789310722;1,78580729638722e-08;Spearman;Taux de changement
+auc;-0,436745633686399;4,92373004364307e-07;Pearson;Aire sous la courbe
+auc;-0,496413005045916;6,06561437812529e-09;Spearman;Aire sous la courbe
+logistic_a;0,16893573842863;0,0628656897389855;Pearson;Logistique - asymptote inf.
+logistic_a;-0,0260689112784638;0,775625164376467;Spearman;Logistique - asymptote inf.
+logistic_b;0,119270281985541;0,190704597805294;Pearson;Logistique - asymptote sup.
+logistic_b;0,117080440551052;0,199035306847014;Spearman;Logistique - asymptote sup.
+logistic_h0;0,353414483471845;6,52280066341193e-05;Pearson;Logistique - point d'inflexion
+logistic_h0;0,463553421606564;7,57326134180698e-08;Spearman;Logistique - point d'inflexion
+logistic_k;-0,234831748304285;0,00922464766349918;Pearson;Logistique - pente
+logistic_k;-0,0774995786809243;0,396173107271523;Spearman;Logistique - pente
+logistic_R2;0,270148648117114;0,00261822311860258;Pearson;Logistique - R²
+logistic_R2;0,183262232297164;0,0433310257234412;Spearman;Logistique - R²
+IDV;0,331982928974419;0,000187235096306633;Pearson;Indice de Développement Vertical
+IDV;0,264261237653699;0,00326852503603781;Spearman;Indice de Développement Vertical
+ROS;0,450428627591532;1,93207855959944e-07;Pearson;Ratio d'Occupation Stratifiée
+ROS;0,481034032667925;2,04353436728815e-08;Spearman;Ratio d'Occupation Stratifiée
+IAS;-0,102715306356047;0,260237953399685;Pearson;Indice d'Asymétrie Structurelle
+IAS;0,1186071026135;0,193200286462258;Spearman;Indice d'Asymétrie Structurelle
+ISC;-0,288938520010517;0,00124786083706924;Pearson;Indice de Stratification Complète
+ISC;-0,380968273847486;1,49772010494036e-05;Spearman;Indice de Stratification Complète
+CPR;0,211551403471914;0,0193278435124227;Pearson;Coefficient de Position Relative
+CPR;0,165656051628935;0,0682254053067568;Spearman;Coefficient de Position Relative
+ICT;-0,140104816219725;0,123760464885731;Pearson;Indice de Contraste de Transition
+ICT;0,0916558996236216;0,315346835738765;Spearman;Indice de Contraste de Transition
+IPN;-0,296241052702616;0,000922686075369539;Pearson;Indice de Progression Normalisée
+IPN;-0,405341995433232;3,63107531536158e-06;Spearman;Indice de Progression Normalisée
+ET;0,197753462123244;0,029007681583788;Pearson;Épaisseur de Transition
+ET;0,133801025044528;0,141756387510799;Spearman;Épaisseur de Transition
+CSI;0,0208315043313639;0,819842532658591;Pearson;Indice de Structure de Canopée
+CSI;0,219677418288883;0,0150483463214899;Spearman;Indice de Structure de Canopée
+GVN;-0,464104414311475;7,27498002515163e-08;Pearson;Gradient Vertical Normalisé
+GVN;-0,368966463001576;2,8902019857444e-05;Spearman;Gradient Vertical Normalisé
+RT;-0,102715306356047;0,260237953399685;Pearson;Ratio de Transition
+RT;0,1186071026135;0,193200286462258;Spearman;Ratio de Transition
+HPSI;0,176215403415423;0,0521919283160374;Pearson;Harmonie Position-Pente
+HPSI;0,245247355603213;0,00647567125542275;Spearman;Harmonie Position-Pente

@@ -1,0 +1,65 @@
+metric;correlation;p_value;method;metric_label
+basal_thickness;0,382726293423716;1,35724838529142e-05;Pearson;Épaisseur zone basale
+basal_thickness;0,472150437616601;4,01297636540348e-08;Spearman;Épaisseur zone basale
+transition_thickness;0,148954877406475;0,10153192184903;Pearson;Épaisseur zone de transition
+transition_thickness;0,102358758932641;0,261904881710122;Spearman;Épaisseur zone de transition
+upper_thickness;-0,459934321207627;9,84345709980091e-08;Pearson;Épaisseur zone supérieure
+upper_thickness;-0,457471029151738;1,17462408961534e-07;Spearman;Épaisseur zone supérieure
+basal_norm_auc;-0,162547930085558;0,0736414944806802;Pearson;AUC normalisée zone basale
+basal_norm_auc;-0,228381374722838;0,0114024413971814;Spearman;AUC normalisée zone basale
+transition_norm_auc;-0,0300014919584904;0,742881571118783;Pearson;AUC normalisée zone transition
+transition_norm_auc;0,107570195062471;0,238260541717595;Spearman;AUC normalisée zone transition
+upper_norm_auc;-0,264535864265214;0,00323522557260799;Pearson;AUC normalisée zone supérieure
+upper_norm_auc;-0,267882929472839;0,00285321524431419;Spearman;AUC normalisée zone supérieure
+transition_slope;-0,21736421095393;0,01617339143393;Pearson;Pente de la zone de transition
+transition_slope;-0,0458890823835755;0,615732152745424;Spearman;Pente de la zone de transition
+transition_r2;0,286000105951791;0,00140591862580467;Pearson;Linéarité de la transition (R²)
+transition_r2;0,160818317301179;0,0768026519893136;Spearman;Linéarité de la transition (R²)
+zone_heterogeneity_index;0,109379197595064;0,230412238166302;Pearson;Indice d'hétérogénéité zonale
+zone_heterogeneity_index;0,245624064423817;0,00639159566076268;Spearman;Indice d'hétérogénéité zonale
+height_max_d1;0,325713086707037;0,000251295036857553;Pearson;Hauteur à pente maximale
+height_max_d1;0,345600879578156;9,66589144286515e-05;Spearman;Hauteur à pente maximale
+max_d1;-0,411652554957086;2,46959263679105e-06;Pearson;Pente maximale
+max_d1;-0,25223299110108;0,00506624384017448;Spearman;Pente maximale
+height_max_d2;0,313132257219588;0,000445083453766445;Pearson;Hauteur à accélération max
+height_max_d2;0,379915269494316;1,58829768848136e-05;Spearman;Hauteur à accélération max
+max_d2;-0,326023826929292;0,000247693511457709;Pearson;Accélération maximale
+max_d2;-0,17638894855281;0,051956986202245;Spearman;Accélération maximale
+height_min_d2;0,375210257027858;2,05971415936584e-05;Pearson;Hauteur à décélération max
+height_min_d2;0,400072864257478;4,97997563623853e-06;Spearman;Hauteur à décélération max
+min_d2;0,455707053312189;1,33195968261392e-07;Pearson;Décélération maximale
+min_d2;0,293148856160015;0,00104952121610854;Spearman;Décélération maximale
+asymmetry_ratio;-0,174496748968599;0,0545663136954346;Pearson;Ratio d'asymétrie
+asymmetry_ratio;-0,188709546845116;0,0373745234845493;Spearman;Ratio d'asymétrie
+acceleration_phase;0,06656335602125;0,466334472694622;Pearson;Durée phase d'accélération
+acceleration_phase;0,0687030929918744;0,452094635266624;Spearman;Durée phase d'accélération
+deceleration_phase;0,200401499209043;0,0268823027223025;Pearson;Durée phase de décélération
+deceleration_phase;0,234958642937322;0,00918576283809772;Spearman;Durée phase de décélération
+phase_ratio;0,174496748968599;0,0545663136954346;Pearson;Ratio des phases
+phase_ratio;0,188709546845116;0,0373745234845493;Spearman;Ratio des phases
+roughness_small;-0,09218024088646;0,312574600591736;Pearson;Rugosité à petite échelle (2m)
+roughness_small;-0,340025973081842;0,000127173413893903;Spearman;Rugosité à petite échelle (2m)
+roughness_medium;-0,102731009952116;0,260164703112435;Pearson;Rugosité à échelle moyenne (10m)
+roughness_medium;-0,404172215411356;3,89668140144742e-06;Spearman;Rugosité à échelle moyenne (10m)
+roughness_large;-0,173845875672804;0,0554884374989836;Pearson;Rugosité à grande échelle (20m)
+roughness_large;-0,413827857286837;2,15835992644521e-06;Spearman;Rugosité à grande échelle (20m)
+dominant_height_small;0,274937741482182;0,00217805006946864;Pearson;Hauteur dominante à petite échelle
+dominant_height_small;0,319689831243833;0,000331428192800261;Spearman;Hauteur dominante à petite échelle
+dominant_height_medium;0,31401459892992;0,000427938265626041;Pearson;Hauteur dominante à échelle moyenne
+dominant_height_medium;0,370536338314677;2,65596155615724e-05;Spearman;Hauteur dominante à échelle moyenne
+dominant_height_large;0,220816103207203;0,0145199862472823;Pearson;Hauteur dominante à grande échelle
+dominant_height_large;0,266383599701402;0,00301900389147751;Spearman;Hauteur dominante à grande échelle
+energy_slope;0,135022651984065;0,138122180805765;Pearson;Pente spectrale d'énergie
+energy_slope;0,0490745850420163;0,591412682077422;Spearman;Pente spectrale d'énergie
+energy_ratio_small_large;-0,0853048736566775;0,350186452073222;Pearson;Ratio d'énergie petite/grande échelle
+energy_ratio_small_large;-0,0565624989673552;0,536036664649199;Spearman;Ratio d'énergie petite/grande échelle
+anisotropy_mean;0,294397596744806;0,000996497234527716;Pearson;Anisotropie moyenne
+anisotropy_mean;0,470631582077913;4,49519263555159e-08;Spearman;Anisotropie moyenne
+anisotropy_max;0,359291034221174;4,81946051997542e-05;Pearson;Anisotropie maximale
+anisotropy_max;0,283386508104846;0,00156159562157142;Spearman;Anisotropie maximale
+height_max_anisotropy;0,218016635850089;0,0158489190903889;Pearson;Hauteur d'anisotropie maximale
+height_max_anisotropy;0,377792390459244;1,78680145973383e-05;Spearman;Hauteur d'anisotropie maximale
+anisotropy_transition;0,0777825695819467;0,394445401819312;Pearson;Anisotropie zone de transition
+anisotropy_transition;-0,0395577306267576;0,665304785853914;Spearman;Anisotropie zone de transition
+anisotropy_ratio;-0,311704493016391;0,000474172895762917;Pearson;Ratio d'anisotropie max/moyenne
+anisotropy_ratio;-0,412459809464644;2,34943401019451e-06;Spearman;Ratio d'anisotropie max/moyenne
