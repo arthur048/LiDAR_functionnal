@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+prop_at_25m;-0,582467831017522;0,0000000339621385843328;Pearson;prop_ind_shade;prop_at_25m;0,582467831017522;***;-0.582***;negative;1
+prop_at_20m;-0,554773858124460;0,0000001990100143408120;Pearson;prop_ind_shade;Proportion de trouées à 20m;0,554773858124460;***;-0.555***;negative;2
+min_d2;0,489935008632655;0,0000070551553062013500;Pearson;prop_ind_shade;Décélération maximale;0,489935008632655;***;0.49***;positive;3
+h75;0,487154274079052;0,0000080927575128395611;Pearson;prop_ind_shade;Hauteur à 75% de trouées;0,487154274079052;***;0.487***;positive;4
+h90;0,486637417954618;0,0000083007112476263061;Pearson;prop_ind_shade;Hauteur à 90% de trouées;0,486637417954618;***;0.487***;positive;5
+upper_thickness;-0,486561297607879;0,0000083317570051991266;Pearson;prop_ind_shade;Épaisseur zone supérieure;0,486561297607879;***;-0.487***;negative;6
+basal_thickness;0,477323490717333;0,0000130210960049560732;Pearson;prop_ind_shade;Épaisseur zone basale;0,477323490717333;***;0.477***;positive;7
+h25;0,476695871126437;0,0000134158894948234100;Pearson;prop_ind_shade;Hauteur à 25% de trouées;0,476695871126437;***;0.477***;positive;8
+h10;0,469191352518487;0,0000190884143580888976;Pearson;prop_ind_shade;Hauteur à 10% de trouées;0,469191352518487;***;0.469***;positive;9
+h50;0,460103142536275;0,0000289398979713728699;Pearson;prop_ind_shade;Hauteur à 50% de trouées;0,460103142536275;***;0.46***;positive;10
+prop_at_30m;-0,446952332481990;0,0000517735470426078004;Pearson;prop_ind_shade;Proportion de trouées à 30m;0,446952332481990;***;-0.447***;negative;11
+max_d1;-0,444439423722587;0,0000577046459884934053;Pearson;prop_ind_shade;Pente maximale;0,444439423722587;***;-0.444***;negative;12
+h100;0,436573852706712;0,0000901315295825649973;Pearson;prop_ind_shade;h100;0,436573852706712;***;0.437***;positive;13
+height_min_d2;0,435325574466076;0,0000849147261201408423;Pearson;prop_ind_shade;Hauteur à décélération max;0,435325574466076;***;0.435***;positive;14
+prop_at_15m;-0,400083259943930;0,0003425001904848709632;Pearson;prop_ind_shade;Proportion de trouées à 15m;0,400083259943930;***;-0.4***;negative;15
+max_d2;-0,391932781198506;0,0004628904992065459821;Pearson;prop_ind_shade;Accélération maximale;0,391932781198506;***;-0.392***;negative;16
+height_max_d1;0,374951307004142;0,0008462227306218991253;Pearson;prop_ind_shade;Hauteur à pente maximale;0,374951307004142;***;0.375***;positive;17
+prop_at_10m;-0,335373254821774;0,0030610283666672624507;Pearson;prop_ind_shade;Proportion de trouées à 10m;0,335373254821774;**;-0.335**;negative;18
+prop_at_35m;-0,330930385200779;0,0035011908753147195222;Pearson;prop_ind_shade;prop_at_35m;0,330930385200779;**;-0.331**;negative;19
+auc_norm;-0,329203758342128;0,0036869265744467081755;Pearson;prop_ind_shade;auc_norm;0,329203758342128;**;-0.329**;negative;20

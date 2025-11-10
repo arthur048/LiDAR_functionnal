@@ -79,6 +79,9 @@ determine_temperament <- function(a, b, c, d, e, subdivision) {
   }
 }
 
+
+
+
 #' Détermine les tempéraments à tous les niveaux taxonomiques
 #'
 #' Cette fonction combine l'extraction des tempéraments au niveau espèce,
@@ -114,8 +117,7 @@ get_all_temperaments <- function(CoFor, subdivision = 2) {
       TRUE ~ "other"
     )) %>%
     # Compter les occurrences par espèce et tempérament
-    group_by(species_full, Temperament) %>%
-    summarize(count = n(), .groups = "drop") %>%
+    count(species_full, Temperament, name = "count") %>%
     # Transformer en format large
     pivot_wider(names_from = Temperament, values_from = count, values_fill = list(count = 0)) %>%
     # Joindre avec les informations taxonomiques
@@ -149,11 +151,11 @@ get_all_temperaments <- function(CoFor, subdivision = 2) {
   genus_db <- species_db %>%
     group_by(Genus) %>%
     summarize(
-      `catégorie inconnue` = sum(max_temp == "catégorie inconnue"),
-      `tolérante à l'ombrage` = sum(max_temp == "tolérante à l'ombrage"),
-      `héliophile non pionnière` = sum(max_temp == "héliophile non pionnière"),
-      pionnière = sum(max_temp == "héliophile" | max_temp == "pionnière"),
-      other = sum(max_temp == "no-consensus" | max_temp == "need check"),
+      `catégorie inconnue` = sum(`catégorie inconnue`),
+      `tolérante à l'ombrage` = sum(`tolérante à l'ombrage`),
+      `héliophile non pionnière` = sum(`héliophile non pionnière`),
+      pionnière = sum(pionnière),
+      other = sum(other),
       .groups = 'drop'
     ) %>%
     mutate(
@@ -295,53 +297,33 @@ liste_sp_in_CoFor = field_inventories %>%
 # =========================================================================
 
 # Calcul des tempéraments pour tous les niveaux taxonomiques en une fois
-temperaments_2cat <- get_all_temperaments(CoFor, subdivision = 2)
+
 temperaments_3cat <- get_all_temperaments(CoFor, subdivision = 3)
 
-# Extraction des tempéraments pour chaque niveau et subdivision
-CoFor.Temp <- temperaments_2cat$species
-CoFor.Temp_genus_consensus <- temperaments_2cat$genus
-CoFor.Temp_family_consensus <- temperaments_2cat$family
-
-CoFor.Temp.3subdiv <- temperaments_3cat$species
-CoFor.Temp_genus.3subdiv_consensus <- temperaments_3cat$genus
-CoFor.Temp_family.3subdiv_consensus <- temperaments_3cat$family
+CoFor.Temp <- temperaments_3cat$species
+CoFor.Temp_genus_consensus <- temperaments_3cat$genus
+CoFor.Temp_family_consensus <- temperaments_3cat$family
 
 # =========================================================================
 # FILTRAGE ET FUSION DES DONNÉES
 # =========================================================================
 
 # Filtrage des tempéraments pour les espèces présentes dans l'inventaire
-# (2 subdivisions)
-field_temps_2cat <- list(
+
+# (3 subdivisions)
+field_temps_3cat <- list(
   species = CoFor.Temp %>% filter(species_full %in% field_inventories$species_full),
   genus = CoFor.Temp_genus_consensus %>% filter(Genus %in% field_inventories$genus),
   family = CoFor.Temp_family_consensus %>% filter(Family %in% field_inventories$fam)
 )
 
-# (3 subdivisions)
-field_temps_3cat <- list(
-  species = CoFor.Temp.3subdiv %>% filter(species_full %in% field_inventories$species_full),
-  genus = CoFor.Temp_genus.3subdiv_consensus %>% filter(Genus %in% field_inventories$genus),
-  family = CoFor.Temp_family.3subdiv_consensus %>% filter(Family %in% field_inventories$fam)
-)
-
 # Attribution hiérarchique des tempéraments aux données d'inventaire
-# 1. D'abord pour les 2 catégories
-field_inventories <- assign_hierarchical_temperament(
-  field_inventories,
-  field_temps_2cat$species,
-  field_temps_2cat$genus,
-  field_temps_2cat$family
-)
 
-# 2. Puis pour les 3 catégories
 field_inventories <- assign_hierarchical_temperament(
   field_inventories,
   field_temps_3cat$species,
   field_temps_3cat$genus,
   field_temps_3cat$family,
-  suffix = ".3subdiv"
 )
 
 # 3. Remplacement des NA par "Inconnu"
@@ -349,8 +331,8 @@ field_inventories <- field_inventories %>%
   mutate(
     Temperament = replace_na(Temperament, "Inconnu"),
     level_Temperament = replace_na(level_Temperament, "Inconnu"),
-    Temperament.3subdiv = replace_na(Temperament.3subdiv, "Inconnu"),
-    level_Temperament.3subdiv = replace_na(level_Temperament.3subdiv, "Inconnu")
+    Temperament.3subdiv = replace_na(Temperament, "Inconnu"),
+    level_Temperament.3subdiv = replace_na(level_Temperament, "Inconnu")
   )
 
 # =========================================================================

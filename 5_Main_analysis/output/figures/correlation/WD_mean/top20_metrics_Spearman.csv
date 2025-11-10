@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+auc;-0,496413005045916;0,00000000606561437812529;Spearman;WD_mean;Aire sous la courbe;0,496413005045916;***;-0.496***;negative;1
+prop_at_20m;-0,486565704296794;0,00000001329319680241788;Spearman;WD_mean;Proportion de trouées à 20m;0,486565704296794;***;-0.487***;negative;2
+decay_rate;0,482778789310722;0,00000001785807296387225;Spearman;WD_mean;Taux de changement;0,482778789310722;***;0.483***;positive;3
+ROS;0,481034032667925;0,00000002043534367288154;Spearman;WD_mean;Ratio d'Occupation Stratifiée;0,481034032667925;***;0.481***;positive;4
+basal_thickness;0,472150437616601;0,00000004012976365403485;Spearman;WD_mean;Épaisseur zone basale;0,472150437616601;***;0.472***;positive;5
+h25;0,472145026287006;0,00000004014603012294716;Spearman;WD_mean;Hauteur à 25% de trouées;0,472145026287006;***;0.472***;positive;6
+anisotropy_mean;0,470631582077913;0,00000004495192635551588;Spearman;WD_mean;Anisotropie moyenne;0,470631582077913;***;0.471***;positive;7
+prop_at_15m;-0,466947876962046;0,00000005905862826816896;Spearman;WD_mean;Proportion de trouées à 15m;0,466947876962046;***;-0.467***;negative;8
+h50;0,464181269640904;0,00000007234277906405474;Spearman;WD_mean;Hauteur à 50% de trouées;0,464181269640904;***;0.464***;positive;9
+h50_squared;0,464181269640904;0,00000007234277906405474;Spearman;WD_mean;h50 au carré;0,464181269640904;***;0.464***;positive;10
+logistic_h0;0,463553421606564;0,00000007573261341806977;Spearman;WD_mean;Logistique - point d'inflexion;0,463553421606564;***;0.464***;positive;11
+h10;0,459746679840461;0,00000009977355543177918;Spearman;WD_mean;Hauteur à 10% de trouées;0,459746679840461;***;0.46***;positive;12
+upper_thickness;-0,457471029151738;0,00000011746240896153394;Spearman;WD_mean;Épaisseur zone supérieure;0,457471029151738;***;-0.457***;negative;13
+h75;0,454889118732672;0,00000014115642626342172;Spearman;WD_mean;Hauteur à 75% de trouées;0,454889118732672;***;0.455***;positive;14
+h90;0,453137753163198;0,00000015975651680521915;Spearman;WD_mean;Hauteur à 90% de trouées;0,453137753163198;***;0.453***;positive;15
+prop_at_10m;-0,450280136342997;0,00000019522244116494380;Spearman;WD_mean;Proportion de trouées à 10m;0,450280136342997;***;-0.45***;negative;16
+roughness_large;-0,413827857286837;0,00000215835992644521328;Spearman;WD_mean;Rugosité à grande échelle (20m);0,413827857286837;***;-0.414***;negative;17
+anisotropy_ratio;-0,412459809464644;0,00000234943401019451035;Spearman;WD_mean;Ratio d'anisotropie max/moyenne;0,412459809464644;***;-0.412***;negative;18
+prop_at_30m;-0,411687241582877;0,00000246431198860127537;Spearman;WD_mean;Proportion de trouées à 30m;0,411687241582877;***;-0.412***;negative;19
+IPN;-0,405341995433232;0,00000363107531536157865;Spearman;WD_mean;Indice de Progression Normalisée;0,405341995433232;***;-0.405***;negative;20

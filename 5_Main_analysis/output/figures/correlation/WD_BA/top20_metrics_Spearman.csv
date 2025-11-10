@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+prop_at_20m;-0,572686261107314;0,0000000646107971201549;Spearman;WD_BA;Proportion de trouées à 20m;0,572686261107314;***;-0.573***;negative;1
+prop_at_20m;-0,572686261107314;0,0000000646107971201549;Spearman;WD_BA;Proportion de trouées à 20m;0,572686261107314;***;-0.573***;negative;2
+prop_at_25m;-0,570981346434025;0,0000000721211645225838;Spearman;WD_BA;prop_at_25m;0,570981346434025;***;-0.571***;negative;3
+prop_at_25m;-0,570981346434025;0,0000000721211645225838;Spearman;WD_BA;prop_at_25m;0,570981346434025;***;-0.571***;negative;4
+basal_thickness;0,555894401347533;0,0000001858438642143637;Spearman;WD_BA;Épaisseur zone basale;0,555894401347533;***;0.556***;positive;5
+basal_thickness;0,555894401347533;0,0000001858438642143637;Spearman;WD_BA;Épaisseur zone basale;0,555894401347533;***;0.556***;positive;6
+h25;0,553848257006152;0,0000002105465044284469;Spearman;WD_BA;Hauteur à 25% de trouées;0,553848257006152;***;0.554***;positive;7
+h25;0,553848257006152;0,0000002105465044284469;Spearman;WD_BA;Hauteur à 25% de trouées;0,553848257006152;***;0.554***;positive;8
+h50;0,546411483253588;0,0000003290938898622255;Spearman;WD_BA;Hauteur à 50% de trouées;0,546411483253588;***;0.546***;positive;9
+h50;0,546411483253588;0,0000003290938898622255;Spearman;WD_BA;Hauteur à 50% de trouées;0,546411483253588;***;0.546***;positive;10
+h75;0,540833902939166;0,0000004568294828201913;Spearman;WD_BA;Hauteur à 75% de trouées;0,540833902939166;***;0.541***;positive;11
+h75;0,540833902939166;0,0000004568294828201913;Spearman;WD_BA;Hauteur à 75% de trouées;0,540833902939166;***;0.541***;positive;12
+upper_thickness;-0,539480268589648;0,0000004942376615819285;Spearman;WD_BA;Épaisseur zone supérieure;0,539480268589648;***;-0.539***;negative;13
+upper_thickness;-0,539480268589648;0,0000004942376615819285;Spearman;WD_BA;Épaisseur zone supérieure;0,539480268589648;***;-0.539***;negative;14
+h90;0,536240601503759;0,0000005958533239860067;Spearman;WD_BA;Hauteur à 90% de trouées;0,536240601503759;***;0.536***;positive;15
+h90;0,536240601503759;0,0000005958533239860067;Spearman;WD_BA;Hauteur à 90% de trouées;0,536240601503759;***;0.536***;positive;16
+prop_at_15m;-0,499524945500018;0,0000043546616696756652;Spearman;WD_BA;Proportion de trouées à 15m;0,499524945500018;***;-0.5***;negative;17
+prop_at_15m;-0,499524945500018;0,0000043546616696756652;Spearman;WD_BA;Proportion de trouées à 15m;0,499524945500018;***;-0.5***;negative;18
+prop_at_30m;-0,499453108305118;0,0000043706678074367574;Spearman;WD_BA;Proportion de trouées à 30m;0,499453108305118;***;-0.499***;negative;19
+prop_at_30m;-0,499453108305118;0,0000043706678074367574;Spearman;WD_BA;Proportion de trouées à 30m;0,499453108305118;***;-0.499***;negative;20

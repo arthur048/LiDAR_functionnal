@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+prop_at_20m;Proportion de trouées à 20m;prop_g_shade;65,4406;-45,2585;0,2553;0,2453;25,37;0,0000;-0,5053;76
+prop_at_10m;Proportion de trouées à 10m;prop_g_shade;56,0020;-70,5147;0,1167;0,1047;9,77;0,0025;-0,3416;76
+prop_at_25m;prop_at_25m;prop_g_shade;73,3510;-44,0385;0,2767;0,2669;28,30;0,0000;-0,5260;76
+prop_at_5m;prop_at_5m;prop_g_shade;53,8711;-120,0331;0,0914;0,0791;7,44;0,0080;-0,3023;76
+h25;Hauteur à 25% de trouées;prop_g_shade;18,3984;1,6284;0,1916;0,1806;17,53;0,0001;0,4377;76
+basal_thickness;Épaisseur zone basale;prop_g_shade;20,2393;1,6304;0,1920;0,1811;17,58;0,0001;0,4382;76
+h10;Hauteur à 10% de trouées;prop_g_shade;26,0739;1,6767;0,1975;0,1867;18,22;0,0001;0,4445;76
+prop_at_15m;Proportion de trouées à 15m;prop_g_shade;58,8454;-46,7421;0,1431;0,1315;12,35;0,0008;-0,3782;76
+h50;Hauteur à 50% de trouées;prop_g_shade;17,0796;1,3418;0,1515;0,1401;13,22;0,0005;0,3893;76
+height_min_d2;Hauteur à décélération max;prop_g_shade;23,6693;0,8987;0,1436;0,1320;12,41;0,0007;0,3789;76
+prop_at_30m;Proportion de trouées à 30m;prop_g_shade;77,0469;-37,3806;0,1486;0,1370;12,91;0,0006;-0,3854;76
+upper_thickness;Épaisseur zone supérieure;prop_g_shade;90,2474;-1,3042;0,1518;0,1404;13,25;0,0005;-0,3897;76
+h75;Hauteur à 75% de trouées;prop_g_shade;12,0886;1,3075;0,1523;0,1409;13,30;0,0005;0,3903;76
+h90;Hauteur à 90% de trouées;prop_g_shade;9,8530;1,2376;0,1458;0,1342;12,63;0,0007;0,3818;76
+height_max_d1;Hauteur à pente maximale;prop_g_shade;26,6580;0,9290;0,1080;0,0960;8,96;0,0037;0,3287;76
+slope_basal;slope_basal;prop_g_shade;51,6656;-88,0257;0,0105;-0,0029;0,78;0,3789;-0,1024;76
+prop_at_35m;prop_at_35m;prop_g_shade;77,5500;-31,1759;0,0449;0,0320;3,48;0,0661;-0,2119;76
+h100;h100;prop_g_shade;1,4948;1,2030;0,1273;0,1153;10,65;0,0017;0,3567;75
+auc_norm;auc_norm;prop_g_shade;82,5642;-76,2103;0,1076;0,0956;8,93;0,0038;-0,3281;76
+height_max_d2;Hauteur à accélération max;prop_g_shade;36,4564;0,6698;0,0551;0,0423;4,31;0,0413;0,2346;76

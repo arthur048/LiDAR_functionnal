@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+prop_at_20m;Proportion de trouées à 20m;prop_ind_helio;4,9432;42,8271;0,2717;0,2619;27,61;0,0000;0,5212;76
+h10;Hauteur à 10% de trouées;prop_ind_helio;37,9747;-1,2945;0,1399;0,1283;12,04;0,0009;-0,3741;76
+prop_at_15m;Proportion de trouées à 15m;prop_ind_helio;12,4270;37,4332;0,1090;0,0970;9,05;0,0036;0,3302;76
+basal_thickness;Épaisseur zone basale;prop_ind_helio;44,1632;-1,3501;0,1564;0,1450;13,72;0,0004;-0,3955;76
+h25;Hauteur à 25% de trouées;prop_ind_helio;45,6666;-1,3474;0,1558;0,1444;13,66;0,0004;-0,3948;76
+prop_at_10m;Proportion de trouées à 10m;prop_ind_helio;15,7395;43,6692;0,0532;0,0404;4,16;0,0451;0,2306;76
+prop_at_25m;prop_at_25m;prop_ind_helio;-0,7560;38,2602;0,2481;0,2380;24,42;0,0000;0,4981;76
+h50;Hauteur à 50% de trouées;prop_ind_helio;51,7689;-1,3127;0,1723;0,1612;15,41;0,0002;-0,4151;76
+slope_basal;slope_basal;prop_ind_helio;17,9207;86,9940;0,0122;-0,0012;0,91;0,3430;0,1103;76
+height_min_d2;Hauteur à décélération max;prop_ind_helio;43,7843;-0,8273;0,1446;0,1330;12,51;0,0007;-0,3802;76
+h75;Hauteur à 75% de trouées;prop_ind_helio;58,9854;-1,3589;0,1956;0,1847;17,99;0,0001;-0,4422;76
+upper_thickness;Épaisseur zone supérieure;prop_ind_helio;-22,3911;1,3601;0,1962;0,1854;18,07;0,0001;0,4430;76
+prop_at_5m;prop_at_5m;prop_ind_helio;17,2894;66,6020;0,0334;0,0204;2,56;0,1139;0,1828;76
+h90;Hauteur à 90% de trouées;prop_ind_helio;61,3360;-1,2871;0,1874;0,1764;17,06;0,0001;-0,4329;76
+auc_norm;auc_norm;prop_ind_helio;-11,3794;72,3969;0,1154;0,1035;9,66;0,0027;0,3397;76
+prop_at_30m;Proportion de trouées à 30m;prop_ind_helio;-3,6894;32,0880;0,1301;0,1183;11,06;0,0014;0,3607;76
+height_max_d1;Hauteur à pente maximale;prop_ind_helio;41,3189;-0,8664;0,1116;0,0996;9,30;0,0032;-0,3341;76
+prop_at_35m;prop_at_35m;prop_ind_helio;-15,2213;39,4605;0,0855;0,0731;6,92;0,0104;0,2924;76
+height_max_d2;Hauteur à accélération max;prop_ind_helio;35,0642;-0,7642;0,0852;0,0728;6,89;0,0105;-0,2918;76
+slope_upper;slope_upper;prop_ind_helio;25,7663;-1317,6626;0,0578;0,0450;4,54;0,0365;-0,2403;76

@@ -52,14 +52,46 @@ data_yangambi <- read_excel("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDA
   filter(plot_ref %in% plots_sf_id, dbh >= 10) %>%
   select(plot_ref, site, sp, dbh, h)
 
+#Parcelles de Mabounie
+
+load("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/PlotsMabounie.RData")
+
+data_mabounie <- Treedata %>%
+  select(
+    plot_ref = plot_name,
+    sp = tax_sp_level,
+    dbh = stem_diameter,
+    h = tree_height
+  ) %>%
+  mutate(
+    site = "Mabounie",
+    # Transform plot_ref using a lookup with case_when
+    plot_ref = case_when(
+      plot_ref == "mabou001" ~ "MAB01h",
+      plot_ref == "mabou002" ~ "MAB02h",
+      plot_ref == "mabou003" ~ "MAB03h",
+      plot_ref == "mabou004" ~ "MAB04h",
+      plot_ref == "mabou005" ~ "MAB05h",
+      plot_ref == "mabou006" ~ "MAB06h",
+      plot_ref == "mabou007" ~ "MAB07h",
+      plot_ref == "mabou008" ~ "MAB08h",
+      plot_ref == "mabou009" ~ "MAB09h",
+      plot_ref == "mabou010" ~ "MAB10h",
+      plot_ref == "mabou011" ~ "MAB11h",
+      plot_ref == "mabou012" ~ "MAB12h",
+      TRUE ~ plot_ref  # Keep original value if no match found
+    )
+  )
+
 # 2. Combinaison et filtrage des données d'inventaires de terrain ----
 data_combined <- bind_rows(
   data_excel,
   data_yangambi,
   data_malebo,
-  data_yangambi_nestor
+  data_yangambi_nestor,
+  data_mabounie
 ) %>%
-  filter(dbh >= 10, (h <= 65 | is.na(h)))
+  filter(dbh >= 10, (h <= 75 | is.na(h)))
 
 # 3. informations sur les utm et projection ----
 
@@ -158,6 +190,12 @@ all_plots_sf <- bind_rows(
 export_path <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/"
 dir.create(export_path, showWarnings = FALSE)
 dir.create(paste0(export_path, "plots_unique"), showWarnings = FALSE)
+
+# Export des données d'inventaires 
+
+rio::export(data_combined, 
+            "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_inventories.csv",
+            sep = ";", dec = ",", append = FALSE)
 
 # Export en GeoPackage
 st_write(all_plots_sf, 

@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+auc_75_100;-0,1775770331066069;0,124870118198804;Pearson;prop_g_npld;auc_75_100;0,1775770331066069;;-0.178;negative;1
+upper_auc;-0,1775770331066069;0,124870118198804;Pearson;prop_g_npld;upper_auc;0,1775770331066069;;-0.178;negative;2
+transition_thickness;0,1770820134121665;0,125942066239483;Pearson;prop_g_npld;Épaisseur zone de transition;0,1770820134121665;;0.177;positive;3
+prop_at_5m;0,1554403741851524;0,179983732494667;Pearson;prop_g_npld;prop_at_5m;0,1554403741851524;;0.155;positive;4
+h100;-0,1473368833636987;0,207150030042949;Pearson;prop_g_npld;h100;0,1473368833636987;;-0.147;negative;5
+prop_at_10m;0,1461129077253414;0,207870115474889;Pearson;prop_g_npld;Proportion de trouées à 10m;0,1461129077253414;;0.146;positive;6
+prop_at_40m;-0,1452239741140380;0,210679641179400;Pearson;prop_g_npld;prop_at_40m;0,1452239741140380;;-0.145;negative;7
+h10;-0,1286350384349412;0,268104954699707;Pearson;prop_g_npld;Hauteur à 10% de trouées;0,1286350384349412;;-0.129;negative;8
+auc_0_25_norm;0,1252154266133396;0,281140922233913;Pearson;prop_g_npld;auc_0_25_norm;0,1252154266133396;;0.125;positive;9
+basal_auc_norm;0,1252154266133396;0,281140922233913;Pearson;prop_g_npld;basal_auc_norm;0,1252154266133396;;0.125;positive;10
+auc_0_25;0,1246197130507351;0,283454234201416;Pearson;prop_g_npld;auc_0_25;0,1246197130507351;;0.125;positive;11
+basal_auc;0,1246197130507351;0,283454234201416;Pearson;prop_g_npld;basal_auc;0,1246197130507351;;0.125;positive;12
+auc_25_75;0,1195294343462374;0,303735211554677;Pearson;prop_g_npld;auc_25_75;0,1195294343462374;;0.12;positive;13
+transition_auc;0,1195294343462374;0,303735211554677;Pearson;prop_g_npld;transition_auc;0,1195294343462374;;0.12;positive;14
+slope_transition;-0,1164457308066761;0,316469705185415;Pearson;prop_g_npld;slope_transition;0,1164457308066761;;-0.116;negative;15
+height_max_d2;0,1071295983091505;0,356992816133870;Pearson;prop_g_npld;Hauteur à accélération max;0,1071295983091505;;0.107;positive;16
+auc;-0,1036756934193535;0,372795385331348;Pearson;prop_g_npld;Aire sous la courbe;0,1036756934193535;;-0.104;negative;17
+slope_upper;0,1007933499731348;0,386302432171004;Pearson;prop_g_npld;slope_upper;0,1007933499731348;;0.101;positive;18
+auc_25_75_norm;-0,0930659594135473;0,423930172334607;Pearson;prop_g_npld;auc_25_75_norm;0,0930659594135473;;-0.093;negative;19
+transition_auc_norm;-0,0930659594135473;0,423930172334607;Pearson;prop_g_npld;transition_auc_norm;0,0930659594135473;;-0.093;negative;20

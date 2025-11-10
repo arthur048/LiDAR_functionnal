@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+auc_75_100;-0,2054682159945318;0,0749786979184549;Spearman;prop_ind_npld;auc_75_100;0,2054682159945318;;-0.205;negative;1
+upper_auc;-0,2054682159945318;0,0749786979184549;Spearman;prop_ind_npld;upper_auc;0,2054682159945318;;-0.205;negative;2
+prop_at_10m;0,1933984511217504;0,0941482924629635;Spearman;prop_ind_npld;Proportion de trouées à 10m;0,1933984511217504;;0.193;positive;3
+h10;-0,1788926862611073;0,1220549902233719;Spearman;prop_ind_npld;Hauteur à 10% de trouées;0,1788926862611073;;-0.179;negative;4
+max_d2;-0,1701435406698565;0,1417157039488203;Spearman;prop_ind_npld;Accélération maximale;0,1701435406698565;;-0.17;negative;5
+prop_at_5m;0,1600076560518741;0,1673680996967227;Spearman;prop_ind_npld;prop_at_5m;0,1600076560518741;;0.16;positive;6
+prop_at_15m;0,1560502805933966;0,1782601399301362;Spearman;prop_ind_npld;Proportion de trouées à 15m;0,1560502805933966;;0.156;positive;7
+h100;-0,1528272084068107;0,1905353292492818;Spearman;prop_ind_npld;h100;0,1528272084068107;;-0.153;negative;8
+prop_at_30m;0,1506972942715307;0,1938031625557405;Spearman;prop_ind_npld;Proportion de trouées à 30m;0,1506972942715307;;0.151;positive;9
+prop_at_35m;0,1498024848358925;0,1964936033905979;Spearman;prop_ind_npld;prop_at_35m;0,1498024848358925;;0.15;positive;10
+h25;-0,1291592617908407;0,2661431200873148;Spearman;prop_ind_npld;Hauteur à 25% de trouées;0,1291592617908407;;-0.129;negative;11
+slope_upper;-0,1259876965140123;0,2781607310219507;Spearman;prop_ind_npld;slope_upper;0,1259876965140123;;-0.126;negative;12
+basal_thickness;-0,1252581107041082;0,2809756520719666;Spearman;prop_ind_npld;Épaisseur zone basale;0,1252581107041082;;-0.125;negative;13
+slope_transition;-0,1202187286397813;0,3009349564773651;Spearman;prop_ind_npld;slope_transition;0,1202187286397813;;-0.12;negative;14
+auc;-0,1143130553656869;0,3254746540685300;Spearman;prop_ind_npld;Aire sous la courbe;0,1143130553656869;;-0.114;negative;15
+prop_at_25m;0,1083807818260576;0,3513718487917248;Spearman;prop_ind_npld;prop_at_25m;0,1083807818260576;;0.108;positive;16
+h90;-0,1022829801777170;0,3792856659782683;Spearman;prop_ind_npld;Hauteur à 90% de trouées;0,1022829801777170;;-0.102;negative;17
+prop_at_20m;0,0999043062200957;0,3905269277462475;Spearman;prop_ind_npld;Proportion de trouées à 20m;0,0999043062200957;;0.1;positive;18
+transition_thickness;0,0932349447263724;0,4230855079852047;Spearman;prop_ind_npld;Épaisseur zone de transition;0,0932349447263724;;0.093;positive;19
+auc_25_75;0,0857142857142857;0,4616016328752228;Spearman;prop_ind_npld;auc_25_75;0,0857142857142857;;0.086;positive;20

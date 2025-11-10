@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+prop_at_20m;Proportion de trouées à 20m;WD_BA;0,6935;-0,2209;0,3692;0,3606;43,31;0,0000;-0,6076;76
+prop_at_20m;Proportion de trouées à 20m;WD_BA;0,6935;-0,2209;0,3692;0,3606;43,31;0,0000;-0,6076;76
+prop_at_25m;prop_at_25m;WD_BA;0,7276;-0,2063;0,3683;0,3598;43,15;0,0000;-0,6069;76
+prop_at_25m;prop_at_25m;WD_BA;0,7276;-0,2063;0,3683;0,3598;43,15;0,0000;-0,6069;76
+basal_thickness;Épaisseur zone basale;WD_BA;0,4740;0,0079;0,2734;0,2635;27,84;0,0000;0,5228;76
+basal_thickness;Épaisseur zone basale;WD_BA;0,4740;0,0079;0,2734;0,2635;27,84;0,0000;0,5228;76
+h25;Hauteur à 25% de trouées;WD_BA;0,4649;0,0079;0,2735;0,2637;27,86;0,0000;0,5230;76
+h25;Hauteur à 25% de trouées;WD_BA;0,4649;0,0079;0,2735;0,2637;27,86;0,0000;0,5230;76
+h50;Hauteur à 50% de trouées;WD_BA;0,4334;0,0075;0,2890;0,2794;30,08;0,0000;0,5376;76
+h50;Hauteur à 50% de trouées;WD_BA;0,4334;0,0075;0,2890;0,2794;30,08;0,0000;0,5376;76
+h75;Hauteur à 75% de trouées;WD_BA;0,3937;0,0077;0,3232;0,3140;35,33;0,0000;0,5685;76
+h75;Hauteur à 75% de trouées;WD_BA;0,3937;0,0077;0,3232;0,3140;35,33;0,0000;0,5685;76
+upper_thickness;Épaisseur zone supérieure;WD_BA;0,8558;-0,0077;0,3222;0,3130;35,18;0,0000;-0,5676;76
+upper_thickness;Épaisseur zone supérieure;WD_BA;0,8558;-0,0077;0,3222;0,3130;35,18;0,0000;-0,5676;76
+h90;Hauteur à 90% de trouées;WD_BA;0,3780;0,0074;0,3156;0,3063;34,12;0,0000;0,5618;76
+h90;Hauteur à 90% de trouées;WD_BA;0,3780;0,0074;0,3156;0,3063;34,12;0,0000;0,5618;76
+prop_at_15m;Proportion de trouées à 15m;WD_BA;0,6585;-0,2129;0,1800;0,1689;16,24;0,0001;-0,4243;76
+prop_at_15m;Proportion de trouées à 15m;WD_BA;0,6585;-0,2129;0,1800;0,1689;16,24;0,0001;-0,4243;76
+prop_at_30m;Proportion de trouées à 30m;WD_BA;0,7543;-0,1883;0,2287;0,2183;21,94;0,0000;-0,4782;76
+prop_at_30m;Proportion de trouées à 30m;WD_BA;0,7543;-0,1883;0,2287;0,2183;21,94;0,0000;-0,4782;76

@@ -1,0 +1,123 @@
+plot_ref;site;pays;region
+123;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+148;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+162;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+166;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+180;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+184;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+189;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+199;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+41;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+53;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+Betamba_1;Betamba;RDC;Zone forestière RDC (localisation à préciser)
+Betamba_2;Betamba;RDC;Zone forestière RDC (localisation à préciser)
+Betamba_3;Betamba;RDC;Zone forestière RDC (localisation à préciser)
+Betamba_4;Betamba;RDC;Zone forestière RDC (localisation à préciser)
+GIL1;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+GIL2;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+GIL3;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+JEU-L6B;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+JEU2;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+JEU3;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+JEU4;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+Lokofa_1;Lokofa;RDC;RDC (localisation à préciser)
+Lokofa_2;Lokofa;RDC;RDC (localisation à préciser)
+Lokofa_3;Lokofa;RDC;RDC (localisation à préciser)
+Lokofa_4;Lokofa;RDC;RDC (localisation à préciser)
+M2P1;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P10;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P11;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P12;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P13;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P14;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P15;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P16;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P2;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+M2P9;Malebo;RDC;Pool Malebo (sud-ouest RDC)
+MIX-L6A;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+MIX-L7A;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+MIX2;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+MIX6;Yangambi;RDC;Province de la Tshopo, nord-est RDC
+Model_OR_lidar_87_Principal;DRC;RDC;RDC (localisation à préciser)
+Modele_2406_Principal;DRC;RDC;RDC (localisation à préciser)
+Modele_4301_Principal;DRC;RDC;RDC (localisation à préciser)
+Modele_4402_Principal;DRC;RDC;RDC (localisation à préciser)
+Modele_4503_Principal;DRC;RDC;RDC (localisation à préciser)
+Modele_MA_lidar_205_principal;DRC;RDC;RDC (localisation à préciser)
+PARAP_Gungu_5;DRC;RDC;RDC (localisation à préciser)
+PARAP_Idiofa_6;DRC;RDC;RDC (localisation à préciser)
+PARAP_Luhudi_5;DRC;RDC;RDC (localisation à préciser)
+PARAP_Lukolela_53;DRC;RDC;RDC (localisation à préciser)
+PARAP_Mampulu_28;DRC;RDC;RDC (localisation à préciser)
+PARAP_Mangai_16;DRC;RDC;RDC (localisation à préciser)
+PARAP_Maniema_178;DRC;RDC;RDC (localisation à préciser)
+PARAP_Mashambio_26;DRC;RDC;RDC (localisation à préciser)
+PARAP_SwaKibula_234;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_07_01_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_08_02_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_11_05_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_13_07_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_14_08_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_15_09_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_16_10_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_17_11_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_supp1_Principal;DRC;RDC;RDC (localisation à préciser)
+WWF-DIAF_supp2_Principal;DRC;RDC;RDC (localisation à préciser)
+RAB01h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB02h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB03h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB04h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB05h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB06h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB07h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB08h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB09h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB10h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB11h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB12h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB13h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB14h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB15h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB16h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB17h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB18h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB19h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB20h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB21h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB22h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB23h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB24h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+RAB25h;Rabi;Gabon;Ogooué-Maritime, sud-ouest Gabon
+MNG03h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MNG04h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON02h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON03h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON05h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON09h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON10h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON11h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON13h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON14h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON21Ah;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON22h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MON23h;Mondah;Gabon;Estuaire, nord-ouest Gabon (proche Libreville)
+MAB01h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB02h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB03h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB04h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB05h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB06h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB07h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB08h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB09h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB10h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB11h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+MAB12h;Mabounié;Gabon;Moyen-Ogooué, centre-ouest Gabon
+LOP07h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LOP08h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LOP09h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LOP10h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LOP11h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LOP12h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LPG01h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon
+LPG02h;Lopé;Gabon;Ogooué-Ivindo, centre-est Gabon

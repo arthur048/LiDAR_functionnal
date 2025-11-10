@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+auc_75_100;auc_75_100;prop_ind_npld;25,3425;-0,4418;0,0175;0,0043;1,32;0,2542;-0,1324;76
+upper_auc;upper_auc;prop_ind_npld;25,3425;-0,4418;0,0175;0,0043;1,32;0,2542;-0,1324;76
+prop_at_10m;Proportion de trouées à 10m;prop_ind_npld;18,5676;26,1698;0,0447;0,0318;3,46;0,0667;0,2115;76
+h10;Hauteur à 10% de trouées;prop_ind_npld;27,7756;-0,4908;0,0471;0,0342;3,66;0,0596;-0,2171;76
+max_d2;Accélération maximale;prop_ind_npld;20,6381;3,5703;0,0000;-0,0135;0,00;0,9878;0,0018;76
+prop_at_5m;prop_at_5m;prop_ind_npld;19,3277;45,5807;0,0367;0,0237;2,82;0,0975;0,1915;76
+prop_at_15m;Proportion de trouées à 15m;prop_ind_npld;18,4100;12,4383;0,0282;0,0151;2,15;0,1471;0,1679;76
+h100;h100;prop_ind_npld;41,7188;-0,5205;0,0667;0,0539;5,21;0,0253;-0,2582;75
+prop_at_30m;Proportion de trouées à 30m;prop_ind_npld;12,3583;11,6356;0,0401;0,0271;3,09;0,0830;0,2002;76
+prop_at_35m;prop_at_35m;prop_ind_npld;12,2497;9,6493;0,0120;-0,0014;0,90;0,3467;0,1094;76
+h25;Hauteur à 25% de trouées;prop_ind_npld;29,3346;-0,4416;0,0392;0,0262;3,02;0,0864;-0,1980;76
+slope_upper;slope_upper;prop_ind_npld;21,4787;-161,1752;0,0020;-0,0115;0,15;0,6996;-0,0450;76
+basal_thickness;Épaisseur zone basale;prop_ind_npld;28,8222;-0,4414;0,0392;0,0262;3,02;0,0866;-0,1979;76
+slope_transition;slope_transition;prop_ind_npld;21,2925;-10,0375;0,0003;-0,0132;0,02;0,8780;-0,0179;76
+auc;Aire sous la courbe;prop_ind_npld;25,9050;-0,3106;0,0109;-0,0025;0,81;0,3703;-0,1042;76
+prop_at_25m;prop_at_25m;prop_ind_npld;14,9627;10,9302;0,0474;0,0346;3,69;0,0588;0,2178;76
+h90;Hauteur à 90% de trouées;prop_ind_npld;30,6147;-0,3039;0,0245;0,0113;1,86;0,1773;-0,1564;76
+prop_at_20m;Proportion de trouées à 20m;prop_ind_npld;18,2447;7,2918;0,0184;0,0052;1,39;0,2420;0,1358;76
+transition_thickness;Épaisseur zone de transition;prop_ind_npld;17,6851;0,3211;0,0060;-0,0075;0,44;0,5075;0,0772;76
+auc_25_75;auc_25_75;prop_ind_npld;19,1850;0,3588;0,0018;-0,0117;0,13;0,7148;0,0426;76

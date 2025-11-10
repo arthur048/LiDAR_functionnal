@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+h100;-0,258203225155188;0,0253111087795922;Pearson;prop_ind_npld;h100;0,258203225155188;*;-0.258*;negative;1
+prop_at_25m;0,217801153153446;0,0587531363932041;Pearson;prop_ind_npld;prop_at_25m;0,217801153153446;;0.218;positive;2
+h10;-0,217065230487489;0,0596336153742668;Pearson;prop_ind_npld;Hauteur à 10% de trouées;0,217065230487489;;-0.217;negative;3
+prop_at_10m;0,211480346431168;0,0666703929671061;Pearson;prop_ind_npld;Proportion de trouées à 10m;0,211480346431168;;0.211;positive;4
+prop_at_30m;0,200157887102891;0,0829878423680784;Pearson;prop_ind_npld;Proportion de trouées à 30m;0,200157887102891;;0.2;positive;5
+h25;-0,198008294487475;0,0864169368232604;Pearson;prop_ind_npld;Hauteur à 25% de trouées;0,198008294487475;;-0.198;negative;6
+basal_thickness;-0,197908356041132;0,0865790478663583;Pearson;prop_ind_npld;Épaisseur zone basale;0,197908356041132;;-0.198;negative;7
+prop_at_5m;0,191493532550578;0,0974975157645672;Pearson;prop_ind_npld;prop_at_5m;0,191493532550578;;0.191;positive;8
+prop_at_15m;0,167917898098132;0,1470779080647989;Pearson;prop_ind_npld;Proportion de trouées à 15m;0,167917898098132;;0.168;positive;9
+h90;-0,156406080032680;0,1772602261695448;Pearson;prop_ind_npld;Hauteur à 90% de trouées;0,156406080032680;;-0.156;negative;10
+height_min_d2;-0,150660934091651;0,1939119683483327;Pearson;prop_ind_npld;Hauteur à décélération max;0,150660934091651;;-0.151;negative;11
+h75;-0,142988414463235;0,2178639032593589;Pearson;prop_ind_npld;Hauteur à 75% de trouées;0,142988414463235;;-0.143;negative;12
+upper_thickness;0,140786936062481;0,2251055429434531;Pearson;prop_ind_npld;Épaisseur zone supérieure;0,140786936062481;;0.141;positive;13
+h50;-0,138898668839281;0,2314497082329430;Pearson;prop_ind_npld;Hauteur à 50% de trouées;0,138898668839281;;-0.139;negative;14
+prop_at_20m;0,135827055291751;0,2420334362562964;Pearson;prop_ind_npld;Proportion de trouées à 20m;0,135827055291751;;0.136;positive;15
+auc_75_100;-0,132396275932465;0,2542436530986080;Pearson;prop_ind_npld;auc_75_100;0,132396275932465;;-0.132;negative;16
+upper_auc;-0,132396275932465;0,2542436530986080;Pearson;prop_ind_npld;upper_auc;0,132396275932465;;-0.132;negative;17
+height_max_d1;-0,119607281032582;0,3034181130639116;Pearson;prop_ind_npld;Hauteur à pente maximale;0,119607281032582;;-0.12;negative;18
+prop_at_35m;0,109422027226654;0,3467361569401168;Pearson;prop_ind_npld;prop_at_35m;0,109422027226654;;0.109;positive;19
+auc;-0,104208171121595;0,3703318662551041;Pearson;prop_ind_npld;Aire sous la courbe;0,104208171121595;;-0.104;negative;20

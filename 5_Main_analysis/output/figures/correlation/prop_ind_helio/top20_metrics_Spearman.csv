@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+prop_at_20m;0,574135338345865;0,0000000588166786676562;Spearman;prop_ind_helio;Proportion de trouées à 20m;0,574135338345865;***;0.574***;positive;1
+h10;-0,556582365003418;0,0000001781735661534308;Spearman;prop_ind_helio;Hauteur à 10% de trouées;0,556582365003418;***;-0.557***;negative;2
+prop_at_15m;0,555014046588814;0,0000001961156188352522;Spearman;prop_ind_helio;Proportion de trouées à 15m;0,555014046588814;***;0.555***;positive;3
+basal_thickness;-0,551080989233140;0,0000002489290757187945;Spearman;prop_ind_helio;Épaisseur zone basale;0,551080989233140;***;-0.551***;negative;4
+h25;-0,550184552289815;0,0000002627210223767576;Spearman;prop_ind_helio;Hauteur à 25% de trouées;0,550184552289815;***;-0.55***;negative;5
+prop_at_10m;0,544501329481821;0,0000003684592053330927;Spearman;prop_ind_helio;Proportion de trouées à 10m;0,544501329481821;***;0.545***;positive;6
+prop_at_25m;0,537638671500403;0,0000005497943091380882;Spearman;prop_ind_helio;prop_at_25m;0,537638671500403;***;0.538***;positive;7
+h50;-0,513356117566644;0,0000021151088459816448;Spearman;prop_ind_helio;Hauteur à 50% de trouées;0,513356117566644;***;-0.513***;negative;8
+slope_basal;0,506712235133288;0,0000030039746775048150;Spearman;prop_ind_helio;slope_basal;0,506712235133288;***;0.507***;positive;9
+height_min_d2;-0,497906951063239;0,0000047288431081199191;Spearman;prop_ind_helio;Hauteur à décélération max;0,497906951063239;***;-0.498***;negative;10
+h75;-0,497634996582365;0,0000047946221707033630;Spearman;prop_ind_helio;Hauteur à 75% de trouées;0,497634996582365;***;-0.498***;negative;11
+upper_thickness;0,496708000824246;0,0000050253451966849405;Spearman;prop_ind_helio;Épaisseur zone supérieure;0,496708000824246;***;0.497***;positive;12
+prop_at_5m;0,491520442415672;0,0000065207517263189552;Spearman;prop_ind_helio;prop_at_5m;0,491520442415672;***;0.492***;positive;13
+h90;-0,473028024606972;0,0000159558871740542646;Spearman;prop_ind_helio;Hauteur à 90% de trouées;0,473028024606972;***;-0.473***;negative;14
+auc_norm;0,457799043062201;0,0000321001823076508695;Spearman;prop_ind_helio;auc_norm;0,457799043062201;***;0.458***;positive;15
+prop_at_30m;0,424063443941734;0,0001348424347685884888;Spearman;prop_ind_helio;Proportion de trouées à 30m;0,424063443941734;***;0.424***;positive;16
+height_max_d1;-0,399912499310190;0,0003446958396213194707;Spearman;prop_ind_helio;Hauteur à pente maximale;0,399912499310190;***;-0.4***;negative;17
+prop_at_35m;0,396158693738561;0,0003963412320767861524;Spearman;prop_ind_helio;prop_at_35m;0,396158693738561;***;0.396***;positive;18
+height_max_d2;-0,390675967144759;0,0004845671428792729584;Spearman;prop_ind_helio;Hauteur à accélération max;0,390675967144759;***;-0.391***;negative;19
+slope_upper;-0,334518113465482;0,0031416925438911415085;Spearman;prop_ind_helio;slope_upper;0,334518113465482;**;-0.335**;negative;20

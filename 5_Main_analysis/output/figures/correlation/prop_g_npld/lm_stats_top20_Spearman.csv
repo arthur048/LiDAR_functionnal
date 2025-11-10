@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+auc_75_100;auc_75_100;prop_g_npld;37,7332;-0,7246;0,0315;0,0184;2,41;0,1249;-0,1776;76
+upper_auc;upper_auc;prop_g_npld;37,7332;-0,7246;0,0315;0,0184;2,41;0,1249;-0,1776;76
+slope_transition;slope_transition;prop_g_npld;34,9333;-79,8628;0,0136;0,0002;1,02;0,3165;-0,1164;76
+transition_thickness;Épaisseur zone de transition;prop_g_npld;21,6798;0,9009;0,0314;0,0183;2,40;0,1259;0,1771;76
+max_d2;Accélération maximale;prop_g_npld;32,8631;-214,5419;0,0076;-0,0058;0,57;0,4526;-0,0874;76
+prop_at_10m;Proportion de trouées à 10m;prop_g_npld;28,3051;22,1093;0,0213;0,0081;1,61;0,2079;0,1461;76
+auc_25_75;auc_25_75;prop_g_npld;24,9504;1,2310;0,0143;0,0010;1,07;0,3037;0,1195;76
+transition_auc;transition_auc;prop_g_npld;24,9504;1,2310;0,0143;0,0010;1,07;0,3037;0,1195;76
+h10;Hauteur à 10% de trouées;prop_g_npld;35,2320;-0,3557;0,0165;0,0033;1,25;0,2681;-0,1286;76
+prop_at_15m;Proportion de trouées à 15m;prop_g_npld;28,8058;7,0414;0,0060;-0,0074;0,45;0,5045;0,0777;76
+prop_at_5m;prop_at_5m;prop_g_npld;28,7468;45,2425;0,0242;0,0110;1,83;0,1800;0,1554;76
+max_d1;Pente maximale;prop_g_npld;32,7120;-34,0624;0,0021;-0,0114;0,16;0,6923;-0,0461;76
+h25;Hauteur à 25% de trouées;prop_g_npld;33,5552;-0,1767;0,0042;-0,0093;0,31;0,5781;-0,0648;76
+basal_thickness;Épaisseur zone basale;prop_g_npld;33,2833;-0,1730;0,0040;-0,0094;0,30;0,5861;-0,0634;76
+auc_25_75_norm;auc_25_75_norm;prop_g_npld;44,6441;-34,2015;0,0087;-0,0047;0,65;0,4239;-0,0931;76
+transition_auc_norm;transition_auc_norm;prop_g_npld;44,6441;-34,2015;0,0087;-0,0047;0,65;0,4239;-0,0931;76
+height_max_d2;Hauteur à accélération max;prop_g_npld;25,4611;0,2242;0,0115;-0,0019;0,86;0,3570;0,1071;76
+prop_at_30m;Proportion de trouées à 30m;prop_g_npld;27,7593;3,2618;0,0021;-0,0114;0,16;0,6939;0,0459;76
+auc;Aire sous la courbe;prop_g_npld;36,4446;-0,3779;0,0107;-0,0026;0,80;0,3728;-0,1037;76
+prop_at_35m;prop_at_35m;prop_g_npld;35,8198;-6,5513;0,0037;-0,0098;0,27;0,6021;-0,0608;76

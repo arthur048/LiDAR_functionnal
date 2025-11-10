@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+auc_75_100;auc_75_100;prop_g_npld;37,7332;-0,7246;0,0315;0,0184;2,41;0,1249;-0,1776;76
+upper_auc;upper_auc;prop_g_npld;37,7332;-0,7246;0,0315;0,0184;2,41;0,1249;-0,1776;76
+transition_thickness;Épaisseur zone de transition;prop_g_npld;21,6798;0,9009;0,0314;0,0183;2,40;0,1259;0,1771;76
+prop_at_5m;prop_at_5m;prop_g_npld;28,7468;45,2425;0,0242;0,0110;1,83;0,1800;0,1554;76
+h100;h100;prop_g_npld;44,3223;-0,3587;0,0217;0,0083;1,62;0,2072;-0,1473;75
+prop_at_10m;Proportion de trouées à 10m;prop_g_npld;28,3051;22,1093;0,0213;0,0081;1,61;0,2079;0,1461;76
+prop_at_40m;prop_at_40m;prop_g_npld;54,0535;-25,0104;0,0211;0,0079;1,59;0,2107;-0,1452;76
+h10;Hauteur à 10% de trouées;prop_g_npld;35,2320;-0,3557;0,0165;0,0033;1,25;0,2681;-0,1286;76
+auc_0_25_norm;auc_0_25_norm;prop_g_npld;25,6589;72,4413;0,0157;0,0024;1,18;0,2811;0,1252;76
+basal_auc_norm;basal_auc_norm;prop_g_npld;25,6589;72,4413;0,0157;0,0024;1,18;0,2811;0,1252;76
+auc_0_25;auc_0_25;prop_g_npld;25,6045;4,1228;0,0155;0,0022;1,17;0,2835;0,1246;76
+basal_auc;basal_auc;prop_g_npld;25,6045;4,1228;0,0155;0,0022;1,17;0,2835;0,1246;76
+auc_25_75;auc_25_75;prop_g_npld;24,9504;1,2310;0,0143;0,0010;1,07;0,3037;0,1195;76
+transition_auc;transition_auc;prop_g_npld;24,9504;1,2310;0,0143;0,0010;1,07;0,3037;0,1195;76
+slope_transition;slope_transition;prop_g_npld;34,9333;-79,8628;0,0136;0,0002;1,02;0,3165;-0,1164;76
+height_max_d2;Hauteur à accélération max;prop_g_npld;25,4611;0,2242;0,0115;-0,0019;0,86;0,3570;0,1071;76
+auc;Aire sous la courbe;prop_g_npld;36,4446;-0,3779;0,0107;-0,0026;0,80;0,3728;-0,1037;76
+slope_upper;slope_upper;prop_g_npld;27,9169;441,5343;0,0102;-0,0032;0,76;0,3863;0,1008;76
+auc_25_75_norm;auc_25_75_norm;prop_g_npld;44,6441;-34,2015;0,0087;-0,0047;0,65;0,4239;-0,0931;76
+transition_auc_norm;transition_auc_norm;prop_g_npld;44,6441;-34,2015;0,0087;-0,0047;0,65;0,4239;-0,0931;76

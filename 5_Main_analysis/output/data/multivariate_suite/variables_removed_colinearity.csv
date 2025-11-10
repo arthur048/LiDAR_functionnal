@@ -1,0 +1,13 @@
+variable_removed,reason
+auc,Colinearity or redundancy
+auc_0_25,Colinearity or redundancy
+auc_25_75,Colinearity or redundancy
+auc_75_100,Colinearity or redundancy
+basal_auc,Colinearity or redundancy
+transition_auc,Colinearity or redundancy
+upper_auc,Colinearity or redundancy
+upper_thickness,Colinearity or redundancy
+basal_thickness,Colinearity or redundancy
+transition_auc_norm,Colinearity or redundancy
+basal_auc_norm,Colinearity or redundancy
+upper_auc_norm,Colinearity or redundancy

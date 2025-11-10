@@ -1,0 +1,21 @@
+metric;correlation;p_value;method;target_variable;metric_label;abs_corr;significance;corr_formatted;direction;rank
+prop_at_20m;-0,531828103125011;0,000000000291064758609756;Pearson;WD_mean;Proportion de trouées à 20m;0,531828103125011;***;-0.532***;negative;1
+decay_rate;0,483137372737927;0,000000017368461520491765;Pearson;WD_mean;Taux de changement;0,483137372737927;***;0.483***;positive;2
+h90;0,475403855257234;0,000000031412014577875683;Pearson;WD_mean;Hauteur à 90% de trouées;0,475403855257234;***;0.475***;positive;3
+GVN;-0,464104414311475;0,000000072749800251516457;Pearson;WD_mean;Gradient Vertical Normalisé;0,464104414311475;***;-0.464***;negative;4
+prop_at_15m;-0,460124617073080;0,000000097094192783318882;Pearson;WD_mean;Proportion de trouées à 15m;0,460124617073080;***;-0.46***;negative;5
+upper_thickness;-0,459934321207627;0,000000098434570998008374;Pearson;WD_mean;Épaisseur zone supérieure;0,459934321207627;***;-0.46***;negative;6
+h75;0,459092974890702;0,000000104575568732105801;Pearson;WD_mean;Hauteur à 75% de trouées;0,459092974890702;***;0.459***;positive;7
+min_d2;0,455707053312189;0,000000133195968261396260;Pearson;WD_mean;Décélération maximale;0,455707053312189;***;0.456***;positive;8
+ROS;0,450428627591532;0,000000193207855959943520;Pearson;WD_mean;Ratio d'Occupation Stratifiée;0,450428627591532;***;0.45***;positive;9
+auc;-0,436745633686399;0,000000492373004364299711;Pearson;WD_mean;Aire sous la courbe;0,436745633686399;***;-0.437***;negative;10
+prop_at_10m;-0,432314960894888;0,000000660819877433255858;Pearson;WD_mean;Proportion de trouées à 10m;0,432314960894888;***;-0.432***;negative;11
+h50;0,416934294545231;0,000001777737202786535099;Pearson;WD_mean;Hauteur à 50% de trouées;0,416934294545231;***;0.417***;positive;12
+max_d1;-0,411652554957086;0,000002469592636791008924;Pearson;WD_mean;Pente maximale;0,411652554957086;***;-0.412***;negative;13
+IDT;0,390414196458760;0,000008764088705808582394;Pearson;WD_mean;Indice de Différenciation Transitionnelle;0,390414196458760;***;0.39***;positive;14
+Smax;-0,385555405034432;0,000011569405930532149137;Pearson;WD_mean;Pente maximale;0,385555405034432;***;-0.386***;negative;15
+h25;0,384676239140815;0,000012159904755691327777;Pearson;WD_mean;Hauteur à 25% de trouées;0,384676239140815;***;0.385***;positive;16
+log_max_d1;-0,383901437553455;0,000012703738335181803613;Pearson;WD_mean;Log pente maximale;0,383901437553455;***;-0.384***;negative;17
+basal_thickness;0,382726293423715;0,000013572483852914584188;Pearson;WD_mean;Épaisseur zone basale;0,382726293423715;***;0.383***;positive;18
+height_min_d2;0,375210257027858;0,000020597141593658753738;Pearson;WD_mean;Hauteur à décélération max;0,375210257027858;***;0.375***;positive;19
+anisotropy_squared;0,373702702344867;0,000022366936600569801486;Pearson;WD_mean;Anisotropie au carré;0,373702702344867;***;0.374***;positive;20

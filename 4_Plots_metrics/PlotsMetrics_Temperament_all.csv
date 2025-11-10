@@ -1,641 +1,457 @@
-plot_ref;Temperament;Proportion;Type_Proportion;Type_subdivision
-123;héliophile;43,5469476112668;G.rel;2
-123;tolérante à l'ombrage;56,4530523887332;G.rel;2
-148;héliophile;54,1592777696154;G.rel;2
-148;tolérante à l'ombrage;45,8407222303846;G.rel;2
-162;héliophile;65,8872615385383;G.rel;2
-162;tolérante à l'ombrage;34,1127384614618;G.rel;2
-166;héliophile;78,2262372630329;G.rel;2
-166;tolérante à l'ombrage;21,7737627369671;G.rel;2
-180;héliophile;60,3890298875727;G.rel;2
-180;tolérante à l'ombrage;39,6109701124274;G.rel;2
-184;héliophile;61,9173767058605;G.rel;2
-184;tolérante à l'ombrage;38,0826232941395;G.rel;2
-189;héliophile;60,3218084618313;G.rel;2
-189;tolérante à l'ombrage;39,6781915381687;G.rel;2
-199;héliophile;56,0025309562154;G.rel;2
-199;tolérante à l'ombrage;43,9974690437847;G.rel;2
-41;héliophile;48,8869526998419;G.rel;2
-41;tolérante à l'ombrage;51,1130473001581;G.rel;2
-53;héliophile;29,691284904859;G.rel;2
-53;tolérante à l'ombrage;70,308715095141;G.rel;2
-Betamba_1;héliophile;85,4102514329859;G.rel;2
-Betamba_1;tolérante à l'ombrage;14,5897485670141;G.rel;2
-Betamba_2;héliophile;93,8605418367019;G.rel;2
-Betamba_2;tolérante à l'ombrage;6,13945816329812;G.rel;2
-Betamba_3;héliophile;82,7980916126274;G.rel;2
-Betamba_3;tolérante à l'ombrage;17,2019083873726;G.rel;2
-Betamba_4;héliophile;91,1475850508496;G.rel;2
-Betamba_4;tolérante à l'ombrage;8,85241494915045;G.rel;2
-GIL1;héliophile;9,33012110558363;G.rel;2
-GIL1;tolérante à l'ombrage;90,6698788944164;G.rel;2
-GIL2;héliophile;17,8449887470431;G.rel;2
-GIL2;tolérante à l'ombrage;82,1550112529569;G.rel;2
-GIL3;héliophile;24,3553642435109;G.rel;2
-GIL3;tolérante à l'ombrage;75,6446357564891;G.rel;2
-JEU-L6B;héliophile;40,7852408166502;G.rel;2
-JEU-L6B;tolérante à l'ombrage;59,2147591833498;G.rel;2
-JEU2;héliophile;99,7424123642054;G.rel;2
-JEU2;tolérante à l'ombrage;0,257587635794635;G.rel;2
-JEU3;héliophile;98,3070240343845;G.rel;2
-JEU3;tolérante à l'ombrage;1,69297596561555;G.rel;2
-JEU4;héliophile;92,1577326166039;G.rel;2
-JEU4;tolérante à l'ombrage;7,84226738339612;G.rel;2
-Lokofa_1;héliophile;76,925780064408;G.rel;2
-Lokofa_1;tolérante à l'ombrage;23,074219935592;G.rel;2
-Lokofa_2;héliophile;60,7505902612613;G.rel;2
-Lokofa_2;tolérante à l'ombrage;39,2494097387387;G.rel;2
-Lokofa_3;héliophile;67,2133985627384;G.rel;2
-Lokofa_3;tolérante à l'ombrage;32,7866014372616;G.rel;2
-Lokofa_4;héliophile;55,2585091950806;G.rel;2
-Lokofa_4;tolérante à l'ombrage;44,7414908049195;G.rel;2
-M2P1;héliophile;48,6089721250559;G.rel;2
-M2P1;tolérante à l'ombrage;51,3910278749441;G.rel;2
-M2P10;héliophile;34,1370660922003;G.rel;2
-M2P10;tolérante à l'ombrage;65,8629339077998;G.rel;2
-M2P11;héliophile;29,8155452766009;G.rel;2
-M2P11;tolérante à l'ombrage;70,1844547233992;G.rel;2
-M2P12;héliophile;61,5072394588428;G.rel;2
-M2P12;tolérante à l'ombrage;38,4927605411572;G.rel;2
-M2P13;héliophile;29,9658650400837;G.rel;2
-M2P13;tolérante à l'ombrage;70,0341349599163;G.rel;2
-M2P14;héliophile;98,0422793750814;G.rel;2
-M2P14;tolérante à l'ombrage;1,95772062491853;G.rel;2
-M2P15;héliophile;86,513694948908;G.rel;2
-M2P15;tolérante à l'ombrage;13,486305051092;G.rel;2
-M2P16;héliophile;64,1934089432568;G.rel;2
-M2P16;tolérante à l'ombrage;35,8065910567432;G.rel;2
-M2P2;héliophile;50,1383874025177;G.rel;2
-M2P2;tolérante à l'ombrage;49,8616125974823;G.rel;2
-M2P9;héliophile;48,8301190811082;G.rel;2
-M2P9;tolérante à l'ombrage;51,1698809188918;G.rel;2
-MIX-L6A;héliophile;32,4613740391804;G.rel;2
-MIX-L6A;tolérante à l'ombrage;67,5386259608196;G.rel;2
-MIX-L7A;héliophile;35,4711428883651;G.rel;2
-MIX-L7A;tolérante à l'ombrage;64,5288571116349;G.rel;2
-MIX2;héliophile;36,8701974671973;G.rel;2
-MIX2;tolérante à l'ombrage;63,1298025328027;G.rel;2
-MIX6;héliophile;37,367552120556;G.rel;2
-MIX6;tolérante à l'ombrage;62,632447879444;G.rel;2
-Model_OR_lidar_87_Principal;héliophile;66,6249303350186;G.rel;2
-Model_OR_lidar_87_Principal;tolérante à l'ombrage;33,3750696649814;G.rel;2
-Modele_2406_Principal;héliophile;37,2892697261464;G.rel;2
-Modele_2406_Principal;tolérante à l'ombrage;62,7107302738536;G.rel;2
-Modele_4301_Principal;héliophile;54,4055244137799;G.rel;2
-Modele_4301_Principal;tolérante à l'ombrage;45,5944755862201;G.rel;2
-Modele_4402_Principal;héliophile;24,7737084228919;G.rel;2
-Modele_4402_Principal;tolérante à l'ombrage;75,2262915771082;G.rel;2
-Modele_4503_Principal;héliophile;92,8089035153224;G.rel;2
-Modele_4503_Principal;tolérante à l'ombrage;7,19109648467757;G.rel;2
-Modele_MA_lidar_205_principal;héliophile;80,7266379311573;G.rel;2
-Modele_MA_lidar_205_principal;tolérante à l'ombrage;19,2733620688427;G.rel;2
-PARAP_Gungu_5;héliophile;73,1947613632994;G.rel;2
-PARAP_Gungu_5;tolérante à l'ombrage;26,8052386367006;G.rel;2
-PARAP_Idiofa_6;héliophile;79,9804123714341;G.rel;2
-PARAP_Idiofa_6;tolérante à l'ombrage;20,0195876285659;G.rel;2
-PARAP_Luhudi_5;héliophile;89,5124980255598;G.rel;2
-PARAP_Luhudi_5;tolérante à l'ombrage;10,4875019744402;G.rel;2
-PARAP_Lukolela_53;héliophile;64,2313542630937;G.rel;2
-PARAP_Lukolela_53;tolérante à l'ombrage;35,7686457369063;G.rel;2
-PARAP_Mampulu_28;héliophile;78,5840760209475;G.rel;2
-PARAP_Mampulu_28;tolérante à l'ombrage;21,4159239790525;G.rel;2
-PARAP_Mangai_16;héliophile;54,5200812886975;G.rel;2
-PARAP_Mangai_16;tolérante à l'ombrage;45,4799187113025;G.rel;2
-PARAP_Maniema_178;héliophile;64,0020338133948;G.rel;2
-PARAP_Maniema_178;tolérante à l'ombrage;35,9979661866052;G.rel;2
-PARAP_Mashambio_26;héliophile;76,0584644149191;G.rel;2
-PARAP_Mashambio_26;tolérante à l'ombrage;23,9415355850809;G.rel;2
-PARAP_SwaKibula_234;héliophile;89,7126479741877;G.rel;2
-PARAP_SwaKibula_234;tolérante à l'ombrage;10,2873520258123;G.rel;2
-WWF-DIAF_07_01_Principal;héliophile;90,7999915819322;G.rel;2
-WWF-DIAF_07_01_Principal;tolérante à l'ombrage;9,20000841806777;G.rel;2
-WWF-DIAF_08_02_Principal;héliophile;51,5400888870986;G.rel;2
-WWF-DIAF_08_02_Principal;tolérante à l'ombrage;48,4599111129014;G.rel;2
-WWF-DIAF_11_05_Principal;héliophile;53,2425261034739;G.rel;2
-WWF-DIAF_11_05_Principal;tolérante à l'ombrage;46,7574738965261;G.rel;2
-WWF-DIAF_13_07_Principal;héliophile;63,0035268783708;G.rel;2
-WWF-DIAF_13_07_Principal;tolérante à l'ombrage;36,9964731216293;G.rel;2
-WWF-DIAF_14_08_Principal;héliophile;45,7072325359536;G.rel;2
-WWF-DIAF_14_08_Principal;tolérante à l'ombrage;54,2927674640465;G.rel;2
-WWF-DIAF_15_09_Principal;héliophile;66,6239404039249;G.rel;2
-WWF-DIAF_15_09_Principal;tolérante à l'ombrage;33,3760595960751;G.rel;2
-WWF-DIAF_16_10_Principal;héliophile;74,0997366444091;G.rel;2
-WWF-DIAF_16_10_Principal;tolérante à l'ombrage;25,9002633555909;G.rel;2
-WWF-DIAF_17_11_Principal;héliophile;53,4499607688225;G.rel;2
-WWF-DIAF_17_11_Principal;tolérante à l'ombrage;46,5500392311775;G.rel;2
-WWF-DIAF_supp1_Principal;héliophile;50,0395577355833;G.rel;2
-WWF-DIAF_supp1_Principal;tolérante à l'ombrage;49,9604422644167;G.rel;2
-WWF-DIAF_supp2_Principal;héliophile;92,0974072095392;G.rel;2
-WWF-DIAF_supp2_Principal;tolérante à l'ombrage;7,9025927904608;G.rel;2
-123;héliophile;30,8539944903581;ind.rel;2
-123;tolérante à l'ombrage;69,1460055096419;ind.rel;2
-148;héliophile;37,0860927152318;ind.rel;2
-148;tolérante à l'ombrage;62,9139072847682;ind.rel;2
-162;héliophile;31,5789473684211;ind.rel;2
-162;tolérante à l'ombrage;68,421052631579;ind.rel;2
-166;héliophile;50,8196721311476;ind.rel;2
-166;tolérante à l'ombrage;49,1803278688525;ind.rel;2
-180;héliophile;32,378223495702;ind.rel;2
-180;tolérante à l'ombrage;67,621776504298;ind.rel;2
-184;héliophile;32,02416918429;ind.rel;2
-184;tolérante à l'ombrage;67,97583081571;ind.rel;2
-189;héliophile;42,2939068100358;ind.rel;2
-189;tolérante à l'ombrage;57,7060931899642;ind.rel;2
-199;héliophile;27,5167785234899;ind.rel;2
-199;tolérante à l'ombrage;72,4832214765101;ind.rel;2
-41;héliophile;22,9965156794425;ind.rel;2
-41;tolérante à l'ombrage;77,0034843205575;ind.rel;2
-53;héliophile;17,4934725848564;ind.rel;2
-53;tolérante à l'ombrage;82,5065274151436;ind.rel;2
-Betamba_1;héliophile;88,8372093023256;ind.rel;2
-Betamba_1;tolérante à l'ombrage;11,1627906976744;ind.rel;2
-Betamba_2;héliophile;95,5706984667802;ind.rel;2
-Betamba_2;tolérante à l'ombrage;4,42930153321976;ind.rel;2
-Betamba_3;héliophile;79,2880258899676;ind.rel;2
-Betamba_3;tolérante à l'ombrage;20,7119741100324;ind.rel;2
-Betamba_4;héliophile;90,7317073170732;ind.rel;2
-Betamba_4;tolérante à l'ombrage;9,26829268292683;ind.rel;2
-GIL1;héliophile;18,3183183183183;ind.rel;2
-GIL1;tolérante à l'ombrage;81,6816816816817;ind.rel;2
-GIL2;héliophile;27,1634615384615;ind.rel;2
-GIL2;tolérante à l'ombrage;72,8365384615385;ind.rel;2
-GIL3;héliophile;41,9354838709678;ind.rel;2
-GIL3;tolérante à l'ombrage;58,0645161290323;ind.rel;2
-JEU-L6B;héliophile;27,6485788113695;ind.rel;2
-JEU-L6B;tolérante à l'ombrage;72,3514211886305;ind.rel;2
-JEU2;héliophile;99,2;ind.rel;2
-JEU2;tolérante à l'ombrage;0,8;ind.rel;2
-JEU3;héliophile;99,288256227758;ind.rel;2
-JEU3;tolérante à l'ombrage;0,711743772241993;ind.rel;2
-JEU4;héliophile;92,2033898305085;ind.rel;2
-JEU4;tolérante à l'ombrage;7,79661016949152;ind.rel;2
-Lokofa_1;héliophile;72,7659574468085;ind.rel;2
-Lokofa_1;tolérante à l'ombrage;27,2340425531915;ind.rel;2
-Lokofa_2;héliophile;46,2962962962963;ind.rel;2
-Lokofa_2;tolérante à l'ombrage;53,7037037037037;ind.rel;2
-Lokofa_3;héliophile;44,0860215053764;ind.rel;2
-Lokofa_3;tolérante à l'ombrage;55,9139784946237;ind.rel;2
-Lokofa_4;héliophile;42,9090909090909;ind.rel;2
-Lokofa_4;tolérante à l'ombrage;57,0909090909091;ind.rel;2
-M2P1;héliophile;35,3424657534247;ind.rel;2
-M2P1;tolérante à l'ombrage;64,6575342465753;ind.rel;2
-M2P10;héliophile;24,7761194029851;ind.rel;2
-M2P10;tolérante à l'ombrage;75,2238805970149;ind.rel;2
-M2P11;héliophile;27,7634961439589;ind.rel;2
-M2P11;tolérante à l'ombrage;72,2365038560411;ind.rel;2
-M2P12;héliophile;39,5348837209302;ind.rel;2
-M2P12;tolérante à l'ombrage;60,4651162790698;ind.rel;2
-M2P13;héliophile;23,9644970414201;ind.rel;2
-M2P13;tolérante à l'ombrage;76,0355029585799;ind.rel;2
-M2P14;héliophile;98,6522911051213;ind.rel;2
-M2P14;tolérante à l'ombrage;1,34770889487871;ind.rel;2
-M2P15;héliophile;78,2089552238806;ind.rel;2
-M2P15;tolérante à l'ombrage;21,7910447761194;ind.rel;2
-M2P16;héliophile;47,9838709677419;ind.rel;2
-M2P16;tolérante à l'ombrage;52,0161290322581;ind.rel;2
-M2P2;héliophile;30,2631578947368;ind.rel;2
-M2P2;tolérante à l'ombrage;69,7368421052632;ind.rel;2
-M2P9;héliophile;54,3859649122807;ind.rel;2
-M2P9;tolérante à l'ombrage;45,6140350877193;ind.rel;2
-MIX-L6A;héliophile;26,6169154228856;ind.rel;2
-MIX-L6A;tolérante à l'ombrage;73,3830845771144;ind.rel;2
-MIX-L7A;héliophile;18,6700767263427;ind.rel;2
-MIX-L7A;tolérante à l'ombrage;81,3299232736573;ind.rel;2
-MIX2;héliophile;23,6686390532544;ind.rel;2
-MIX2;tolérante à l'ombrage;76,3313609467456;ind.rel;2
-MIX6;héliophile;32,6315789473684;ind.rel;2
-MIX6;tolérante à l'ombrage;67,3684210526316;ind.rel;2
-Model_OR_lidar_87_Principal;héliophile;48,6153846153846;ind.rel;2
-Model_OR_lidar_87_Principal;tolérante à l'ombrage;51,3846153846154;ind.rel;2
-Modele_2406_Principal;héliophile;37,5;ind.rel;2
-Modele_2406_Principal;tolérante à l'ombrage;62,5;ind.rel;2
-Modele_4301_Principal;héliophile;49,2805755395684;ind.rel;2
-Modele_4301_Principal;tolérante à l'ombrage;50,7194244604317;ind.rel;2
-Modele_4402_Principal;héliophile;27,037037037037;ind.rel;2
-Modele_4402_Principal;tolérante à l'ombrage;72,962962962963;ind.rel;2
-Modele_4503_Principal;héliophile;73,6170212765958;ind.rel;2
-Modele_4503_Principal;tolérante à l'ombrage;26,3829787234043;ind.rel;2
-Modele_MA_lidar_205_principal;héliophile;61,0644257703081;ind.rel;2
-Modele_MA_lidar_205_principal;tolérante à l'ombrage;38,9355742296919;ind.rel;2
-PARAP_Gungu_5;héliophile;73,972602739726;ind.rel;2
-PARAP_Gungu_5;tolérante à l'ombrage;26,027397260274;ind.rel;2
-PARAP_Idiofa_6;héliophile;78,6666666666667;ind.rel;2
-PARAP_Idiofa_6;tolérante à l'ombrage;21,3333333333333;ind.rel;2
-PARAP_Luhudi_5;héliophile;87,0229007633588;ind.rel;2
-PARAP_Luhudi_5;tolérante à l'ombrage;12,9770992366412;ind.rel;2
-PARAP_Lukolela_53;héliophile;34,5454545454546;ind.rel;2
-PARAP_Lukolela_53;tolérante à l'ombrage;65,4545454545455;ind.rel;2
-PARAP_Mampulu_28;héliophile;54,2635658914729;ind.rel;2
-PARAP_Mampulu_28;tolérante à l'ombrage;45,7364341085271;ind.rel;2
-PARAP_Mangai_16;héliophile;38,6666666666667;ind.rel;2
-PARAP_Mangai_16;tolérante à l'ombrage;61,3333333333333;ind.rel;2
-PARAP_Maniema_178;héliophile;47,4770642201835;ind.rel;2
-PARAP_Maniema_178;tolérante à l'ombrage;52,5229357798165;ind.rel;2
-PARAP_Mashambio_26;héliophile;77,1048744460857;ind.rel;2
-PARAP_Mashambio_26;tolérante à l'ombrage;22,8951255539143;ind.rel;2
-PARAP_SwaKibula_234;héliophile;81,4705882352941;ind.rel;2
-PARAP_SwaKibula_234;tolérante à l'ombrage;18,5294117647059;ind.rel;2
-WWF-DIAF_07_01_Principal;héliophile;79,8283261802575;ind.rel;2
-WWF-DIAF_07_01_Principal;tolérante à l'ombrage;20,1716738197425;ind.rel;2
-WWF-DIAF_08_02_Principal;héliophile;37,9958246346555;ind.rel;2
-WWF-DIAF_08_02_Principal;tolérante à l'ombrage;62,0041753653445;ind.rel;2
-WWF-DIAF_11_05_Principal;héliophile;25,357873210634;ind.rel;2
-WWF-DIAF_11_05_Principal;tolérante à l'ombrage;74,6421267893661;ind.rel;2
-WWF-DIAF_13_07_Principal;héliophile;40,1162790697674;ind.rel;2
-WWF-DIAF_13_07_Principal;tolérante à l'ombrage;59,8837209302326;ind.rel;2
-WWF-DIAF_14_08_Principal;héliophile;37,1134020618557;ind.rel;2
-WWF-DIAF_14_08_Principal;tolérante à l'ombrage;62,8865979381443;ind.rel;2
-WWF-DIAF_15_09_Principal;héliophile;50,4761904761905;ind.rel;2
-WWF-DIAF_15_09_Principal;tolérante à l'ombrage;49,5238095238095;ind.rel;2
-WWF-DIAF_16_10_Principal;héliophile;59,3548387096774;ind.rel;2
-WWF-DIAF_16_10_Principal;tolérante à l'ombrage;40,6451612903226;ind.rel;2
-WWF-DIAF_17_11_Principal;héliophile;39,6648044692738;ind.rel;2
-WWF-DIAF_17_11_Principal;tolérante à l'ombrage;60,3351955307263;ind.rel;2
-WWF-DIAF_supp1_Principal;héliophile;19,1891891891892;ind.rel;2
-WWF-DIAF_supp1_Principal;tolérante à l'ombrage;80,8108108108108;ind.rel;2
-WWF-DIAF_supp2_Principal;héliophile;76,0252365930599;ind.rel;2
-WWF-DIAF_supp2_Principal;tolérante à l'ombrage;23,9747634069401;ind.rel;2
-123;héliophile;4,17922468616042;G.rel;3
-123;héliophile non pionnière;36,5936750260878;G.rel;3
-123;tolérante à l'ombrage;59,2271002877518;G.rel;3
-148;héliophile;5,10495216309423;G.rel;3
-148;héliophile non pionnière;40,9384439789642;G.rel;3
-148;tolérante à l'ombrage;53,9566038579416;G.rel;3
-162;héliophile;6,08360364517652;G.rel;3
-162;héliophile non pionnière;59,2577381640002;G.rel;3
-162;tolérante à l'ombrage;34,6586581908233;G.rel;3
-166;héliophile;6,31935357088283;G.rel;3
-166;héliophile non pionnière;70,2338004747143;G.rel;3
-166;tolérante à l'ombrage;23,4468459544029;G.rel;3
-180;héliophile;11,4305326111561;G.rel;3
-180;héliophile non pionnière;18,0304736142975;G.rel;3
-180;tolérante à l'ombrage;70,5389937745464;G.rel;3
-184;héliophile;6,65235741791403;G.rel;3
-184;héliophile non pionnière;52,4020501266875;G.rel;3
-184;tolérante à l'ombrage;40,9455924553984;G.rel;3
-189;héliophile;5,04011141385232;G.rel;3
-189;héliophile non pionnière;51,9136329661374;G.rel;3
-189;tolérante à l'ombrage;43,0462556200103;G.rel;3
-199;héliophile;3,57860349892662;G.rel;3
-199;héliophile non pionnière;42,1205317122439;G.rel;3
-199;tolérante à l'ombrage;54,3008647888294;G.rel;3
-41;héliophile;12,923905899202;G.rel;3
-41;héliophile non pionnière;22,3906945054655;G.rel;3
-41;tolérante à l'ombrage;64,6853995953326;G.rel;3
-53;héliophile;8,49382211905145;G.rel;3
-53;héliophile non pionnière;20,2006392107181;G.rel;3
-53;tolérante à l'ombrage;71,3055386702304;G.rel;3
-Betamba_1;héliophile;56,5475840899842;G.rel;3
-Betamba_1;héliophile non pionnière;25,4653426759621;G.rel;3
-Betamba_1;tolérante à l'ombrage;17,9870732340537;G.rel;3
-Betamba_2;héliophile;71,6403823957078;G.rel;3
-Betamba_2;héliophile non pionnière;21,0495851148665;G.rel;3
-Betamba_2;tolérante à l'ombrage;7,31003248942579;G.rel;3
-Betamba_3;héliophile;59,2422807891143;G.rel;3
-Betamba_3;héliophile non pionnière;20,5845702990713;G.rel;3
-Betamba_3;tolérante à l'ombrage;20,1731489118144;G.rel;3
-Betamba_4;héliophile;76,871303380357;G.rel;3
-Betamba_4;héliophile non pionnière;10,7872733037596;G.rel;3
-Betamba_4;tolérante à l'ombrage;12,3414233158833;G.rel;3
-GIL1;héliophile;4,14034045757843;G.rel;3
-GIL1;héliophile non pionnière;3,03437993387475;G.rel;3
-GIL1;tolérante à l'ombrage;92,8252796085468;G.rel;3
-GIL2;héliophile;6,76696029863246;G.rel;3
-GIL2;héliophile non pionnière;7,71238577556529;G.rel;3
-GIL2;tolérante à l'ombrage;85,5206539258023;G.rel;3
-GIL3;héliophile;12,506417563066;G.rel;3
-GIL3;héliophile non pionnière;9,3785034764827;G.rel;3
-GIL3;tolérante à l'ombrage;78,1150789604513;G.rel;3
-JEU-L6B;héliophile;7,0677063722044;G.rel;3
-JEU-L6B;héliophile non pionnière;24,7450310600666;G.rel;3
-JEU-L6B;tolérante à l'ombrage;68,187262567729;G.rel;3
-JEU2;héliophile;97,6346271923248;G.rel;3
-JEU2;héliophile non pionnière;1,83132709092735;G.rel;3
-JEU2;tolérante à l'ombrage;0,534045716747891;G.rel;3
-JEU3;héliophile;92,4641907267643;G.rel;3
-JEU3;héliophile non pionnière;4,89121808455745;G.rel;3
-JEU3;tolérante à l'ombrage;2,64459118867826;G.rel;3
-JEU4;héliophile;83,4797658039548;G.rel;3
-JEU4;héliophile non pionnière;8,16487329953598;G.rel;3
-JEU4;tolérante à l'ombrage;8,35536089650922;G.rel;3
-Lokofa_1;héliophile;23,4384732041214;G.rel;3
-Lokofa_1;héliophile non pionnière;48,3876905081195;G.rel;3
-Lokofa_1;tolérante à l'ombrage;28,1738362877592;G.rel;3
-Lokofa_2;héliophile;21,8463530764082;G.rel;3
-Lokofa_2;héliophile non pionnière;30,2308507856264;G.rel;3
-Lokofa_2;tolérante à l'ombrage;47,9227961379655;G.rel;3
-Lokofa_3;héliophile;23,3016703286469;G.rel;3
-Lokofa_3;héliophile non pionnière;36,7497522105546;G.rel;3
-Lokofa_3;tolérante à l'ombrage;39,9485774607985;G.rel;3
-Lokofa_4;héliophile;17,7805261516238;G.rel;3
-Lokofa_4;héliophile non pionnière;26,6467795143824;G.rel;3
-Lokofa_4;tolérante à l'ombrage;55,5726943339939;G.rel;3
-M2P1;héliophile;15,4810355436667;G.rel;3
-M2P1;héliophile non pionnière;32,289215703159;G.rel;3
-M2P1;tolérante à l'ombrage;52,2297487531744;G.rel;3
-M2P10;héliophile;6,69558386349674;G.rel;3
-M2P10;héliophile non pionnière;27,4414822287035;G.rel;3
-M2P10;tolérante à l'ombrage;65,8629339077998;G.rel;3
-M2P11;héliophile;7,58767264786432;G.rel;3
-M2P11;héliophile non pionnière;22,0652340462622;G.rel;3
-M2P11;tolérante à l'ombrage;70,3470933058735;G.rel;3
-M2P12;héliophile;9,10336361635011;G.rel;3
-M2P12;héliophile non pionnière;51,6709196846034;G.rel;3
-M2P12;tolérante à l'ombrage;39,2257166990465;G.rel;3
-M2P13;héliophile;5,92087902883632;G.rel;3
-M2P13;héliophile non pionnière;23,9533902764028;G.rel;3
-M2P13;tolérante à l'ombrage;70,1257306947609;G.rel;3
-M2P14;héliophile;11,4963812559484;G.rel;3
-M2P14;héliophile non pionnière;86,5458981191331;G.rel;3
-M2P14;tolérante à l'ombrage;1,95772062491853;G.rel;3
-M2P15;héliophile;44,1765276822745;G.rel;3
-M2P15;héliophile non pionnière;42,1070807426656;G.rel;3
-M2P15;tolérante à l'ombrage;13,71639157506;G.rel;3
-M2P16;héliophile;25,8232868328363;G.rel;3
-M2P16;héliophile non pionnière;37,6918298161489;G.rel;3
-M2P16;tolérante à l'ombrage;36,4848833510149;G.rel;3
-M2P2;héliophile;6,63822747542727;G.rel;3
-M2P2;héliophile non pionnière;42,2642142667485;G.rel;3
-M2P2;tolérante à l'ombrage;51,0975582578243;G.rel;3
-M2P9;héliophile;28,3816470571729;G.rel;3
-M2P9;héliophile non pionnière;19,9978430656672;G.rel;3
-M2P9;tolérante à l'ombrage;51,62050987716;G.rel;3
-MIX-L6A;héliophile;1,07039925606251;G.rel;3
-MIX-L6A;héliophile non pionnière;26,8952806363299;G.rel;3
-MIX-L6A;tolérante à l'ombrage;72,0343201076076;G.rel;3
-MIX-L7A;héliophile;5,60923283314469;G.rel;3
-MIX-L7A;héliophile non pionnière;16,0350764368417;G.rel;3
-MIX-L7A;tolérante à l'ombrage;78,3556907300136;G.rel;3
-MIX2;héliophile;1,26152976856959;G.rel;3
-MIX2;héliophile non pionnière;32,6263090172922;G.rel;3
-MIX2;tolérante à l'ombrage;66,1121612141383;G.rel;3
-MIX6;héliophile;4,17595314422164;G.rel;3
-MIX6;héliophile non pionnière;28,1244399164873;G.rel;3
-MIX6;tolérante à l'ombrage;67,699606939291;G.rel;3
-Model_OR_lidar_87_Principal;héliophile;21,2329253835834;G.rel;3
-Model_OR_lidar_87_Principal;héliophile non pionnière;33,258642032102;G.rel;3
-Model_OR_lidar_87_Principal;tolérante à l'ombrage;45,5084325843146;G.rel;3
-Modele_2406_Principal;héliophile;6,94886593690846;G.rel;3
-Modele_2406_Principal;héliophile non pionnière;20,158868805776;G.rel;3
-Modele_2406_Principal;tolérante à l'ombrage;72,8922652573155;G.rel;3
-Modele_4301_Principal;héliophile;18,1623066904833;G.rel;3
-Modele_4301_Principal;héliophile non pionnière;28,9750205699626;G.rel;3
-Modele_4301_Principal;tolérante à l'ombrage;52,8626727395541;G.rel;3
-Modele_4402_Principal;héliophile;8,38063609791108;G.rel;3
-Modele_4402_Principal;héliophile non pionnière;16,013186450179;G.rel;3
-Modele_4402_Principal;tolérante à l'ombrage;75,6061774519099;G.rel;3
-Modele_4503_Principal;héliophile;27,0440551100714;G.rel;3
-Modele_4503_Principal;héliophile non pionnière;53,4446129547766;G.rel;3
-Modele_4503_Principal;tolérante à l'ombrage;19,511331935152;G.rel;3
-Modele_MA_lidar_205_principal;héliophile;4,74602138430441;G.rel;3
-Modele_MA_lidar_205_principal;héliophile non pionnière;25,8279154559422;G.rel;3
-Modele_MA_lidar_205_principal;tolérante à l'ombrage;69,4260631597534;G.rel;3
-PARAP_Gungu_5;héliophile;30,0359639659303;G.rel;3
-PARAP_Gungu_5;héliophile non pionnière;26,3282135471835;G.rel;3
-PARAP_Gungu_5;tolérante à l'ombrage;43,6358224868862;G.rel;3
-PARAP_Idiofa_6;héliophile;12,6282517230371;G.rel;3
-PARAP_Idiofa_6;héliophile non pionnière;58,2567124382497;G.rel;3
-PARAP_Idiofa_6;tolérante à l'ombrage;29,1150358387132;G.rel;3
-PARAP_Luhudi_5;héliophile;44,1915918072202;G.rel;3
-PARAP_Luhudi_5;héliophile non pionnière;31,3796680716744;G.rel;3
-PARAP_Luhudi_5;tolérante à l'ombrage;24,4287401211055;G.rel;3
-PARAP_Lukolela_53;héliophile;31,7675224542087;G.rel;3
-PARAP_Lukolela_53;héliophile non pionnière;12,1210162360336;G.rel;3
-PARAP_Lukolela_53;tolérante à l'ombrage;56,1114613097578;G.rel;3
-PARAP_Mampulu_28;héliophile;27,4922056046323;G.rel;3
-PARAP_Mampulu_28;héliophile non pionnière;47,4378379194386;G.rel;3
-PARAP_Mampulu_28;tolérante à l'ombrage;25,0699564759291;G.rel;3
-PARAP_Mangai_16;héliophile;5,87376339184642;G.rel;3
-PARAP_Mangai_16;héliophile non pionnière;4,59680899025262;G.rel;3
-PARAP_Mangai_16;tolérante à l'ombrage;89,529427617901;G.rel;3
-PARAP_Maniema_178;héliophile;13,5598144085101;G.rel;3
-PARAP_Maniema_178;héliophile non pionnière;45,4264640116411;G.rel;3
-PARAP_Maniema_178;tolérante à l'ombrage;41,0137215798488;G.rel;3
-PARAP_Mashambio_26;héliophile;1,40350236316918;G.rel;3
-PARAP_Mashambio_26;héliophile non pionnière;74,6045316814602;G.rel;3
-PARAP_Mashambio_26;tolérante à l'ombrage;23,9919659553706;G.rel;3
-PARAP_SwaKibula_234;héliophile;29,7837836839732;G.rel;3
-PARAP_SwaKibula_234;héliophile non pionnière;39,9764119783038;G.rel;3
-PARAP_SwaKibula_234;tolérante à l'ombrage;30,239804337723;G.rel;3
-WWF-DIAF_07_01_Principal;héliophile;28,5652866588026;G.rel;3
-WWF-DIAF_07_01_Principal;héliophile non pionnière;59,7444495966557;G.rel;3
-WWF-DIAF_07_01_Principal;tolérante à l'ombrage;11,6902637445418;G.rel;3
-WWF-DIAF_08_02_Principal;héliophile;12,3048187219172;G.rel;3
-WWF-DIAF_08_02_Principal;héliophile non pionnière;21,4996193331732;G.rel;3
-WWF-DIAF_08_02_Principal;tolérante à l'ombrage;66,1955619449096;G.rel;3
-WWF-DIAF_11_05_Principal;héliophile;8,16214143916596;G.rel;3
-WWF-DIAF_11_05_Principal;héliophile non pionnière;17,5986104498632;G.rel;3
-WWF-DIAF_11_05_Principal;tolérante à l'ombrage;74,2392481109708;G.rel;3
-WWF-DIAF_13_07_Principal;héliophile;0,848968879889335;G.rel;3
-WWF-DIAF_13_07_Principal;héliophile non pionnière;19,0958504616898;G.rel;3
-WWF-DIAF_13_07_Principal;tolérante à l'ombrage;80,0551806584208;G.rel;3
-WWF-DIAF_14_08_Principal;héliophile;0,76849989380366;G.rel;3
-WWF-DIAF_14_08_Principal;héliophile non pionnière;18,2558141147674;G.rel;3
-WWF-DIAF_14_08_Principal;tolérante à l'ombrage;80,975685991429;G.rel;3
-WWF-DIAF_15_09_Principal;héliophile;24,5525304082257;G.rel;3
-WWF-DIAF_15_09_Principal;héliophile non pionnière;13,7100348004332;G.rel;3
-WWF-DIAF_15_09_Principal;tolérante à l'ombrage;61,737434791341;G.rel;3
-WWF-DIAF_16_10_Principal;héliophile;23,4338004027214;G.rel;3
-WWF-DIAF_16_10_Principal;héliophile non pionnière;45,4742057072689;G.rel;3
-WWF-DIAF_16_10_Principal;tolérante à l'ombrage;31,0919938900097;G.rel;3
-WWF-DIAF_17_11_Principal;héliophile;3,51703482968265;G.rel;3
-WWF-DIAF_17_11_Principal;héliophile non pionnière;19,5727804922872;G.rel;3
-WWF-DIAF_17_11_Principal;tolérante à l'ombrage;76,9101846780302;G.rel;3
-WWF-DIAF_supp1_Principal;héliophile;27,5907814408689;G.rel;3
-WWF-DIAF_supp1_Principal;héliophile non pionnière;12,35384863188;G.rel;3
-WWF-DIAF_supp1_Principal;tolérante à l'ombrage;60,0553699272511;G.rel;3
-WWF-DIAF_supp2_Principal;héliophile;28,9278356988637;G.rel;3
-WWF-DIAF_supp2_Principal;héliophile non pionnière;57,708459719979;G.rel;3
-WWF-DIAF_supp2_Principal;tolérante à l'ombrage;13,3637045811573;G.rel;3
-123;héliophile;7,94520547945206;ind.rel;3
-123;héliophile non pionnière;22,1917808219178;ind.rel;3
-123;tolérante à l'ombrage;69,8630136986301;ind.rel;3
-148;héliophile;7,09677419354839;ind.rel;3
-148;héliophile non pionnière;28,3870967741936;ind.rel;3
-148;tolérante à l'ombrage;64,5161290322581;ind.rel;3
-162;héliophile;8,28220858895706;ind.rel;3
-162;héliophile non pionnière;22,6993865030675;ind.rel;3
-162;tolérante à l'ombrage;69,0184049079755;ind.rel;3
-166;héliophile;12,0521172638437;ind.rel;3
-166;héliophile non pionnière;37,785016286645;ind.rel;3
-166;tolérante à l'ombrage;50,1628664495114;ind.rel;3
-180;héliophile;6,87830687830688;ind.rel;3
-180;héliophile non pionnière;18,2539682539683;ind.rel;3
-180;tolérante à l'ombrage;74,8677248677249;ind.rel;3
-184;héliophile;6,74486803519062;ind.rel;3
-184;héliophile non pionnière;23,7536656891496;ind.rel;3
-184;tolérante à l'ombrage;69,5014662756598;ind.rel;3
-189;héliophile;11,1111111111111;ind.rel;3
-189;héliophile non pionnière;26,4705882352941;ind.rel;3
-189;tolérante à l'ombrage;62,4183006535948;ind.rel;3
-199;héliophile;5,11363636363636;ind.rel;3
-199;héliophile non pionnière;17,0454545454545;ind.rel;3
-199;tolérante à l'ombrage;77,8409090909091;ind.rel;3
-41;héliophile;9,78593272171254;ind.rel;3
-41;héliophile non pionnière;9,1743119266055;ind.rel;3
-41;tolérante à l'ombrage;81,0397553516819;ind.rel;3
-53;héliophile;7,83847980997625;ind.rel;3
-53;héliophile non pionnière;8,07600950118765;ind.rel;3
-53;tolérante à l'ombrage;84,0855106888361;ind.rel;3
-Betamba_1;héliophile;79,2237442922374;ind.rel;3
-Betamba_1;héliophile non pionnière;6,84931506849315;ind.rel;3
-Betamba_1;tolérante à l'ombrage;13,9269406392694;ind.rel;3
-Betamba_2;héliophile;85,7385398981324;ind.rel;3
-Betamba_2;héliophile non pionnière;6,6213921901528;ind.rel;3
-Betamba_2;tolérante à l'ombrage;7,64006791171477;ind.rel;3
-Betamba_3;héliophile;58,3596214511041;ind.rel;3
-Betamba_3;héliophile non pionnière;15,7728706624606;ind.rel;3
-Betamba_3;tolérante à l'ombrage;25,8675078864353;ind.rel;3
-Betamba_4;héliophile;72,3557692307692;ind.rel;3
-Betamba_4;héliophile non pionnière;13,2211538461538;ind.rel;3
-Betamba_4;tolérante à l'ombrage;14,4230769230769;ind.rel;3
-GIL1;héliophile;8,28402366863905;ind.rel;3
-GIL1;héliophile non pionnière;6,21301775147929;ind.rel;3
-GIL1;tolérante à l'ombrage;85,5029585798817;ind.rel;3
-GIL2;héliophile;14,4549763033175;ind.rel;3
-GIL2;héliophile non pionnière;8,76777251184834;ind.rel;3
-GIL2;tolérante à l'ombrage;76,7772511848341;ind.rel;3
-GIL3;héliophile;26,8011527377522;ind.rel;3
-GIL3;héliophile non pionnière;10,6628242074928;ind.rel;3
-GIL3;tolérante à l'ombrage;62,536023054755;ind.rel;3
-JEU-L6B;héliophile;7,94392523364486;ind.rel;3
-JEU-L6B;héliophile non pionnière;12,6168224299065;ind.rel;3
-JEU-L6B;tolérante à l'ombrage;79,4392523364486;ind.rel;3
-JEU2;héliophile;94,4;ind.rel;3
-JEU2;héliophile non pionnière;3,73333333333333;ind.rel;3
-JEU2;tolérante à l'ombrage;1,86666666666667;ind.rel;3
-JEU3;héliophile;91,5194346289753;ind.rel;3
-JEU3;héliophile non pionnière;6,36042402826855;ind.rel;3
-JEU3;tolérante à l'ombrage;2,12014134275618;ind.rel;3
-JEU4;héliophile;84,1216216216216;ind.rel;3
-JEU4;héliophile non pionnière;6,08108108108108;ind.rel;3
-JEU4;tolérante à l'ombrage;9,7972972972973;ind.rel;3
-Lokofa_1;héliophile;19,1176470588235;ind.rel;3
-Lokofa_1;héliophile non pionnière;47,4789915966387;ind.rel;3
-Lokofa_1;tolérante à l'ombrage;33,4033613445378;ind.rel;3
-Lokofa_2;héliophile;21,551724137931;ind.rel;3
-Lokofa_2;héliophile non pionnière;17,6724137931035;ind.rel;3
-Lokofa_2;tolérante à l'ombrage;60,7758620689655;ind.rel;3
-Lokofa_3;héliophile;22,7272727272727;ind.rel;3
-Lokofa_3;héliophile non pionnière;16,6666666666667;ind.rel;3
-Lokofa_3;tolérante à l'ombrage;60,6060606060606;ind.rel;3
-Lokofa_4;héliophile;13,448275862069;ind.rel;3
-Lokofa_4;héliophile non pionnière;20,6896551724138;ind.rel;3
-Lokofa_4;tolérante à l'ombrage;65,8620689655172;ind.rel;3
-M2P1;héliophile;15,2588555858311;ind.rel;3
-M2P1;héliophile non pionnière;18,2561307901907;ind.rel;3
-M2P1;tolérante à l'ombrage;66,4850136239782;ind.rel;3
-M2P10;héliophile;10,1492537313433;ind.rel;3
-M2P10;héliophile non pionnière;14,6268656716418;ind.rel;3
-M2P10;tolérante à l'ombrage;75,2238805970149;ind.rel;3
-M2P11;héliophile;12,2448979591837;ind.rel;3
-M2P11;héliophile non pionnière;15,0510204081633;ind.rel;3
-M2P11;tolérante à l'ombrage;72,7040816326531;ind.rel;3
-M2P12;héliophile;13,0434782608696;ind.rel;3
-M2P12;héliophile non pionnière;23,9130434782609;ind.rel;3
-M2P12;tolérante à l'ombrage;63,0434782608696;ind.rel;3
-M2P13;héliophile;5,88235294117647;ind.rel;3
-M2P13;héliophile non pionnière;17,9411764705882;ind.rel;3
-M2P13;tolérante à l'ombrage;76,1764705882353;ind.rel;3
-M2P14;héliophile;15,3638814016173;ind.rel;3
-M2P14;héliophile non pionnière;83,2884097035041;ind.rel;3
-M2P14;tolérante à l'ombrage;1,34770889487871;ind.rel;3
-M2P15;héliophile;56,8452380952381;ind.rel;3
-M2P15;héliophile non pionnière;21,1309523809524;ind.rel;3
-M2P15;tolérante à l'ombrage;22,0238095238095;ind.rel;3
-M2P16;héliophile;29,2;ind.rel;3
-M2P16;héliophile non pionnière;18;ind.rel;3
-M2P16;tolérante à l'ombrage;52,8;ind.rel;3
-M2P2;héliophile;6,12691466083151;ind.rel;3
-M2P2;héliophile non pionnière;23,8512035010941;ind.rel;3
-M2P2;tolérante à l'ombrage;70,0218818380744;ind.rel;3
-M2P9;héliophile;32,5;ind.rel;3
-M2P9;héliophile non pionnière;19,1666666666667;ind.rel;3
-M2P9;tolérante à l'ombrage;48,3333333333333;ind.rel;3
-MIX-L6A;héliophile;0,932400932400932;ind.rel;3
-MIX-L6A;héliophile non pionnière;21,9114219114219;ind.rel;3
-MIX-L6A;tolérante à l'ombrage;77,1561771561772;ind.rel;3
-MIX-L7A;héliophile;6,69642857142857;ind.rel;3
-MIX-L7A;héliophile non pionnière;5,80357142857143;ind.rel;3
-MIX-L7A;tolérante à l'ombrage;87,5;ind.rel;3
-MIX2;héliophile;1,28913443830571;ind.rel;3
-MIX2;héliophile non pionnière;19,7053406998158;ind.rel;3
-MIX2;tolérante à l'ombrage;79,0055248618785;ind.rel;3
-MIX6;héliophile;7,02875399361022;ind.rel;3
-MIX6;héliophile non pionnière;19,1693290734824;ind.rel;3
-MIX6;tolérante à l'ombrage;73,8019169329074;ind.rel;3
-Model_OR_lidar_87_Principal;héliophile;18,2089552238806;ind.rel;3
-Model_OR_lidar_87_Principal;héliophile non pionnière;23,8805970149254;ind.rel;3
-Model_OR_lidar_87_Principal;tolérante à l'ombrage;57,910447761194;ind.rel;3
-Modele_2406_Principal;héliophile;9,04255319148936;ind.rel;3
-Modele_2406_Principal;héliophile non pionnière;17,0212765957447;ind.rel;3
-Modele_2406_Principal;tolérante à l'ombrage;73,936170212766;ind.rel;3
-Modele_4301_Principal;héliophile;12,0141342756184;ind.rel;3
-Modele_4301_Principal;héliophile non pionnière;22,2614840989399;ind.rel;3
-Modele_4301_Principal;tolérante à l'ombrage;65,7243816254417;ind.rel;3
-Modele_4402_Principal;héliophile;15,9420289855072;ind.rel;3
-Modele_4402_Principal;héliophile non pionnière;10,5072463768116;ind.rel;3
-Modele_4402_Principal;tolérante à l'ombrage;73,5507246376812;ind.rel;3
-Modele_4503_Principal;héliophile;24,9027237354086;ind.rel;3
-Modele_4503_Principal;héliophile non pionnière;31,5175097276265;ind.rel;3
-Modele_4503_Principal;tolérante à l'ombrage;43,579766536965;ind.rel;3
-Modele_MA_lidar_205_principal;héliophile;4,90463215258856;ind.rel;3
-Modele_MA_lidar_205_principal;héliophile non pionnière;26,158038147139;ind.rel;3
-Modele_MA_lidar_205_principal;tolérante à l'ombrage;68,9373297002725;ind.rel;3
-PARAP_Gungu_5;héliophile;29,5983086680761;ind.rel;3
-PARAP_Gungu_5;héliophile non pionnière;29,1754756871036;ind.rel;3
-PARAP_Gungu_5;tolérante à l'ombrage;41,2262156448203;ind.rel;3
-PARAP_Idiofa_6;héliophile;21,7582417582418;ind.rel;3
-PARAP_Idiofa_6;héliophile non pionnière;46,8131868131868;ind.rel;3
-PARAP_Idiofa_6;tolérante à l'ombrage;31,4285714285714;ind.rel;3
-PARAP_Luhudi_5;héliophile;40,2277039848197;ind.rel;3
-PARAP_Luhudi_5;héliophile non pionnière;33,3965844402277;ind.rel;3
-PARAP_Luhudi_5;tolérante à l'ombrage;26,3757115749526;ind.rel;3
-PARAP_Lukolela_53;héliophile;13,1221719457014;ind.rel;3
-PARAP_Lukolela_53;héliophile non pionnière;7,23981900452489;ind.rel;3
-PARAP_Lukolela_53;tolérante à l'ombrage;79,6380090497738;ind.rel;3
-PARAP_Mampulu_28;héliophile;18,7984496124031;ind.rel;3
-PARAP_Mampulu_28;héliophile non pionnière;29,6511627906977;ind.rel;3
-PARAP_Mampulu_28;tolérante à l'ombrage;51,5503875968992;ind.rel;3
-PARAP_Mangai_16;héliophile;16,2303664921466;ind.rel;3
-PARAP_Mangai_16;héliophile non pionnière;9,42408376963351;ind.rel;3
-PARAP_Mangai_16;tolérante à l'ombrage;74,3455497382199;ind.rel;3
-PARAP_Maniema_178;héliophile;13,9954853273138;ind.rel;3
-PARAP_Maniema_178;héliophile non pionnière;23,9277652370203;ind.rel;3
-PARAP_Maniema_178;tolérante à l'ombrage;62,0767494356659;ind.rel;3
-PARAP_Mashambio_26;héliophile;2,06794682422452;ind.rel;3
-PARAP_Mashambio_26;héliophile non pionnière;74,8892171344166;ind.rel;3
-PARAP_Mashambio_26;tolérante à l'ombrage;23,0428360413589;ind.rel;3
-PARAP_SwaKibula_234;héliophile;28,9473684210526;ind.rel;3
-PARAP_SwaKibula_234;héliophile non pionnière;21,3450292397661;ind.rel;3
-PARAP_SwaKibula_234;tolérante à l'ombrage;49,7076023391813;ind.rel;3
-WWF-DIAF_07_01_Principal;héliophile;23,2365145228216;ind.rel;3
-WWF-DIAF_07_01_Principal;héliophile non pionnière;51,0373443983403;ind.rel;3
-WWF-DIAF_07_01_Principal;tolérante à l'ombrage;25,7261410788382;ind.rel;3
-WWF-DIAF_08_02_Principal;héliophile;9,27835051546392;ind.rel;3
-WWF-DIAF_08_02_Principal;héliophile non pionnière;17,7319587628866;ind.rel;3
-WWF-DIAF_08_02_Principal;tolérante à l'ombrage;72,9896907216495;ind.rel;3
-WWF-DIAF_11_05_Principal;héliophile;3,44827586206897;ind.rel;3
-WWF-DIAF_11_05_Principal;héliophile non pionnière;10,1419878296146;ind.rel;3
-WWF-DIAF_11_05_Principal;tolérante à l'ombrage;86,4097363083164;ind.rel;3
-WWF-DIAF_13_07_Principal;héliophile;0,540540540540541;ind.rel;3
-WWF-DIAF_13_07_Principal;héliophile non pionnière;21,0810810810811;ind.rel;3
-WWF-DIAF_13_07_Principal;tolérante à l'ombrage;78,3783783783784;ind.rel;3
-WWF-DIAF_14_08_Principal;héliophile;1,88087774294671;ind.rel;3
-WWF-DIAF_14_08_Principal;héliophile non pionnière;15,987460815047;ind.rel;3
-WWF-DIAF_14_08_Principal;tolérante à l'ombrage;82,1316614420063;ind.rel;3
-WWF-DIAF_15_09_Principal;héliophile;15,8208955223881;ind.rel;3
-WWF-DIAF_15_09_Principal;héliophile non pionnière;17,910447761194;ind.rel;3
-WWF-DIAF_15_09_Principal;tolérante à l'ombrage;66,2686567164179;ind.rel;3
-WWF-DIAF_16_10_Principal;héliophile;21,5116279069767;ind.rel;3
-WWF-DIAF_16_10_Principal;héliophile non pionnière;30,2325581395349;ind.rel;3
-WWF-DIAF_16_10_Principal;tolérante à l'ombrage;48,2558139534884;ind.rel;3
-WWF-DIAF_17_11_Principal;héliophile;3,91061452513967;ind.rel;3
-WWF-DIAF_17_11_Principal;héliophile non pionnière;9,49720670391061;ind.rel;3
-WWF-DIAF_17_11_Principal;tolérante à l'ombrage;86,5921787709497;ind.rel;3
-WWF-DIAF_supp1_Principal;héliophile;10,2702702702703;ind.rel;3
-WWF-DIAF_supp1_Principal;héliophile non pionnière;5,40540540540541;ind.rel;3
-WWF-DIAF_supp1_Principal;tolérante à l'ombrage;84,3243243243243;ind.rel;3
-WWF-DIAF_supp2_Principal;héliophile;16,6172106824926;ind.rel;3
-WWF-DIAF_supp2_Principal;héliophile non pionnière;54,3026706231454;ind.rel;3
-WWF-DIAF_supp2_Principal;tolérante à l'ombrage;29,080118694362;ind.rel;3
+Temperament;plot_ref;Proportion;Type_Proportion;Type_subdivision
+héliophile;123;4,17922468616042;G.rel;3
+héliophile non pionnière;123;36,5936750260878;G.rel;3
+tolérante à l'ombrage;123;59,2271002877518;G.rel;3
+héliophile;148;5,10495216309423;G.rel;3
+héliophile non pionnière;148;40,9384439789642;G.rel;3
+tolérante à l'ombrage;148;53,9566038579416;G.rel;3
+héliophile;162;6,08360364517652;G.rel;3
+héliophile non pionnière;162;59,4069972558612;G.rel;3
+tolérante à l'ombrage;162;34,5093990989623;G.rel;3
+héliophile;166;6,31935357088283;G.rel;3
+héliophile non pionnière;166;70,2338004747143;G.rel;3
+tolérante à l'ombrage;166;23,4468459544029;G.rel;3
+héliophile;180;11,4305326111561;G.rel;3
+héliophile non pionnière;180;18,0304736142975;G.rel;3
+tolérante à l'ombrage;180;70,5389937745464;G.rel;3
+héliophile;184;6,65235741791403;G.rel;3
+héliophile non pionnière;184;52,4020501266875;G.rel;3
+tolérante à l'ombrage;184;40,9455924553984;G.rel;3
+héliophile;189;5,04011141385232;G.rel;3
+héliophile non pionnière;189;51,9136329661374;G.rel;3
+tolérante à l'ombrage;189;43,0462556200103;G.rel;3
+héliophile;199;3,57860349892662;G.rel;3
+héliophile non pionnière;199;42,1205317122439;G.rel;3
+tolérante à l'ombrage;199;54,3008647888294;G.rel;3
+héliophile;41;12,923905899202;G.rel;3
+héliophile non pionnière;41;22,3906945054655;G.rel;3
+tolérante à l'ombrage;41;64,6853995953326;G.rel;3
+héliophile;53;8,49382211905145;G.rel;3
+héliophile non pionnière;53;20,2006392107181;G.rel;3
+tolérante à l'ombrage;53;71,3055386702304;G.rel;3
+héliophile;Betamba_1;56,989957687883;G.rel;3
+héliophile non pionnière;Betamba_1;25,4653426759621;G.rel;3
+tolérante à l'ombrage;Betamba_1;17,5446996361549;G.rel;3
+héliophile;Betamba_2;71,6403823957078;G.rel;3
+héliophile non pionnière;Betamba_2;21,130688826075;G.rel;3
+tolérante à l'ombrage;Betamba_2;7,22892877821729;G.rel;3
+héliophile;Betamba_3;59,2422807891143;G.rel;3
+héliophile non pionnière;Betamba_3;20,8660541043471;G.rel;3
+tolérante à l'ombrage;Betamba_3;19,8916651065386;G.rel;3
+héliophile;Betamba_4;77,6343064731942;G.rel;3
+héliophile non pionnière;Betamba_4;10,1202110848414;G.rel;3
+tolérante à l'ombrage;Betamba_4;12,2454824419644;G.rel;3
+héliophile;GIL1;4,14034045757843;G.rel;3
+héliophile non pionnière;GIL1;3,03437993387475;G.rel;3
+tolérante à l'ombrage;GIL1;92,8252796085468;G.rel;3
+héliophile;GIL2;7,45068633807007;G.rel;3
+héliophile non pionnière;GIL2;7,91580839892068;G.rel;3
+tolérante à l'ombrage;GIL2;84,6335052630093;G.rel;3
+héliophile;GIL3;12,506417563066;G.rel;3
+héliophile non pionnière;GIL3;9,50562594041764;G.rel;3
+tolérante à l'ombrage;GIL3;77,9879564965164;G.rel;3
+héliophile;JEU-L6B;7,21575646626561;G.rel;3
+héliophile non pionnière;JEU-L6B;25,9071657831103;G.rel;3
+tolérante à l'ombrage;JEU-L6B;66,8770777506241;G.rel;3
+héliophile;JEU2;97,6346271923248;G.rel;3
+héliophile non pionnière;JEU2;1,83132709092735;G.rel;3
+tolérante à l'ombrage;JEU2;0,534045716747891;G.rel;3
+héliophile;JEU3;92,4641907267643;G.rel;3
+héliophile non pionnière;JEU3;5,10725957256789;G.rel;3
+tolérante à l'ombrage;JEU3;2,42854970066782;G.rel;3
+héliophile;JEU4;83,0275596934624;G.rel;3
+héliophile non pionnière;JEU4;8,66234002158358;G.rel;3
+tolérante à l'ombrage;JEU4;8,31010028495403;G.rel;3
+héliophile;Lokofa_1;24,7704373200959;G.rel;3
+héliophile non pionnière;Lokofa_1;47,1172737086163;G.rel;3
+tolérante à l'ombrage;Lokofa_1;28,1122889712879;G.rel;3
+héliophile;Lokofa_2;25,7434342954975;G.rel;3
+héliophile non pionnière;Lokofa_2;25,9304492079196;G.rel;3
+tolérante à l'ombrage;Lokofa_2;48,3261164965829;G.rel;3
+héliophile;Lokofa_3;23,0115739093268;G.rel;3
+héliophile non pionnière;Lokofa_3;36,2922325831278;G.rel;3
+tolérante à l'ombrage;Lokofa_3;40,6961935075454;G.rel;3
+héliophile;Lokofa_4;19,5443613304945;G.rel;3
+héliophile non pionnière;Lokofa_4;26,0400824894556;G.rel;3
+tolérante à l'ombrage;Lokofa_4;54,4155561800499;G.rel;3
+héliophile;M2P1;15,4810355436667;G.rel;3
+héliophile non pionnière;M2P1;32,5609955939101;G.rel;3
+tolérante à l'ombrage;M2P1;51,9579688624233;G.rel;3
+héliophile;M2P10;6,69558386349674;G.rel;3
+héliophile non pionnière;M2P10;27,4414822287035;G.rel;3
+tolérante à l'ombrage;M2P10;65,8629339077998;G.rel;3
+héliophile;M2P11;7,58767264786432;G.rel;3
+héliophile non pionnière;M2P11;22,0652340462622;G.rel;3
+tolérante à l'ombrage;M2P11;70,3470933058735;G.rel;3
+héliophile;M2P12;9,10336361635011;G.rel;3
+héliophile non pionnière;M2P12;51,6709196846034;G.rel;3
+tolérante à l'ombrage;M2P12;39,2257166990465;G.rel;3
+héliophile;M2P13;5,92087902883632;G.rel;3
+héliophile non pionnière;M2P13;23,9533902764028;G.rel;3
+tolérante à l'ombrage;M2P13;70,1257306947609;G.rel;3
+héliophile;M2P14;11,4963812559484;G.rel;3
+héliophile non pionnière;M2P14;86,5458981191331;G.rel;3
+tolérante à l'ombrage;M2P14;1,95772062491853;G.rel;3
+héliophile;M2P15;44,1765276822745;G.rel;3
+héliophile non pionnière;M2P15;42,3730346174872;G.rel;3
+tolérante à l'ombrage;M2P15;13,4504377002383;G.rel;3
+héliophile;M2P16;25,8232868328363;G.rel;3
+héliophile non pionnière;M2P16;37,9801263579718;G.rel;3
+tolérante à l'ombrage;M2P16;36,1965868091919;G.rel;3
+héliophile;M2P2;6,63822747542727;G.rel;3
+héliophile non pionnière;M2P2;42,4068565866676;G.rel;3
+tolérante à l'ombrage;M2P2;50,9549159379051;G.rel;3
+héliophile;M2P9;28,3816470571729;G.rel;3
+héliophile non pionnière;M2P9;19,9978430656672;G.rel;3
+tolérante à l'ombrage;M2P9;51,62050987716;G.rel;3
+héliophile;MAB01h;1,00983459314163;G.rel;3
+héliophile non pionnière;MAB01h;21,2989256702205;G.rel;3
+tolérante à l'ombrage;MAB01h;77,6912397366378;G.rel;3
+héliophile;MAB02h;5,46358001965594;G.rel;3
+héliophile non pionnière;MAB02h;26,2283206364633;G.rel;3
+tolérante à l'ombrage;MAB02h;68,3080993438808;G.rel;3
+héliophile;MAB03h;5,5780508815275;G.rel;3
+héliophile non pionnière;MAB03h;25,4264451135808;G.rel;3
+tolérante à l'ombrage;MAB03h;68,9955040048918;G.rel;3
+héliophile;MAB04h;22,8512555924755;G.rel;3
+héliophile non pionnière;MAB04h;17,37821669309;G.rel;3
+tolérante à l'ombrage;MAB04h;59,7705277144345;G.rel;3
+héliophile;MAB05h;13,6464545253348;G.rel;3
+héliophile non pionnière;MAB05h;21,0844439627338;G.rel;3
+tolérante à l'ombrage;MAB05h;65,2691015119314;G.rel;3
+héliophile;MAB06h;1,61976287295725;G.rel;3
+héliophile non pionnière;MAB06h;18,8212320352178;G.rel;3
+tolérante à l'ombrage;MAB06h;79,5590050918249;G.rel;3
+héliophile;MAB07h;12,5170720606483;G.rel;3
+héliophile non pionnière;MAB07h;16,780908383956;G.rel;3
+tolérante à l'ombrage;MAB07h;70,7020195553957;G.rel;3
+héliophile;MAB08h;1,06409500838337;G.rel;3
+héliophile non pionnière;MAB08h;17,1708279972792;G.rel;3
+tolérante à l'ombrage;MAB08h;81,7650769943374;G.rel;3
+héliophile;MAB09h;6,62288361844037;G.rel;3
+héliophile non pionnière;MAB09h;34,9483219894018;G.rel;3
+tolérante à l'ombrage;MAB09h;58,4287943921579;G.rel;3
+héliophile;MAB10h;14,807512643502;G.rel;3
+héliophile non pionnière;MAB10h;21,9197533318538;G.rel;3
+tolérante à l'ombrage;MAB10h;63,2727340246442;G.rel;3
+héliophile;MAB11h;3,09743595763107;G.rel;3
+héliophile non pionnière;MAB11h;57,7090486318407;G.rel;3
+tolérante à l'ombrage;MAB11h;39,1935154105282;G.rel;3
+héliophile;MAB12h;47,5460317343373;G.rel;3
+héliophile non pionnière;MAB12h;11,1219139036402;G.rel;3
+tolérante à l'ombrage;MAB12h;41,3320543620225;G.rel;3
+héliophile;MIX-L6A;1,07039925606251;G.rel;3
+héliophile non pionnière;MIX-L6A;27,4317466899393;G.rel;3
+tolérante à l'ombrage;MIX-L6A;71,4978540539982;G.rel;3
+héliophile;MIX-L7A;5,60923283314469;G.rel;3
+héliophile non pionnière;MIX-L7A;16,0918098603184;G.rel;3
+tolérante à l'ombrage;MIX-L7A;78,2989573065369;G.rel;3
+héliophile;MIX2;1,38247158661037;G.rel;3
+héliophile non pionnière;MIX2;33,9385541169351;G.rel;3
+tolérante à l'ombrage;MIX2;64,6789742964545;G.rel;3
+héliophile;MIX6;4,10523084653285;G.rel;3
+héliophile non pionnière;MIX6;29,957037838017;G.rel;3
+tolérante à l'ombrage;MIX6;65,9377313154502;G.rel;3
+héliophile;Model_OR_lidar_87_Principal;22,4990631726994;G.rel;3
+héliophile non pionnière;Model_OR_lidar_87_Principal;31,992504242986;G.rel;3
+tolérante à l'ombrage;Model_OR_lidar_87_Principal;45,5084325843146;G.rel;3
+héliophile;Modele_2406_Principal;8,6200916843072;G.rel;3
+héliophile non pionnière;Modele_2406_Principal;18,4311546443041;G.rel;3
+tolérante à l'ombrage;Modele_2406_Principal;72,9487536713887;G.rel;3
+héliophile;Modele_4301_Principal;18,1537937010639;G.rel;3
+héliophile non pionnière;Modele_4301_Principal;28,9614394732582;G.rel;3
+tolérante à l'ombrage;Modele_4301_Principal;52,8847668256779;G.rel;3
+héliophile;Modele_4402_Principal;8,61086574307945;G.rel;3
+héliophile non pionnière;Modele_4402_Principal;16,013186450179;G.rel;3
+tolérante à l'ombrage;Modele_4402_Principal;75,3759478067415;G.rel;3
+héliophile;Modele_4503_Principal;27,0440551100714;G.rel;3
+héliophile non pionnière;Modele_4503_Principal;60,8537969253324;G.rel;3
+tolérante à l'ombrage;Modele_4503_Principal;12,1021479645963;G.rel;3
+héliophile;Modele_MA_lidar_205_principal;4,74602138430441;G.rel;3
+héliophile non pionnière;Modele_MA_lidar_205_principal;25,8279154559422;G.rel;3
+tolérante à l'ombrage;Modele_MA_lidar_205_principal;69,4260631597534;G.rel;3
+héliophile;PARAP_Gungu_5;30,0359639659303;G.rel;3
+héliophile non pionnière;PARAP_Gungu_5;29,6449806592037;G.rel;3
+tolérante à l'ombrage;PARAP_Gungu_5;40,319055374866;G.rel;3
+héliophile;PARAP_Idiofa_6;12,6282517230371;G.rel;3
+héliophile non pionnière;PARAP_Idiofa_6;59,4717856735481;G.rel;3
+tolérante à l'ombrage;PARAP_Idiofa_6;27,8999626034148;G.rel;3
+héliophile;PARAP_Luhudi_5;44,1915918072202;G.rel;3
+héliophile non pionnière;PARAP_Luhudi_5;31,4997872542789;G.rel;3
+tolérante à l'ombrage;PARAP_Luhudi_5;24,3086209385009;G.rel;3
+héliophile;PARAP_Lukolela_53;31,8341084824958;G.rel;3
+héliophile non pionnière;PARAP_Lukolela_53;12,4511061599584;G.rel;3
+tolérante à l'ombrage;PARAP_Lukolela_53;55,7147853575458;G.rel;3
+héliophile;PARAP_Mampulu_28;27,4922056046323;G.rel;3
+héliophile non pionnière;PARAP_Mampulu_28;47,4378379194386;G.rel;3
+tolérante à l'ombrage;PARAP_Mampulu_28;25,0699564759291;G.rel;3
+héliophile;PARAP_Mangai_16;6,24268485583863;G.rel;3
+héliophile non pionnière;PARAP_Mangai_16;4,44773771392283;G.rel;3
+tolérante à l'ombrage;PARAP_Mangai_16;89,3095774302385;G.rel;3
+héliophile;PARAP_Maniema_178;13,9805265708763;G.rel;3
+héliophile non pionnière;PARAP_Maniema_178;45,6635256140319;G.rel;3
+tolérante à l'ombrage;PARAP_Maniema_178;40,3559478150918;G.rel;3
+héliophile;PARAP_Mashambio_26;1,40350236316918;G.rel;3
+héliophile non pionnière;PARAP_Mashambio_26;74,6045316814602;G.rel;3
+tolérante à l'ombrage;PARAP_Mashambio_26;23,9919659553706;G.rel;3
+héliophile;PARAP_SwaKibula_234;29,7837836839732;G.rel;3
+héliophile non pionnière;PARAP_SwaKibula_234;39,9764119783038;G.rel;3
+tolérante à l'ombrage;PARAP_SwaKibula_234;30,239804337723;G.rel;3
+héliophile;WWF-DIAF_07_01_Principal;28,5652866588026;G.rel;3
+héliophile non pionnière;WWF-DIAF_07_01_Principal;61,736977360638;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_07_01_Principal;9,69773598055941;G.rel;3
+héliophile;WWF-DIAF_08_02_Principal;12,3048187219172;G.rel;3
+héliophile non pionnière;WWF-DIAF_08_02_Principal;21,4996193331732;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_08_02_Principal;66,1955619449096;G.rel;3
+héliophile;WWF-DIAF_11_05_Principal;8,16214143916596;G.rel;3
+héliophile non pionnière;WWF-DIAF_11_05_Principal;17,5986104498632;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_11_05_Principal;74,2392481109708;G.rel;3
+héliophile;WWF-DIAF_13_07_Principal;0,848968879889335;G.rel;3
+héliophile non pionnière;WWF-DIAF_13_07_Principal;19,1576820445902;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_13_07_Principal;79,9933490755205;G.rel;3
+héliophile;WWF-DIAF_14_08_Principal;0,76849989380366;G.rel;3
+héliophile non pionnière;WWF-DIAF_14_08_Principal;18,3443690473942;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_14_08_Principal;80,8871310588021;G.rel;3
+héliophile;WWF-DIAF_15_09_Principal;24,5525304082257;G.rel;3
+héliophile non pionnière;WWF-DIAF_15_09_Principal;13,8571017217148;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_15_09_Principal;61,5903678700594;G.rel;3
+héliophile;WWF-DIAF_16_10_Principal;25,5777644871974;G.rel;3
+héliophile non pionnière;WWF-DIAF_16_10_Principal;44,5212338190299;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_16_10_Principal;29,9010016937727;G.rel;3
+héliophile;WWF-DIAF_17_11_Principal;3,51703482968265;G.rel;3
+héliophile non pionnière;WWF-DIAF_17_11_Principal;19,5727804922872;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_17_11_Principal;76,9101846780302;G.rel;3
+héliophile;WWF-DIAF_supp1_Principal;27,5907814408689;G.rel;3
+héliophile non pionnière;WWF-DIAF_supp1_Principal;12,35384863188;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_supp1_Principal;60,0553699272511;G.rel;3
+héliophile;WWF-DIAF_supp2_Principal;28,9278356988637;G.rel;3
+héliophile non pionnière;WWF-DIAF_supp2_Principal;57,708459719979;G.rel;3
+tolérante à l'ombrage;WWF-DIAF_supp2_Principal;13,3637045811573;G.rel;3
+héliophile;123;7,94520547945206;ind.rel;3
+héliophile non pionnière;123;22,1917808219178;ind.rel;3
+tolérante à l'ombrage;123;69,8630136986301;ind.rel;3
+héliophile;148;7,09677419354839;ind.rel;3
+héliophile non pionnière;148;28,3870967741936;ind.rel;3
+tolérante à l'ombrage;148;64,5161290322581;ind.rel;3
+héliophile;162;8,28220858895706;ind.rel;3
+héliophile non pionnière;162;23,0061349693252;ind.rel;3
+tolérante à l'ombrage;162;68,7116564417178;ind.rel;3
+héliophile;166;12,0521172638437;ind.rel;3
+héliophile non pionnière;166;37,785016286645;ind.rel;3
+tolérante à l'ombrage;166;50,1628664495114;ind.rel;3
+héliophile;180;6,87830687830688;ind.rel;3
+héliophile non pionnière;180;18,2539682539683;ind.rel;3
+tolérante à l'ombrage;180;74,8677248677249;ind.rel;3
+héliophile;184;6,74486803519062;ind.rel;3
+héliophile non pionnière;184;23,7536656891496;ind.rel;3
+tolérante à l'ombrage;184;69,5014662756598;ind.rel;3
+héliophile;189;11,1111111111111;ind.rel;3
+héliophile non pionnière;189;26,4705882352941;ind.rel;3
+tolérante à l'ombrage;189;62,4183006535948;ind.rel;3
+héliophile;199;5,11363636363636;ind.rel;3
+héliophile non pionnière;199;17,0454545454545;ind.rel;3
+tolérante à l'ombrage;199;77,8409090909091;ind.rel;3
+héliophile;41;9,78593272171254;ind.rel;3
+héliophile non pionnière;41;9,1743119266055;ind.rel;3
+tolérante à l'ombrage;41;81,0397553516819;ind.rel;3
+héliophile;53;7,83847980997625;ind.rel;3
+héliophile non pionnière;53;8,07600950118765;ind.rel;3
+tolérante à l'ombrage;53;84,0855106888361;ind.rel;3
+héliophile;Betamba_1;79,4520547945206;ind.rel;3
+héliophile non pionnière;Betamba_1;6,84931506849315;ind.rel;3
+tolérante à l'ombrage;Betamba_1;13,6986301369863;ind.rel;3
+héliophile;Betamba_2;85,7385398981324;ind.rel;3
+héliophile non pionnière;Betamba_2;6,7911714770798;ind.rel;3
+tolérante à l'ombrage;Betamba_2;7,47028862478778;ind.rel;3
+héliophile;Betamba_3;58,3596214511041;ind.rel;3
+héliophile non pionnière;Betamba_3;16,7192429022082;ind.rel;3
+tolérante à l'ombrage;Betamba_3;24,9211356466877;ind.rel;3
+héliophile;Betamba_4;72,5961538461539;ind.rel;3
+héliophile non pionnière;Betamba_4;13,4615384615385;ind.rel;3
+tolérante à l'ombrage;Betamba_4;13,9423076923077;ind.rel;3
+héliophile;GIL1;8,28402366863905;ind.rel;3
+héliophile non pionnière;GIL1;6,21301775147929;ind.rel;3
+tolérante à l'ombrage;GIL1;85,5029585798817;ind.rel;3
+héliophile;GIL2;14,6919431279621;ind.rel;3
+héliophile non pionnière;GIL2;9,00473933649289;ind.rel;3
+tolérante à l'ombrage;GIL2;76,303317535545;ind.rel;3
+héliophile;GIL3;26,8011527377522;ind.rel;3
+héliophile non pionnière;GIL3;10,9510086455331;ind.rel;3
+tolérante à l'ombrage;GIL3;62,2478386167147;ind.rel;3
+héliophile;JEU-L6B;8,41121495327103;ind.rel;3
+héliophile non pionnière;JEU-L6B;13,5514018691589;ind.rel;3
+tolérante à l'ombrage;JEU-L6B;78,0373831775701;ind.rel;3
+héliophile;JEU2;94,4;ind.rel;3
+héliophile non pionnière;JEU2;3,73333333333333;ind.rel;3
+tolérante à l'ombrage;JEU2;1,86666666666667;ind.rel;3
+héliophile;JEU3;91,5194346289753;ind.rel;3
+héliophile non pionnière;JEU3;6,71378091872792;ind.rel;3
+tolérante à l'ombrage;JEU3;1,76678445229682;ind.rel;3
+héliophile;JEU4;83,8383838383838;ind.rel;3
+héliophile non pionnière;JEU4;6,3973063973064;ind.rel;3
+tolérante à l'ombrage;JEU4;9,76430976430976;ind.rel;3
+héliophile;Lokofa_1;20,335429769392;ind.rel;3
+héliophile non pionnière;Lokofa_1;46,5408805031447;ind.rel;3
+tolérante à l'ombrage;Lokofa_1;33,1236897274633;ind.rel;3
+héliophile;Lokofa_2;21,7741935483871;ind.rel;3
+héliophile non pionnière;Lokofa_2;16,1290322580645;ind.rel;3
+tolérante à l'ombrage;Lokofa_2;62,0967741935484;ind.rel;3
+héliophile;Lokofa_3;21,9512195121951;ind.rel;3
+héliophile non pionnière;Lokofa_3;16,0975609756098;ind.rel;3
+tolérante à l'ombrage;Lokofa_3;61,9512195121951;ind.rel;3
+héliophile;Lokofa_4;13,961038961039;ind.rel;3
+héliophile non pionnière;Lokofa_4;19,4805194805195;ind.rel;3
+tolérante à l'ombrage;Lokofa_4;66,5584415584416;ind.rel;3
+héliophile;M2P1;15,2588555858311;ind.rel;3
+héliophile non pionnière;M2P1;18,5286103542234;ind.rel;3
+tolérante à l'ombrage;M2P1;66,2125340599455;ind.rel;3
+héliophile;M2P10;10,1492537313433;ind.rel;3
+héliophile non pionnière;M2P10;14,6268656716418;ind.rel;3
+tolérante à l'ombrage;M2P10;75,2238805970149;ind.rel;3
+héliophile;M2P11;12,2448979591837;ind.rel;3
+héliophile non pionnière;M2P11;15,0510204081633;ind.rel;3
+tolérante à l'ombrage;M2P11;72,7040816326531;ind.rel;3
+héliophile;M2P12;13,0434782608696;ind.rel;3
+héliophile non pionnière;M2P12;23,9130434782609;ind.rel;3
+tolérante à l'ombrage;M2P12;63,0434782608696;ind.rel;3
+héliophile;M2P13;5,88235294117647;ind.rel;3
+héliophile non pionnière;M2P13;17,9411764705882;ind.rel;3
+tolérante à l'ombrage;M2P13;76,1764705882353;ind.rel;3
+héliophile;M2P14;15,3638814016173;ind.rel;3
+héliophile non pionnière;M2P14;83,2884097035041;ind.rel;3
+tolérante à l'ombrage;M2P14;1,34770889487871;ind.rel;3
+héliophile;M2P15;56,8452380952381;ind.rel;3
+héliophile non pionnière;M2P15;21,4285714285714;ind.rel;3
+tolérante à l'ombrage;M2P15;21,7261904761905;ind.rel;3
+héliophile;M2P16;29,2;ind.rel;3
+héliophile non pionnière;M2P16;18,4;ind.rel;3
+tolérante à l'ombrage;M2P16;52,4;ind.rel;3
+héliophile;M2P2;6,12691466083151;ind.rel;3
+héliophile non pionnière;M2P2;24,0700218818381;ind.rel;3
+tolérante à l'ombrage;M2P2;69,8030634573304;ind.rel;3
+héliophile;M2P9;32,5;ind.rel;3
+héliophile non pionnière;M2P9;19,1666666666667;ind.rel;3
+tolérante à l'ombrage;M2P9;48,3333333333333;ind.rel;3
+héliophile;MAB01h;1,41509433962264;ind.rel;3
+héliophile non pionnière;MAB01h;10,377358490566;ind.rel;3
+tolérante à l'ombrage;MAB01h;88,2075471698113;ind.rel;3
+héliophile;MAB02h;8,5;ind.rel;3
+héliophile non pionnière;MAB02h;18;ind.rel;3
+tolérante à l'ombrage;MAB02h;73,5;ind.rel;3
+héliophile;MAB03h;3,39425587467363;ind.rel;3
+héliophile non pionnière;MAB03h;9,39947780678851;ind.rel;3
+tolérante à l'ombrage;MAB03h;87,2062663185379;ind.rel;3
+héliophile;MAB04h;7,48663101604278;ind.rel;3
+héliophile non pionnière;MAB04h;9,62566844919786;ind.rel;3
+tolérante à l'ombrage;MAB04h;82,8877005347594;ind.rel;3
+héliophile;MAB05h;3,85674931129477;ind.rel;3
+héliophile non pionnière;MAB05h;12,9476584022039;ind.rel;3
+tolérante à l'ombrage;MAB05h;83,1955922865014;ind.rel;3
+héliophile;MAB06h;3,06748466257669;ind.rel;3
+héliophile non pionnière;MAB06h;10,4294478527607;ind.rel;3
+tolérante à l'ombrage;MAB06h;86,5030674846626;ind.rel;3
+héliophile;MAB07h;9,28571428571429;ind.rel;3
+héliophile non pionnière;MAB07h;10,952380952381;ind.rel;3
+tolérante à l'ombrage;MAB07h;79,7619047619048;ind.rel;3
+héliophile;MAB08h;3,20512820512821;ind.rel;3
+héliophile non pionnière;MAB08h;9,93589743589744;ind.rel;3
+tolérante à l'ombrage;MAB08h;86,8589743589744;ind.rel;3
+héliophile;MAB09h;4,76190476190476;ind.rel;3
+héliophile non pionnière;MAB09h;19,3650793650794;ind.rel;3
+tolérante à l'ombrage;MAB09h;75,8730158730159;ind.rel;3
+héliophile;MAB10h;7,25075528700906;ind.rel;3
+héliophile non pionnière;MAB10h;16,3141993957704;ind.rel;3
+tolérante à l'ombrage;MAB10h;76,4350453172206;ind.rel;3
+héliophile;MAB11h;2,12014134275618;ind.rel;3
+héliophile non pionnière;MAB11h;31,8021201413428;ind.rel;3
+tolérante à l'ombrage;MAB11h;66,0777385159011;ind.rel;3
+héliophile;MAB12h;32,2097378277154;ind.rel;3
+héliophile non pionnière;MAB12h;14,2322097378277;ind.rel;3
+tolérante à l'ombrage;MAB12h;53,5580524344569;ind.rel;3
+héliophile;MIX-L6A;0,932400932400932;ind.rel;3
+héliophile non pionnière;MIX-L6A;22,6107226107226;ind.rel;3
+tolérante à l'ombrage;MIX-L6A;76,4568764568765;ind.rel;3
+héliophile;MIX-L7A;6,69642857142857;ind.rel;3
+héliophile non pionnière;MIX-L7A;6,02678571428571;ind.rel;3
+tolérante à l'ombrage;MIX-L7A;87,2767857142857;ind.rel;3
+héliophile;MIX2;1,46788990825688;ind.rel;3
+héliophile non pionnière;MIX2;20,1834862385321;ind.rel;3
+tolérante à l'ombrage;MIX2;78,348623853211;ind.rel;3
+héliophile;MIX6;6,9620253164557;ind.rel;3
+héliophile non pionnière;MIX6;21,2025316455696;ind.rel;3
+tolérante à l'ombrage;MIX6;71,8354430379747;ind.rel;3
+héliophile;Model_OR_lidar_87_Principal;19,1044776119403;ind.rel;3
+héliophile non pionnière;Model_OR_lidar_87_Principal;22,9850746268657;ind.rel;3
+tolérante à l'ombrage;Model_OR_lidar_87_Principal;57,910447761194;ind.rel;3
+héliophile;Modele_2406_Principal;9,23482849604222;ind.rel;3
+héliophile non pionnière;Modele_2406_Principal;16,622691292876;ind.rel;3
+tolérante à l'ombrage;Modele_2406_Principal;74,1424802110818;ind.rel;3
+héliophile;Modele_4301_Principal;11,9718309859155;ind.rel;3
+héliophile non pionnière;Modele_4301_Principal;22,1830985915493;ind.rel;3
+tolérante à l'ombrage;Modele_4301_Principal;65,8450704225352;ind.rel;3
+héliophile;Modele_4402_Principal;16,304347826087;ind.rel;3
+héliophile non pionnière;Modele_4402_Principal;10,5072463768116;ind.rel;3
+tolérante à l'ombrage;Modele_4402_Principal;73,1884057971015;ind.rel;3
+héliophile;Modele_4503_Principal;24,9027237354086;ind.rel;3
+héliophile non pionnière;Modele_4503_Principal;40,0778210116732;ind.rel;3
+tolérante à l'ombrage;Modele_4503_Principal;35,0194552529183;ind.rel;3
+héliophile;Modele_MA_lidar_205_principal;4,90463215258856;ind.rel;3
+héliophile non pionnière;Modele_MA_lidar_205_principal;26,158038147139;ind.rel;3
+tolérante à l'ombrage;Modele_MA_lidar_205_principal;68,9373297002725;ind.rel;3
+héliophile;PARAP_Gungu_5;29,5983086680761;ind.rel;3
+héliophile non pionnière;PARAP_Gungu_5;32,3467230443975;ind.rel;3
+tolérante à l'ombrage;PARAP_Gungu_5;38,0549682875264;ind.rel;3
+héliophile;PARAP_Idiofa_6;21,7582417582418;ind.rel;3
+héliophile non pionnière;PARAP_Idiofa_6;47,6923076923077;ind.rel;3
+tolérante à l'ombrage;PARAP_Idiofa_6;30,5494505494506;ind.rel;3
+héliophile;PARAP_Luhudi_5;40,2277039848197;ind.rel;3
+héliophile non pionnière;PARAP_Luhudi_5;33,7760910815939;ind.rel;3
+tolérante à l'ombrage;PARAP_Luhudi_5;25,9962049335863;ind.rel;3
+héliophile;PARAP_Lukolela_53;13,3484162895928;ind.rel;3
+héliophile non pionnière;PARAP_Lukolela_53;7,69230769230769;ind.rel;3
+tolérante à l'ombrage;PARAP_Lukolela_53;78,9592760180996;ind.rel;3
+héliophile;PARAP_Mampulu_28;18,7984496124031;ind.rel;3
+héliophile non pionnière;PARAP_Mampulu_28;29,6511627906977;ind.rel;3
+tolérante à l'ombrage;PARAP_Mampulu_28;51,5503875968992;ind.rel;3
+héliophile;PARAP_Mangai_16;17,2774869109948;ind.rel;3
+héliophile non pionnière;PARAP_Mangai_16;9,16230366492147;ind.rel;3
+tolérante à l'ombrage;PARAP_Mangai_16;73,5602094240838;ind.rel;3
+héliophile;PARAP_Maniema_178;14,8984198645598;ind.rel;3
+héliophile non pionnière;PARAP_Maniema_178;24,6049661399549;ind.rel;3
+tolérante à l'ombrage;PARAP_Maniema_178;60,4966139954853;ind.rel;3
+héliophile;PARAP_Mashambio_26;2,06794682422452;ind.rel;3
+héliophile non pionnière;PARAP_Mashambio_26;74,8892171344166;ind.rel;3
+tolérante à l'ombrage;PARAP_Mashambio_26;23,0428360413589;ind.rel;3
+héliophile;PARAP_SwaKibula_234;28,9473684210526;ind.rel;3
+héliophile non pionnière;PARAP_SwaKibula_234;21,3450292397661;ind.rel;3
+tolérante à l'ombrage;PARAP_SwaKibula_234;49,7076023391813;ind.rel;3
+héliophile;WWF-DIAF_07_01_Principal;23,2365145228216;ind.rel;3
+héliophile non pionnière;WWF-DIAF_07_01_Principal;53,941908713693;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_07_01_Principal;22,8215767634855;ind.rel;3
+héliophile;WWF-DIAF_08_02_Principal;9,27835051546392;ind.rel;3
+héliophile non pionnière;WWF-DIAF_08_02_Principal;17,7319587628866;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_08_02_Principal;72,9896907216495;ind.rel;3
+héliophile;WWF-DIAF_11_05_Principal;3,44827586206897;ind.rel;3
+héliophile non pionnière;WWF-DIAF_11_05_Principal;10,1419878296146;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_11_05_Principal;86,4097363083164;ind.rel;3
+héliophile;WWF-DIAF_13_07_Principal;0,540540540540541;ind.rel;3
+héliophile non pionnière;WWF-DIAF_13_07_Principal;21,6216216216216;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_13_07_Principal;77,8378378378378;ind.rel;3
+héliophile;WWF-DIAF_14_08_Principal;1,88087774294671;ind.rel;3
+héliophile non pionnière;WWF-DIAF_14_08_Principal;16,3009404388715;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_14_08_Principal;81,8181818181818;ind.rel;3
+héliophile;WWF-DIAF_15_09_Principal;15,8208955223881;ind.rel;3
+héliophile non pionnière;WWF-DIAF_15_09_Principal;18,2089552238806;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_15_09_Principal;65,9701492537314;ind.rel;3
+héliophile;WWF-DIAF_16_10_Principal;22,093023255814;ind.rel;3
+héliophile non pionnière;WWF-DIAF_16_10_Principal;32,5581395348837;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_16_10_Principal;45,3488372093023;ind.rel;3
+héliophile;WWF-DIAF_17_11_Principal;3,91061452513967;ind.rel;3
+héliophile non pionnière;WWF-DIAF_17_11_Principal;9,49720670391061;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_17_11_Principal;86,5921787709497;ind.rel;3
+héliophile;WWF-DIAF_supp1_Principal;10,2702702702703;ind.rel;3
+héliophile non pionnière;WWF-DIAF_supp1_Principal;5,40540540540541;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_supp1_Principal;84,3243243243243;ind.rel;3
+héliophile;WWF-DIAF_supp2_Principal;16,6172106824926;ind.rel;3
+héliophile non pionnière;WWF-DIAF_supp2_Principal;54,3026706231454;ind.rel;3
+tolérante à l'ombrage;WWF-DIAF_supp2_Principal;29,080118694362;ind.rel;3

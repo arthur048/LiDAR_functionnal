@@ -68,9 +68,9 @@ Temperament.by.plot_save = function(field_inventories,subdivision = 2, pond.rel_
   } else if (subdivision == 3) {
     
     Temp.By.Plot = field_inventories %>%
-      group_by(plot_ref, Temperament.3subdiv) %>%
+      group_by(plot_ref, Temperament) %>%
       summarise(Prop.Temp = sum(!!pond.rel, na.rm = TRUE) * 100, .groups = 'drop') %>%
-      pivot_wider(names_from = Temperament.3subdiv, values_from = Prop.Temp, values_fill = list(count = 0)) %>%
+      pivot_wider(names_from = Temperament, values_from = Prop.Temp, values_fill = list(count = 0)) %>%
       mutate_all(~ifelse(is.na(.), 0, .)) %>%
       mutate(
         helio = `héliophile` / (`héliophile` + `tolérante à l'ombrage` + `héliophile non pionnière`),
@@ -78,7 +78,7 @@ Temperament.by.plot_save = function(field_inventories,subdivision = 2, pond.rel_
         helio_np = `héliophile non pionnière` / (`héliophile` + `tolérante à l'ombrage` + `héliophile non pionnière`)
       ) %>%
       select(plot_ref, helio, ombre, helio_np) %>%
-      rename_with(.fn = ~paste0(., ".3subdiv_", pond.rel_chr), .cols = c("helio", "ombre", "helio_np"))
+      rename_with(.fn = ~paste0(., "_", pond.rel_chr), .cols = c("helio", "ombre", "helio_np"))
     
   } else { Temp.By.Plot = "Subdivision doit être égal à 2 ou 3 (integer)" }
   
@@ -126,16 +126,16 @@ Temperament.by.plot = function(field_inventories,subdivision = 2, pond.rel_chr =
   } else if (subdivision == 3) {
     
     Temp.By.Plot = field_inventories %>%
-      filter(Temperament.3subdiv %in% c("héliophile" , "tolérante à l'ombrage", "héliophile non pionnière")) %>%
+      filter(Temperament %in% c("héliophile" , "tolérante à l'ombrage", "héliophile non pionnière")) %>%
       group_by(plot_ref) %>%
       mutate(
         G.rel = G / sum(G, na.rm = TRUE),
         ind.rel = 1/n()
       ) %>%
       ungroup() %>%
-      group_by(plot_ref, Temperament.3subdiv) %>%
+      group_by(plot_ref, Temperament) %>%
       summarise(Proportion = sum(!!pond.rel, na.rm = TRUE) * 100, .groups = 'drop') %>%
-      dplyr::select(Temperament = Temperament.3subdiv, everything()) %>%
+      dplyr::select(Temperament = Temperament, everything()) %>%
       mutate(
         Type_Proportion = pond.rel_chr,
         Type_subdivision = 3
@@ -174,7 +174,7 @@ Temperament.by.plot_with.breaks = function(field_inventories,subdivision = 2, po
     
     Temp.By.Plot = field_inventories %>%
       mutate(class_breaks = breaks_def) %>%
-      filter(Temperament.3subdiv %in% c("héliophile" , "tolérante à l'ombrage")) %>%
+      filter(Temperament %in% c("héliophile" , "tolérante à l'ombrage")) %>%
       group_by(plot_ref, class_breaks) %>%
       mutate(
         G.rel = G / sum(G, na.rm = TRUE),
@@ -194,16 +194,16 @@ Temperament.by.plot_with.breaks = function(field_inventories,subdivision = 2, po
     
     Temp.By.Plot = field_inventories %>%
       mutate(class_breaks = breaks_def) %>%
-      filter(Temperament.3subdiv %in% c("héliophile" , "tolérante à l'ombrage", "héliophile non pionnière")) %>%
+      filter(Temperament %in% c("héliophile" , "tolérante à l'ombrage", "héliophile non pionnière")) %>%
       group_by(plot_ref, class_breaks) %>%
       mutate(
         G.rel = G / sum(G, na.rm = TRUE),
         ind.rel = 1/n()
       ) %>%
       ungroup() %>%
-      group_by(plot_ref, Temperament.3subdiv, class_breaks) %>%
+      group_by(plot_ref, Temperament, class_breaks) %>%
       summarise(Proportion = sum(!!pond.rel, na.rm = TRUE) * 100, .groups = 'drop')  %>%
-      select(Temperament = Temperament.3subdiv, everything()) %>%
+      select(Temperament = Temperament, everything()) %>%
       mutate(
         Type_Proportion = pond.rel_chr,
         class_type = breaks_col,
@@ -249,9 +249,7 @@ generate_cumulative_proportion_plot <- function(data, column_name) {
 # Quantification du tempérament par parcelle sans distinction des catégories de hauteur ou de diamètre ----
 
 # Combinaison des résultats dans un seul tibble
-PlotsMetrics_Temperament_all <- Temperament.by.plot(field_inventories, subdivision = 2, pond.rel_chr = 'G.rel') %>%
-  bind_rows(Temperament.by.plot(field_inventories, subdivision = 2, pond.rel_chr = 'ind.rel')) %>%
-  bind_rows(Temperament.by.plot(field_inventories, subdivision = 3, pond.rel_chr = 'G.rel')) %>%
+PlotsMetrics_Temperament_all <- bind_rows(Temperament.by.plot(field_inventories, subdivision = 3, pond.rel_chr = 'G.rel')) %>%
   bind_rows(Temperament.by.plot(field_inventories, subdivision = 3, pond.rel_chr = 'ind.rel'))
   
 
@@ -266,7 +264,7 @@ rio::export(
 
 data_graph <- PlotsMetrics_Temperament_all %>%
   mutate(
-    measure = paste(Temperament, Type_subdivision, sep = " - Subdivision "),
+    measure = paste(Temperament)
   ) 
   
 

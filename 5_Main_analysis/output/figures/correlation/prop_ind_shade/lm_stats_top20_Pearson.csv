@@ -1,0 +1,21 @@
+metric;metric_label;target_var;intercept;slope;r_squared;adj_r_squared;f_statistic;p_value;correlation;n_observations
+prop_at_25m;prop_at_25m;prop_ind_shade;85,7933;-49,1904;0,3393;0,3303;38,00;0,0000;-0,5825;76
+prop_at_20m;Proportion de trouées à 20m;prop_ind_shade;76,8121;-50,1189;0,3078;0,2984;32,90;0,0000;-0,5548;76
+min_d2;Décélération maximale;prop_ind_shade;84,1832;1550,4172;0,2400;0,2298;23,37;0,0000;0,4899;76
+h75;Hauteur à 75% de trouées;prop_ind_shade;11,9401;1,6460;0,2373;0,2270;23,03;0,0000;0,4872;76
+h90;Hauteur à 90% de trouées;prop_ind_shade;8,0493;1,5910;0,2368;0,2265;22,96;0,0000;0,4866;76
+upper_thickness;Épaisseur zone supérieure;prop_ind_shade;110,3579;-1,6426;0,2367;0,2264;22,95;0,0000;-0,4866;76
+basal_thickness;Épaisseur zone basale;prop_ind_shade;27,0146;1,7915;0,2278;0,2174;21,83;0,0000;0,4773;76
+h25;Hauteur à 25% de trouées;prop_ind_shade;24,9988;1,7890;0,2272;0,2168;21,76;0,0000;0,4767;76
+h10;Hauteur à 10% de trouées;prop_ind_shade;34,2496;1,7853;0,2201;0,2096;20,89;0,0000;0,4692;76
+h50;Hauteur à 50% de trouées;prop_ind_shade;20,4426;1,5997;0,2117;0,2010;19,87;0,0000;0,4601;76
+prop_at_30m;Proportion de trouées à 30m;prop_ind_shade;91,3311;-43,7236;0,1998;0,1890;18,47;0,0001;-0,4470;76
+max_d1;Pente maximale;prop_ind_shade;94,7681;-451,6646;0,1975;0,1867;18,21;0,0001;-0,4444;76
+h100;h100;prop_ind_shade;-0,5209;1,4864;0,1906;0,1795;17,19;0,0001;0,4366;75
+height_min_d2;Hauteur à décélération max;prop_ind_shade;29,1850;1,0415;0,1895;0,1786;17,30;0,0001;0,4353;76
+prop_at_15m;Proportion de trouées à 15m;prop_ind_shade;69,1631;-49,8714;0,1601;0,1487;14,10;0,0003;-0,4001;76
+max_d2;Accélération maximale;prop_ind_shade;77,1321;-1323,5528;0,1536;0,1422;13,43;0,0005;-0,3919;76
+height_max_d1;Hauteur à pente maximale;prop_ind_shade;32,8400;1,0690;0,1406;0,1290;12,11;0,0008;0,3750;76
+prop_at_10m;Proportion de trouées à 10m;prop_ind_shade;65,6928;-69,8391;0,1125;0,1005;9,38;0,0031;-0,3354;76
+prop_at_35m;prop_at_35m;prop_ind_shade;102,9716;-49,1098;0,1095;0,0975;9,10;0,0035;-0,3309;76
+auc_norm;auc_norm;prop_ind_shade;92,7010;-77,1347;0,1084;0,0963;8,99;0,0037;-0,3292;76
