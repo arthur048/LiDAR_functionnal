@@ -10,12 +10,14 @@ gc()
 
 # Initialisation ----------------------------------------------------------
 
-pkgs = c("future","sysfonts", "showtext","rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse")
+pkgs = c("future","sysfonts", "showtext","rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse", "here")
 
 to_install = !pkgs %in% installed.packages() ; if(any(to_install)) {install.packages(pkgs[to_install])} ; inst = lapply(pkgs, library, character.only = TRUE) # load them
 
+# EXTERNAL PATH: Font directory - adjust to your local setup
 font_paths(new = "E:/Arthur/OneDrive2/R"); font_add("LM12", regular = "lmroman12-regular.otf", bold = "lmroman12-bold.otf") ; showtext_auto()
 
+# EXTERNAL DATA PATH: Field data from NASA 2015 campaign - adjust to your local setup
 path0 = "E:/Arthur/Doctorat_DataAnnexe/LiDAR_RDC_2015/006_Field_Data/" ; setwd(path0)
 
 
@@ -39,8 +41,8 @@ sf_plot_africa <- st_as_sf(db_plot_africa, coords = c("Long", "Lat"), crs = 4326
 st_write(sf_plot_africa, paste0(path0, "db_Africa_NASA.shp"), delete_layer = TRUE)
 
 # Lire les shapefiles
-sf_lidar_transects <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/lidar/DRC01_lidar_transects.shp")
-sf_ferry_lines <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/lidar/DRC02_ferry_lines.shp")
+sf_lidar_transects <- st_read(here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC01_lidar_transects.shp"))
+sf_ferry_lines <- st_read(here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC02_ferry_lines.shp"))
 sf_ferry_lines <- st_make_valid(sf_ferry_lines)
 
 # Effectuer les intersections et ne garder que les colonnes de sf_plot_africa
@@ -53,4 +55,4 @@ additional_rows <- sf_plot_africa %>% filter(ID %in% c("Ituri Edoro1", "Ituri Le
 # Combiner les deux intersections et les lignes additionnelles
 sf_intersect_combined <- rbind(sf_intersect_transects, sf_intersect_ferry, additional_rows)
 
-st_write(sf_intersect_combined, "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/plots_under_lidar.shp", delete_layer = TRUE)
+st_write(sf_intersect_combined, here("0_Inventories_plot_preparation", "plots_under_lidar.shp"), delete_layer = TRUE)

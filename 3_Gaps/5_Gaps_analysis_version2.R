@@ -307,18 +307,18 @@ calculate_combined_metrics <- function(h10, h25, h50, h75, h90, Smax, hSmax, P0,
 
 #### 3️⃣ CHARGEMENT DES DONNÉES ####
 # Chemins des fichiers
-path_output <- paste0(path0, "output/")
-path_plots_info <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/plots_infos.csv"
+path_output <- file.path(path0, "output")
+path_plots_info <- here("3_Gaps", "plots_infos.csv")
 
-path_analysis <- paste0(path0, "analysis/")
+path_analysis <- file.path(path0, "analysis")
 create_dir(path_analysis)
 
 # Lecture des métriques de trouées
-gaps_metrics <- rio::import(paste0(path_output, "results_gaps_metrics.csv"), sep = ";", dec = ",") %>%
+gaps_metrics <- rio::import(file.path(path_output, "results_gaps_metrics.csv"), sep = ";", dec = ",") %>%
   as_tibble()
 
 # Lecture des informations des plots
-plot_names = read.csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv") %>% pull(plot_name)
+plot_names = read.csv2(here("final_plot_name.csv")) %>% pull(plot_name)
 
 plots_info <- read_csv2(path_plots_info) %>% 
   as_tibble() %>%
