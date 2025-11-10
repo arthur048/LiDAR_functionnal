@@ -23,7 +23,7 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst = lapply(pkgs, library, character.only = TRUE) # load them
 
 # === DÉFINITION DU RÉPERTOIRE DE TRAVAIL ===
-path0 = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/"
+path0 = "here()3_Gaps/"
 setwd(path0)
 
 # === FONCTIONS UTILITAIRES ===
@@ -68,7 +68,7 @@ path_output = paste0(path0,"output/")
 lapply(path_output, create_dir)
 
 # Chemin vers les données d'élévation
-path_elevation = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/2_ElevationData/"
+path_elevation = "here()2_ElevationData/"
 
 # Lecture des CHM et création des noms de plots
 path_chm_folder = paste0(path_elevation, "CHM_final/")
@@ -77,13 +77,13 @@ path_chm = lapply(path_chm_folder, function(folder) {
 }) %>% unlist()
 
 # Lecture des informations des plots
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info.csv")
+plots_info <- read_csv2("here()0_Inventories_plot_preparation/final/plots_info.csv")
 
 plot_name = basename(gsub("\\.tif$", "", path_chm))
 
 path_outputs = paste0(path_output, plot_name) ; lapply(path_outputs, create_dir)
 
-path_plot = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_unique/" %>%
+path_plot = "here()0_Inventories_plot_preparation/final/plots_unique/" %>%
   list.files(pattern = "\\.gpkg$", full.names = TRUE) %>%
   .[grep(paste(plot_name, collapse = "|"), .)]
 

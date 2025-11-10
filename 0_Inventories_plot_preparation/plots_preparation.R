@@ -4,6 +4,7 @@ gc()
 library(tidyverse)
 library(sf)
 library(readxl)
+library(here)
 
 # Définition des EPSG UTM complète
 utm_epsg <- c(
@@ -20,41 +21,41 @@ utm_epsg <- c(
 # 1. Lecture des données ----
 # Lecture des shapefiles principaux et extraction des IDs
 
-rabi_sf <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/Rabi_AfriSAR_1ha.shp")
-mondah_sf <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/Mondah_AfriSAR_1ha.shp")
-mabounie_sf <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/Mabounie_AfriSAR_1ha.shp")
-lope_sf <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/Lope_AfriSAR_1ha.shp")
+rabi_sf <- st_read(here("0_Inventories_plot_preparation", "shapefile", "Rabi_AfriSAR_1ha.shp"))
+mondah_sf <- st_read(here("0_Inventories_plot_preparation", "shapefile", "Mondah_AfriSAR_1ha.shp"))
+mabounie_sf <- st_read(here("0_Inventories_plot_preparation", "shapefile", "Mabounie_AfriSAR_1ha.shp"))
+lope_sf <- st_read(here("0_Inventories_plot_preparation", "shapefile", "Lope_AfriSAR_1ha.shp"))
 
-plots_sf <- st_read("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/plots_under_lidar_without_ituri_final.shp")
+plots_sf <- st_read(here("0_Inventories_plot_preparation", "shapefile", "plots_under_lidar_without_ituri_final.shp"))
 plots_sf_id <- plots_sf %>% pull(ID)
 plots_sf_id2 <- plots_sf %>% filter(is.na(ID)) %>% pull(ID2)
 
 # Lecture du fichier plots_info existant
-plots_info <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info_NASA2015.csv", sep = ";", dec = ",") %>% as_tibble()
+plots_info <- rio::import(here("0_Inventories_plot_preparation", "final", "plots_info_NASA2015.csv"), sep = ";", dec = ",") %>% as_tibble()
 
 # Lecture des données avec vérification des séparateurs
-data_excel <- read_excel("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/NASA_JPL/db_Africa_NASA.xlsx") %>%
+data_excel <- read_excel(here("0_Inventories_plot_preparation", "field_data", "NASA_JPL", "db_Africa_NASA.xlsx")) %>%
   filter(ID %in% plots_sf_id2, dbh >= 10) %>%
   select(ID, site, species, dbh, h) %>%
   rename(plot_ref = ID, sp = species)
 
-data_malebo <- read_delim("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/RDC_others/MaleboFieldPlots.csv", 
+data_malebo <- read_delim(here("0_Inventories_plot_preparation", "field_data", "RDC_others", "MaleboFieldPlots.csv"),
                           delim = ";", locale = locale(decimal_mark = ",")) %>%
   filter(plot_ref %in% plots_sf_id, dbh >= 10) %>%
   select(plot_ref, site, sp, dbh, h)
 
-data_yangambi_nestor <- read_delim("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/RDC_others/Yangambi_Nestor_FieldPlots.csv",
+data_yangambi_nestor <- read_delim(here("0_Inventories_plot_preparation", "field_data", "RDC_others", "Yangambi_Nestor_FieldPlots.csv"),
                                    delim = ";", locale = locale(decimal_mark = ",")) %>%
   filter(plot_ref %in% plots_sf_id, dbh >= 10) %>%
   select(plot_ref, site, sp, dbh, h)
 
-data_yangambi <- read_excel("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/RDC_others/YangambiFieldPlots.xlsx") %>%
+data_yangambi <- read_excel(here("0_Inventories_plot_preparation", "field_data", "RDC_others", "YangambiFieldPlots.xlsx")) %>%
   filter(plot_ref %in% plots_sf_id, dbh >= 10) %>%
   select(plot_ref, site, sp, dbh, h)
 
 #Parcelles de Mabounie
 
-load("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/PlotsMabounie.RData")
+load(here("0_Inventories_plot_preparation", "field_data", "PlotsMabounie.RData"))
 
 data_mabounie <- Treedata %>%
   select(
@@ -187,19 +188,19 @@ all_plots_sf <- bind_rows(
 
 # 5. Export des données ----
 # Création des dossiers
-export_path <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/"
-dir.create(export_path, showWarnings = FALSE)
-dir.create(paste0(export_path, "plots_unique"), showWarnings = FALSE)
+export_path <- here("0_Inventories_plot_preparation", "final")
+dir.create(export_path, showWarnings = FALSE, recursive = TRUE)
+dir.create(file.path(export_path, "plots_unique"), showWarnings = FALSE, recursive = TRUE)
 
-# Export des données d'inventaires 
+# Export des données d'inventaires
 
-rio::export(data_combined, 
-            "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_inventories.csv",
+rio::export(data_combined,
+            file.path(export_path, "plots_inventories.csv"),
             sep = ";", dec = ",", append = FALSE)
 
 # Export en GeoPackage
-st_write(all_plots_sf, 
-         paste0(export_path, "plots_limites.gpkg"), 
+st_write(all_plots_sf,
+         file.path(export_path, "plots_limites.gpkg"),
          append = FALSE)
 
 # Export des plots uniques avec reprojection dans leur EPSG respectif
@@ -218,15 +219,15 @@ walk(plots_list[!is.na(plots_list)], function(plot_id) {
     st_transform(target_epsg)
   
   # Export en GeoPackage
-  st_write(single_plot_reproj, 
-           paste0(export_path, "plots_unique/", plot_id, ".gpkg"),
+  st_write(single_plot_reproj,
+           file.path(export_path, "plots_unique", paste0(plot_id, ".gpkg")),
            append = FALSE)
 })
 
 # 6. Traitement des données Wood Density ----
 
 # Lecture des données
-afrisar_agb <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/field_data/AfriSAR/AfriSAR_plotbased_AGB.csv",
+afrisar_agb <- rio::import(here("0_Inventories_plot_preparation", "field_data", "AfriSAR", "AfriSAR_plotbased_AGB.csv"),
                           dec = ".", sep = ";") %>%
   as_tibble() %>%
   select(plot_ref = Area_code, WD)
@@ -238,12 +239,12 @@ plots_AfriSAR_WD <- plots_info_updated %>%
   select(plot_ref, WD)
 
 # Export des données mises à jour
-rio::export(plots_info_updated, 
-            "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info.csv",
+rio::export(plots_info_updated,
+            file.path(export_path, "plots_info.csv"),
             sep = ";", dec = ",", append = FALSE)
 
-rio::export(plots_AfriSAR_WD, 
-            "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_AfriSAR_WD.csv",
+rio::export(plots_AfriSAR_WD,
+            file.path(export_path, "plots_AfriSAR_WD.csv"),
             sep = ";", dec = ",", append = FALSE)
 
 

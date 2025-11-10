@@ -91,7 +91,7 @@ path_output <- file.path(path0, "output")
 create_dir(path_output)
 
 # Chemin vers les données d'élévation
-path_elevation = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/2_ElevationData/"
+path_elevation = "here()2_ElevationData/"
 
 # Chemin vers les CHM
 path_chm_folder <- file.path(path_elevation, "CHM_final")
@@ -103,12 +103,12 @@ path_chm <- list.files(path = path_chm_folder,
 plot_name_chm <- basename(gsub("\\.tif$", "", path_chm))
 
 # Lecture des informations des plots
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/plots_infos.csv") %>% filter(plot_ref %in% plot_name_chm)
+plots_info <- read_csv2("here()3_Gaps/plots_infos.csv") %>% filter(plot_ref %in% plot_name_chm)
 
 plot_name = plots_info$plot_ref
 
 # Chemin vers les polygones des plots
-path_plot = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_unique/" %>%
+path_plot = "here()0_Inventories_plot_preparation/final/plots_unique/" %>%
   list.files(pattern = "\\.gpkg$", full.names = TRUE) %>%
   .[grep(paste(plot_name, collapse = "|"), .)]
 
@@ -242,7 +242,7 @@ cat(glue::glue("Résultats détaillés sauvegardés dans {file.path(path_output,
 
 rio::export(
   tibble(plot_name),
-  file.path("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv"),
+  file.path("here()final_plot_name.csv"),
   sep = ";",
   dec = ",",
   append = FALSE

@@ -4,6 +4,7 @@ gc()
 library(tidyverse)
 library(sf)
 library(lidR)
+library(here)
 
 # Fonction pour extraire l'UTM et le nom du transect
 extract_utm_plot <- function(name) {
@@ -47,15 +48,15 @@ utm_epsg <- c(
 )
 
 # 1. Lecture et préparation des données ----
-path_base <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles"
+# EXTERNAL DATA PATH: Raw LiDAR data - adjust this path to your local setup
 lidar_base <- "E:/Arthur/Doctorat_DataAnnexe/LiDAR_RDC_2015/00-raw-data"
 
 # Lecture des shapefiles avec correction de géométrie
-plots <- st_read(paste0(path_base, "/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_limites_NASA2015.gpkg"))
-transects <- st_read(paste0(path_base, "/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/lidar/DRC01_lidar_transects.shp")) %>%
+plots <- st_read(here("0_Inventories_plot_preparation", "final", "plots_limites_NASA2015.gpkg"))
+transects <- st_read(here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC01_lidar_transects.shp")) %>%
   st_make_valid()
 
-ferry_lines <- st_read(paste0(path_base, "/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/lidar/DRC02_ferry_lines.shp"), 
+ferry_lines <- st_read(here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC02_ferry_lines.shp"),
                        options = "OGR_GEOMETRY_ACCEPT_UNCLOSED_RING=NO") %>%
   st_buffer(0) %>%  # Force la fermeture des polygones
   st_make_valid()
