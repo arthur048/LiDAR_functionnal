@@ -2,13 +2,13 @@ rm(list=ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs = c("rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse", "ggplot2", "BIOMASS")
+pkgs = c("rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse", "ggplot2", "BIOMASS", "here")
 
 to_install = !pkgs %in% installed.packages() ; if(any(to_install)) {install.packages(pkgs[to_install])} ; inst = lapply(pkgs, library, character.only = TRUE) # load them
 
-path0 = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/4_Plots_metrics/"
+path0 = here("4_Plots_metrics")
 
-path_output = paste0(path0, "output_temperament/")
+path_output = file.path(path0, "output_temperament")
 if(!dir.exists(path_output)){dir.create(path_output)}
 
 setwd(path_output)
@@ -17,13 +17,13 @@ setwd(path_output)
 # CHARGEMENT DES DONNÉES BRUTES
 # =========================================================================
 # Chargement de la base de données CoforTraits
-CoFor_raw = rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/cofortraits.csv",
+CoFor_raw = rio::import(here("cofortraits.csv"),
                         sep = ';', dec = ',', encoding = "UTF-8") %>%
   as_tibble() %>%
   tidyr::separate(Species, into = c("genus", "species"), sep = " ") %>%
   filter(!is.na(id_taxon_name))
 
-plot_names <- read.csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv") %>% 
+plot_names <- read.csv2(here("final_plot_name.csv")) %>%
   pull(plot_name)
 
 # Chargement des données d'inventaire terrain

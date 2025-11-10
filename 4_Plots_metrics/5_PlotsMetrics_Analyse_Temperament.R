@@ -3,20 +3,20 @@ gc()
 
 # Initialisation ----------------------------------------------------------
 
-pkgs = c("rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse", "ggplot2", "BIOMASS")
+pkgs = c("rio","foreach", "doParallel","lidR", "terra", "sf", "tidyverse", "ggplot2", "BIOMASS", "here")
 
 to_install = !pkgs %in% installed.packages() ; if(any(to_install)) {install.packages(pkgs[to_install])} ; inst = lapply(pkgs, library, character.only = TRUE) # load them
 
-path0 = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/4_Plots_metrics/"
+path0 = here("4_Plots_metrics")
 
-path_output = paste0(path0, "output_temperament/")
+path_output = file.path(path0, "output_temperament")
 if(!dir.exists(path_output)){dir.create(path_output)}
 
 setwd(path_output)
 
 # Loading raw data -------------------------------------------------------------------------
 
-plot_names <- read.csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv") %>% 
+plot_names <- read.csv2(here("final_plot_name.csv")) %>%
   pull(plot_name)
 
 field_inventories = rio::import( # ATTENTION : bien utiliser la base de données où l'information relative aux tempéraments a été injectée, à partir du code n°4 'FieldDataInventories_Analyse_Temperament.R'

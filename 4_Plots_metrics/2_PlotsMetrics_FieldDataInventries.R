@@ -2,32 +2,32 @@ rm(list=ls())
 gc()
 
 # Initialisation ----------------------------------------------------------
-pkgs <- c("tidyverse", "rio", "BIOMASS", "foreach", "doParallel", "sf", "terra", "lidR")
+pkgs <- c("tidyverse", "rio", "BIOMASS", "foreach", "doParallel", "sf", "terra", "lidR", "here")
 
 to_install <- !pkgs %in% installed.packages()
 if(any(to_install)) install.packages(pkgs[to_install])
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition du chemin de base
-path0 <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/4_Plots_metrics/"
+path0 <- here("4_Plots_metrics")
 
 # Loading raw data -------------------------------------------------------------------------
-plot_name = read.csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv") %>% pull(plot_name)
+plot_name = read.csv2(here("final_plot_name.csv")) %>% pull(plot_name)
 
 field_inventories = rio::import(
-  paste0(path0, "FieldDataInventories_computation.csv"),
+  file.path(path0, "FieldDataInventories_computation.csv"),
   sep = ";",
   dec = ","
 ) %>%
   as_tibble()
 
 plots_info <- rio::import(
-  "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info.csv",
+  here("0_Inventories_plot_preparation", "final", "plots_info.csv"),
   dec = ",", sep = ";") %>%
   as_tibble() %>%
   filter(plot_ref %in% plot_name)
 
-plots_afrisar_wd <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_AfriSAR_WD.csv", 
+plots_afrisar_wd <- rio::import(here("0_Inventories_plot_preparation", "final", "plots_AfriSAR_WD.csv"),
                                 dec = ",", sep = ";") %>%
   as_tibble() %>%
   dplyr::filter(plot_ref %in% plot_name)

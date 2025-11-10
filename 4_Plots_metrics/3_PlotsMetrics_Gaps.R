@@ -10,9 +10,9 @@ rm(list = ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs <- c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel", 
-          "mgcv", "minpack.lm", "segmented", "splines", "waveslim", 
-          "fields", "zoo", "progress")
+pkgs <- c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel",
+          "mgcv", "minpack.lm", "segmented", "splines", "waveslim",
+          "fields", "zoo", "progress", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install <- !pkgs %in% installed.packages()
@@ -20,9 +20,9 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition des répertoires de travail
-path_base <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal"
-path_gaps <- file.path(path_base, "3_Gaps")
-path_metrics <- file.path(path_base, "4_Plots_metrics")
+path_base <- here()
+path_gaps <- here("3_Gaps")
+path_metrics <- here("4_Plots_metrics")
 dir.create(path_metrics, recursive = TRUE, showWarnings = FALSE)
 
 setwd(path_metrics)
@@ -342,7 +342,7 @@ plots_info <- rio::import(file.path(path_metrics, "PlotsMetrics_FieldDataInvento
   rename_with(~ ifelse(tolower(.) == "plot_ref", "plot_name", .))
 
 # Récupérer les noms des plots
-plot_names <- read.csv2(file.path(path_base, "final_plot_name.csv")) %>% 
+plot_names <- read.csv2(here("final_plot_name.csv")) %>%
   pull(plot_name)
 
 # Filtrer les informations des plots pour ne garder que ceux de notre étude

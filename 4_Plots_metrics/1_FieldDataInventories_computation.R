@@ -2,7 +2,7 @@ rm(list=ls())
 gc()
 
 # Initialisation ----------------------------------------------------------
-pkgs <- c("tidyverse", "rio", "BIOMASS", "foreach", "doParallel", "sf", "terra", "lidR", "gridExtra", "grid")
+pkgs <- c("tidyverse", "rio", "BIOMASS", "foreach", "doParallel", "sf", "terra", "lidR", "gridExtra", "grid", "here")
 
 dir.create(file.path(tempdir(), "BIOMASS"), showWarnings = FALSE, recursive = TRUE)
 
@@ -11,12 +11,12 @@ if(any(to_install)) install.packages(pkgs[to_install])
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition du chemin de base
-path0 <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/4_Plots_metrics/"
+path0 <- here("4_Plots_metrics")
 
 # Lecture des données -------------------------------------------------------------------------
-plot_name = read.csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/final_plot_name.csv") %>% pull(plot_name)
+plot_name = read.csv2(here("final_plot_name.csv")) %>% pull(plot_name)
 
-plots_data <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_inventories.csv", 
+plots_data <- rio::import(here("0_Inventories_plot_preparation", "final", "plots_inventories.csv"),
                           dec = ",", sep = ";") %>%
   dplyr::as_tibble() %>%
   dplyr::filter(dbh > 0 & plot_ref %in% plot_name) %>%  # Garde uniquement les arbres avec dbh valide
@@ -24,14 +24,14 @@ plots_data <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_
   separate(sp, into = c("genus", "species"), sep = "_") %>%  # Séparation du nom d'espèce
   dplyr::select(plot_ref, site, genus, species, dbh, h)
 
-plots_afrisar_wd <- rio::import("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_AfriSAR_WD.csv", 
+plots_afrisar_wd <- rio::import(here("0_Inventories_plot_preparation", "final", "plots_AfriSAR_WD.csv"),
                                 dec = ",", sep = ";") %>%
   as_tibble() %>%
   dplyr::filter(plot_ref %in% plot_name)
 
 # Lecture du fichier plots_info pour les métadonnées
 plots_info <- rio::import(
-  "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info.csv",
+  here("0_Inventories_plot_preparation", "final", "plots_info.csv"),
   dec = ",", sep = ";") %>%
   as_tibble() %>%
   filter(plot_ref %in% plot_name)
@@ -60,7 +60,7 @@ plots_info <- rio::import(
 # On l'utilise en priorité car elle contient des mesures locales plus précises
 # que la base de données globale (Global Wood Density Database)
 CoFor_raw <- rio::import(
-  "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/cofortraits.csv",
+  here("cofortraits.csv"),
   sep = ';', dec = ',', encoding = "UTF-8"
 ) %>%
   as_tibble() %>%
@@ -150,7 +150,7 @@ field_inventories <- plots_data %>%
 # 3. Export des résultats ----
 rio::export(
   meanWD_by_species_CoFor,
-  file = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/meanWD_by_species_CoFor.csv",
+  file = here("meanWD_by_species_CoFor.csv"),
   sep = ";", dec = ",")
 
 rio::export(
