@@ -5,20 +5,24 @@ gc()
 library(tidyverse)
 library(sf)
 library(terra)
+library(here)
 
 # Lecture des données
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info.csv") %>%
+plots_info <- read_csv2(here("0_Inventories_plot_preparation", "final", "plots_info.csv")) %>%
   filter(source == "AfriSAR")
 
 # Chemins des données
-plots_path <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_unique"
+plots_path <- here("0_Inventories_plot_preparation", "final", "plots_unique")
+
+# EXTERNAL DATA PATH: AfriSAR pre-processed CHM rasters
+# Adjust to your local setup if needed
 chm_dir <- "E:/Arthur/OneDrive2/R/DoctoratGIS/OriginalDataFiles/AfriSAR_TropiSAR_CHM_FieldInventories/CHM"
 
 # Liste des CHM
 chm_files <- list.files(chm_dir, pattern = "\\.tif$", full.names = TRUE)
 
 # Création du dossier de sortie avec la date du jour
-output_dir <- file.path("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/2_ElevationData", 
+output_dir <- file.path(here("2_ElevationData"),
                         paste0("CHM_", format(Sys.Date(), "%Y%m%d"), "_", sprintf("%03d", sample(0:999, 1))))
 dir.create(output_dir, recursive = TRUE)
 

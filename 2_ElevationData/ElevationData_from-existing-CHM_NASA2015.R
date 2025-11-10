@@ -7,6 +7,7 @@ library(sf)
 library(terra)
 library(foreach)
 library(doParallel)
+library(here)
 
 # Fonction pour obtenir l'EPSG à partir de la zone UTM
 get_epsg_from_utm <- function(utm_zone) {
@@ -17,6 +18,8 @@ get_epsg_from_utm <- function(utm_zone) {
 
 # Fonction pour obtenir le chemin du CHM
 get_chm_path <- function(source, utm, folder_name) {
+  # EXTERNAL DATA PATH: Pre-processed LiDAR rasters from NASA 2015 campaign
+  # Adjust to your local setup if needed
   raster_base <- "E:/Arthur/Doctorat_DataAnnexe/LiDAR_RDC_2015/001_Lidar_Rasters/Lidar_2meter"
   if(source == "transects") {
     return(file.path(raster_base, "CHM", paste0(utm, "_", folder_name, "_CHM.tif")))
@@ -26,9 +29,8 @@ get_chm_path <- function(source, utm, folder_name) {
 }
 
 # Configuration des chemins
-path_base <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles"
-input_base <- file.path(path_base, "LiDAR_functionnal/1_LiDAR_extraction/output")
-output_base <- file.path(path_base, "LiDAR_functionnal/2_ElevationData")
+input_base <- here("1_LiDAR_extraction", "output")
+output_base <- here("2_ElevationData")
 
 # Création du dossier CHM_NASA2015 dans ElevationData
 output_chm <- file.path(output_base, "CHM_NASA2015")
@@ -45,7 +47,7 @@ utm_epsg <- c(
 )
 
 # Lecture du fichier plots_info
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info_NASA2015.csv")
+plots_info <- read_csv2(here("0_Inventories_plot_preparation", "final", "plots_info_NASA2015.csv"))
 
 # Configuration de la parallélisation
 n_cores <- parallel::detectCores() / 2
@@ -67,8 +69,7 @@ results <- foreach(
     target_epsg <- get_epsg_from_utm(plot_info$utm)
     
     # Obtention des chemins
-    gpkg_path <- file.path("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_unique", 
-                           paste0(plot_ref, ".gpkg"))
+    gpkg_path <- here("0_Inventories_plot_preparation", "final", "plots_unique", paste0(plot_ref, ".gpkg"))
     chm_path <- get_chm_path(plot_info$source, plot_info$utm, plot_info$folder_name)
     
     # Vérification de l'existence des fichiers

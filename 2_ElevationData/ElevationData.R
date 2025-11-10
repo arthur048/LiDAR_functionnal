@@ -8,6 +8,7 @@ library(lidR)
 library(terra)
 library(foreach)
 library(doParallel)
+library(here)
 
 # Fonctions utilitaires ----
 # Fonction pour filtrer le bruit
@@ -69,22 +70,20 @@ ensure_correct_crs <- function(obj, target_epsg) {
 
 # Fonction pour obtenir le masque de référence
 get_reference_mask <- function(source, utm, name, target_epsg) {
-  base_path <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/shapefile/lidar"
-  
   ref_path <- if(source == "transects") {
-    file.path(base_path, "DRC01_lidar_transects.shp")
+    here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC01_lidar_transects.shp")
   } else {
-    file.path(base_path, "DRC02_ferry_lines.shp")
+    here("0_Inventories_plot_preparation", "shapefile", "lidar", "DRC02_ferry_lines.shp")
   }
-  
+
   ref_shapefile <- st_read(ref_path, quiet = TRUE) %>%
     filter(Name == paste0(utm, "_", name)) %>%
     st_transform(target_epsg)
-  
+
   if(nrow(ref_shapefile) == 0) {
     stop(paste("No polygon found for:", paste0(utm, "_", name)))
   }
-  
+
   return(ref_shapefile)
 }
 
@@ -104,9 +103,8 @@ process_raster <- function(raster, ref_mask, plot_mask) {
 
 # Configuration ----
 # Chemins
-path_base <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles"
-input_base <- file.path(path_base, "LiDAR_functionnal/1_LiDAR_extraction/output")
-output_base <- file.path(path_base, "LiDAR_functionnal/2_ElevationData")
+input_base <- here("1_LiDAR_extraction", "output")
+output_base <- here("2_ElevationData")
 
 # Définition des EPSG UTM
 utm_epsg <- c(
@@ -129,7 +127,7 @@ paths <- list(
 walk(paths, ~dir.create(., showWarnings = FALSE, recursive = TRUE))
 
 # Lecture du fichier plots_info
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/0_Inventories_plot_preparation/final/plots_info_NASA2015.csv")
+plots_info <- read_csv2(here("0_Inventories_plot_preparation", "final", "plots_info_NASA2015.csv"))
 
 # Configuration de la parallélisation
 n_cores <- parallel::detectCores() / 2
