@@ -15,7 +15,7 @@ gc()
 # - sf : manipulation de données spatiales
 # - rio : export de données
 # - foreach/doParallel : parallélisation (non utilisée actuellement)
-pkgs = c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel")
+pkgs = c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install = !pkgs %in% installed.packages()
@@ -23,7 +23,7 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst = lapply(pkgs, library, character.only = TRUE) # load them
 
 # === DÉFINITION DU RÉPERTOIRE DE TRAVAIL ===
-path0 = "here()3_Gaps/"
+path0 = here("3_Gaps")
 setwd(path0)
 
 # === FONCTIONS UTILITAIRES ===
@@ -64,26 +64,26 @@ get_gap_size_frequency_distribution = function(gaps_layer, type_of_return = "fre
 
 # === LECTURE ET PRÉPARATION DES DONNÉES ===
 # Création du dossier de sortie
-path_output = paste0(path0,"output/")
+path_output = file.path(path0, "output")
 lapply(path_output, create_dir)
 
 # Chemin vers les données d'élévation
-path_elevation = "here()2_ElevationData/"
+path_elevation = here("2_ElevationData")
 
 # Lecture des CHM et création des noms de plots
-path_chm_folder = paste0(path_elevation, "CHM_final/")
+path_chm_folder = file.path(path_elevation, "CHM_final")
 path_chm = lapply(path_chm_folder, function(folder) {
   list.files(path = folder, pattern = "\\.tif$", full.names = TRUE)
 }) %>% unlist()
 
 # Lecture des informations des plots
-plots_info <- read_csv2("here()0_Inventories_plot_preparation/final/plots_info.csv")
+plots_info <- read_csv2(here("0_Inventories_plot_preparation", "final", "plots_info.csv"))
 
 plot_name = basename(gsub("\\.tif$", "", path_chm))
 
-path_outputs = paste0(path_output, plot_name) ; lapply(path_outputs, create_dir)
+path_outputs = paste0(path_output, "/", plot_name) ; lapply(path_outputs, create_dir)
 
-path_plot = "here()0_Inventories_plot_preparation/final/plots_unique/" %>%
+path_plot = here("0_Inventories_plot_preparation", "final", "plots_unique") %>%
   list.files(pattern = "\\.gpkg$", full.names = TRUE) %>%
   .[grep(paste(plot_name, collapse = "|"), .)]
 

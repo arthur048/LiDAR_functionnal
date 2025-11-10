@@ -2,11 +2,11 @@ rm(list=ls())
 gc()
 
 # Initialisation ----------------------------------------------------------
-pkgs = c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel")
+pkgs = c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel", "here")
 
 to_install = !pkgs %in% installed.packages() ; if(any(to_install)) {install.packages(pkgs[to_install])} ; inst = lapply(pkgs, library, character.only = TRUE) # load them
 
-path0 = "here()3_Gaps/" ; setwd(path0)
+path0 = here("3_Gaps") ; setwd(path0)
 
 # Fonctions d'analyses des trouées (équivalent du package ForestGa --------
 
@@ -56,16 +56,16 @@ get_gap_layer = function(chm_layer, threshold = 10, size = c(1, 10^8)) {
 
 # Reading data -------------------------------------------------------------------------
 
-path_output = paste0(path0,"output/") ; lapply(path_output, create_dir)
-path_elevation = "here()2_ElevationData/"
+path_output = file.path(path0, "output") ; lapply(path_output, create_dir)
+path_elevation = here("2_ElevationData")
 
-path_chm_folder = paste0(path_elevation, "CHM_final/")
+path_chm_folder = file.path(path_elevation, "CHM_final")
 path_chm = lapply(path_chm_folder, function(folder) {
   list.files(path = folder, pattern = "\\.tif$", full.names = TRUE)
 }) %>% unlist()
 
 # Lecture du fichier plots_info
-plots_info <- read_csv2("here()0_Inventories_plot_preparation/final/plots_info.csv")
+plots_info <- read_csv2(here("0_Inventories_plot_preparation", "final", "plots_info.csv"))
 
 plot_name = basename(gsub("\\.tif$", "", path_chm))
 

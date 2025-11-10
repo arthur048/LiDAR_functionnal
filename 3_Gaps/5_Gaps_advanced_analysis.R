@@ -11,10 +11,10 @@ rm(list = ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs <- c("tidyverse", "rio", "ggpubr", "viridis", "corrplot", "gridExtra", 
+pkgs <- c("tidyverse", "rio", "ggpubr", "viridis", "corrplot", "gridExtra",
           "mgcv", "patchwork", "splines", "waveslim", "fields", "zoo",
           "rstatix", "factoextra", "cluster", "plotly", "ggh4x",
-          "minpack.lm", "zoo", "fANCOVA", "ggridges")
+          "minpack.lm", "zoo", "fANCOVA", "ggridges", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install <- !pkgs %in% installed.packages()
@@ -22,23 +22,23 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition du répertoire de travail
-path0 <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/"
+path0 <- here("3_Gaps")
 setwd(path0)
 
 # Chemins des fichiers
-path_output <- paste0(path0, "output/")
-path_analysis <- paste0(path0, "analysis/")
-path_advanced <- paste0(path0, "advanced_analysis/")
+path_output <- file.path(path0, "output")
+path_analysis <- file.path(path0, "analysis")
+path_advanced <- file.path(path0, "advanced_analysis")
 dir.create(path_advanced, recursive = TRUE, showWarnings = FALSE)
 
 # Lecture des données
-gaps_metrics <- rio::import(paste0(path_output, "results_gaps_metrics.csv"), sep = ";", dec = ",") %>%
+gaps_metrics <- rio::import(file.path(path_output, "results_gaps_metrics.csv"), sep = ";", dec = ",") %>%
   as_tibble()
 
-plot_metrics <- rio::import(paste0(path_analysis, "plot_gap_metrics_enhanced_buffer0.csv"), sep = ";", dec = ",") %>%
+plot_metrics <- rio::import(file.path(path_analysis, "plot_gap_metrics_enhanced_buffer0.csv"), sep = ";", dec = ",") %>%
   as_tibble()
 
-plots_info <- read_csv2("E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/plots_infos.csv") %>% 
+plots_info <- read_csv2(here("3_Gaps", "plots_infos.csv")) %>%
   as_tibble() %>%
   rename_with(~ ifelse(tolower(.) == "plot_ref", "plot_name", .))
 

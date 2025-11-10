@@ -10,7 +10,7 @@ rm(list = ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs <- c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel", "ggpubr", "viridis")
+pkgs <- c("terra", "tidyverse", "sf", "rio", "foreach", "doParallel", "ggpubr", "viridis", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install <- !pkgs %in% installed.packages()
@@ -18,7 +18,7 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition du répertoire de travail
-path0 <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/"
+path0 <- here("3_Gaps")
 setwd(path0)
 
 #### 2️⃣ FONCTIONS ####
@@ -63,16 +63,16 @@ create_gap_plot <- function(data, buffer, title) {
 
 #### 3️⃣ CHARGEMENT DES DONNÉES ####
 # Chemins des fichiers
-path_output <- paste0(path0, "output/")
-path_plots_info <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/plots_infos.csv"
+path_output <- file.path(path0, "output")
+path_plots_info <- here("3_Gaps", "plots_infos.csv")
 
 # Chemin vers les données d'élévation
-path_elevation = "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/2_ElevationData/"
+path_elevation = here("2_ElevationData")
 
 # Chemin vers les CHM
 path_chm_folder <- file.path(path_elevation, "CHM_final")
-path_chm <- list.files(path = path_chm_folder, 
-                       pattern = "\\.tif$", 
+path_chm <- list.files(path = path_chm_folder,
+                       pattern = "\\.tif$",
                        full.names = TRUE)
 
 # Extraction des noms des plots

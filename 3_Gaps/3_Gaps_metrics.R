@@ -17,10 +17,6 @@ to_install <- !pkgs %in% installed.packages()
 if(any(to_install)) {install.packages(pkgs[to_install])}
 inst <- lapply(pkgs, library, character.only = TRUE)
 
-# Définition du répertoire de travail avec here
-path0 <- here()
-setwd(path0)
-
 #### 2️⃣ FONCTIONS ####
 #' Crée un répertoire s'il n'existe pas
 #' 
@@ -87,28 +83,28 @@ calculate_gap_proportion <- function(chm, height_threshold) {
 
 #### 3️⃣ CHARGEMENT DES DONNÉES ####
 # Création du répertoire de sortie
-path_output <- file.path(path0, "output")
+path_output <- here("3_Gaps", "output")
 create_dir(path_output)
 
 # Chemin vers les données d'élévation
-path_elevation = "here()2_ElevationData/"
+path_elevation = here("2_ElevationData")
 
 # Chemin vers les CHM
 path_chm_folder <- file.path(path_elevation, "CHM_final")
-path_chm <- list.files(path = path_chm_folder, 
-                       pattern = "\\.tif$", 
+path_chm <- list.files(path = path_chm_folder,
+                       pattern = "\\.tif$",
                        full.names = TRUE)
 
 # Extraction des noms des plots
 plot_name_chm <- basename(gsub("\\.tif$", "", path_chm))
 
 # Lecture des informations des plots
-plots_info <- read_csv2("here()3_Gaps/plots_infos.csv") %>% filter(plot_ref %in% plot_name_chm)
+plots_info <- read_csv2(here("3_Gaps", "plots_infos.csv")) %>% filter(plot_ref %in% plot_name_chm)
 
 plot_name = plots_info$plot_ref
 
 # Chemin vers les polygones des plots
-path_plot = "here()0_Inventories_plot_preparation/final/plots_unique/" %>%
+path_plot = here("0_Inventories_plot_preparation", "final", "plots_unique") %>%
   list.files(pattern = "\\.gpkg$", full.names = TRUE) %>%
   .[grep(paste(plot_name, collapse = "|"), .)]
 
@@ -242,7 +238,7 @@ cat(glue::glue("Résultats détaillés sauvegardés dans {file.path(path_output,
 
 rio::export(
   tibble(plot_name),
-  file.path("here()final_plot_name.csv"),
+  here("final_plot_name.csv"),
   sep = ";",
   dec = ",",
   append = FALSE

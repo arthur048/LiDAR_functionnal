@@ -10,8 +10,8 @@ rm(list = ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs <- c("tidyverse", "rio", "ggpubr", "viridis", "corrplot", "gridExtra", 
-          "mgcv", "patchwork", "minpack.lm", "segmented", "splines")
+pkgs <- c("tidyverse", "rio", "ggpubr", "viridis", "corrplot", "gridExtra",
+          "mgcv", "patchwork", "minpack.lm", "segmented", "splines", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install <- !pkgs %in% installed.packages()
@@ -19,7 +19,7 @@ if(any(to_install)) {install.packages(pkgs[to_install])}
 inst <- lapply(pkgs, library, character.only = TRUE)
 
 # Définition du répertoire de travail
-path0 <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal/3_Gaps/"
+path0 <- here("3_Gaps")
 setwd(path0)
 
 #### 2️⃣ FONCTIONS ####
