@@ -525,7 +525,7 @@ create_plot_metadata <- function(metadata, ponderation = "G",
 #' @param ... Composants du chemin à joindre
 #' @return Chemin complet
 project_path <- function(...) {
-  file.path(project_dir, ...)
+  here(...)
 }
 
 #' S'assure que les répertoires existent, les crée si nécessaire
@@ -555,30 +555,30 @@ ensure_directories <- function(dirs, verbose = TRUE) {
 #' @return Invisible NULL
 export_analysis_results <- function(results, base_path, analysis_name,
                                     export_contrib = TRUE, export_coords = TRUE) {
-  
+
   # Exporter les contributions si demandé
   if (export_contrib) {
     contrib_path <- file.path(base_path, paste0(analysis_name, "_contributions.csv"))
     write_csv(results$taxon_contrib, contrib_path)
   }
-  
+
   # Exporter les coordonnées si demandé
   if (export_coords) {
     # Coordonnées des sites
     sites_path <- file.path(base_path, paste0(analysis_name, "_site_coordinates.csv"))
     write_csv(results$plot_coord, sites_path)
-    
+
     # Coordonnées des taxons
     taxon_path <- file.path(base_path, paste0(analysis_name, "_taxon_coordinates.csv"))
     write_csv(results$taxon_coord, taxon_path)
   }
-  
+
   return(invisible(NULL))
 }
 
 #### 3️⃣ CHARGEMENT DES DONNÉES ####
 # Définition du répertoire de base (à adapter selon votre environnement)
-project_dir <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal"
+project_dir <- here()
 
 # Définition des chemins essentiels
 path_main <- project_path("5_Main_analysis")

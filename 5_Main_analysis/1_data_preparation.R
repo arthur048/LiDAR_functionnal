@@ -10,7 +10,7 @@ rm(list = ls())
 gc()
 
 # Définition des packages nécessaires
-pkgs <- c("tidyverse")
+pkgs <- c("tidyverse", "here")
 
 # Installation et chargement automatique des packages manquants
 to_install <- !pkgs %in% installed.packages()
@@ -23,11 +23,11 @@ set.seed(42)                 # Fixer la graine pour reproductibilité
 
 #### 2️⃣ DÉFINITION DES CHEMINS ET CRÉATION DE LA STRUCTURE ####
 # Définition du répertoire de base
-project_dir <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal"
+project_dir <- here()
 
 # Création d'une fonction pour les chemins relatifs au projet
 project_path <- function(...) {
-  file.path(project_dir, ...)
+  here(...)
 }
 
 # Définition des chemins essentiels

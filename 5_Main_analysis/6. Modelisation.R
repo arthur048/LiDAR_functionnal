@@ -14,13 +14,11 @@ inst <- lapply(pkgs, library, character.only = TRUE)
 #### 2️⃣ PATH DEFINITION ####
 # Helper function to build paths (adapt to your environment)
 project_path <- function(...) {
-  base_dir <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal"
-  file.path(base_dir, ...)
+  here(...)
 }
 
 # Base directory definition
-project_dir <- "E:/Arthur/OneDrive2/R/DoctoratGIS/WorkingFiles/LiDAR_functionnal"
-setwd(project_dir)
+project_dir <- here()
 
 # Essential paths
 path_main <- project_path("5_Main_analysis")
