@@ -194,8 +194,8 @@ plot(st_geometry(s))
 
 ## Known Constraints
 
-1. **Memory intensive**: LiDAR processing requires substantial RAM (45 height thresholds × n plots × gap detection)
-2. **Processing time**: Full gap detection pipeline can take hours even with parallelization
+1. **Memory intensive**: LiDAR processing requires substantial RAM 
+2. **Processing time**: Full gap detection pipeline can take many time even with parallelization
 3. **Data size**: LAS files and rasters excluded from git (see .gitignore)
 4. **Path dependencies**: Scripts assume specific directory structure - moving files requires updating multiple paths
 5. **Language mixing**: Comments and variable names mix French and English - species temperament categories are in French
