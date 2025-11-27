@@ -1,5 +1,5 @@
 === RÉSULTATS D'ANALYSE - WD ~ STRUCTURE ===
-Date: 2025-11-27 19:38:57.671928 
+Date: 2025-11-27 20:18:44.068454 
 
 
  ============================================================ 
@@ -141,17 +141,17 @@ COMPARAISON MODÈLES PRÉDICTIFS
 
 
  ============================================================ 
-VARPART: Structure (PCA1) vs Tempérament 
+VARPART: Structure vs Tempérament (3 catégories) 
 ============================================================ 
 
 
 Partition of variance in RDA 
 
-Call: varpart(Y = varpart_data$WD_BA, X = ~PCA1, ~prop_g_helio + prop_g_shade, data = varpart_data)
+Call: varpart(Y = varpart_data$WD_BA, X = ~PCA1, ~prop_g_helio + prop_g_npld + prop_g_shade, data = varpart_data)
 
 Explanatory tables:
 X1:  ~PCA1
-X2:  ~prop_g_helio + prop_g_shade 
+X2:  ~prop_g_helio + prop_g_npld + prop_g_shade 
 
 No. of explanatory tables: 2 
 Total variation (SS): 0.73474 
@@ -168,6 +168,102 @@ Individual fractions
 [b] = X2|X1           2                 0.45142     TRUE
 [c]                   0                 0.28178    FALSE
 [d] = Residuals                         0.23976    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+VARPART: Structure vs CA 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data$WD_BA, X = ~PCA1, ~CA1 + CA2, data = varpart_data)
+
+Explanatory tables:
+X1:  ~PCA1
+X2:  ~CA1 + CA2 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            1   0.31804       0.30883     TRUE
+[b+c] = X2            2   0.70933       0.70137     TRUE
+[a+b+c] = X1+X2       3   0.76121       0.75126     TRUE
+Individual fractions                                    
+[a] = X1|X2           1                 0.04989     TRUE
+[b] = X2|X1           2                 0.44243     TRUE
+[c]                   0                 0.25894    FALSE
+[d] = Residuals                         0.24874    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+VARPART: Structure vs NSCA_DBH 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data$WD_BA, X = ~PCA1, formula_nsca, data = varpart_data)
+
+Explanatory tables:
+X1:  ~PCA1
+X2:  formula_nsca 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            1   0.31804       0.30883     TRUE
+[b+c] = X2            2   0.65553       0.64609     TRUE
+[a+b+c] = X1+X2       3   0.76617       0.75643     TRUE
+Individual fractions                                    
+[a] = X1|X2           1                 0.11034     TRUE
+[b] = X2|X1           2                 0.44760     TRUE
+[c]                   0                 0.19849    FALSE
+[d] = Residuals                         0.24357    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+VARPART: Structure vs Composition complète (CA+NSCA+Temp) 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data$WD_BA, X = ~PCA1, formula_all_comp, data = varpart_data)
+
+Explanatory tables:
+X1:  ~PCA1
+X2:  formula_all_comp 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            1   0.31804       0.30883     TRUE
+[b+c] = X2            6   0.84580       0.83239     TRUE
+[a+b+c] = X1+X2       7   0.87295       0.85987     TRUE
+Individual fractions                                    
+[a] = X1|X2           1                 0.02748     TRUE
+[b] = X2|X1           6                 0.55105     TRUE
+[c]                   0                 0.28135    FALSE
+[d] = Residuals                         0.14013    FALSE
 ---
 Use function ‘rda’ to test significance of fractions of interest
 

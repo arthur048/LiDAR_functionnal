@@ -306,6 +306,8 @@ p_cor <- cor_results %>%
 ggsave(file.path(path_figures, "correlations_wd.jpg"), p_cor,
        width = 10, height = 8, dpi = 300)
 
+p_cor
+
 write_csv2(cor_results, file.path(path_tables, "correlations_structure_wd.csv"))
 
 #### 9️⃣ SÉLECTION DE VARIABLES (MANUELLE) ----
@@ -344,6 +346,8 @@ p_cor_matrix <- cor_matrix %>%
   labs(title = "Matrice de corrélation - Top 10 variables",
        x = NULL, y = NULL)
 
+p_cor_matrix
+
 ggsave(file.path(path_figures, "correlation_matrix_top10.jpg"), p_cor_matrix,
        width = 10, height = 9, dpi = 300)
 
@@ -352,8 +356,9 @@ ggsave(file.path(path_figures, "correlation_matrix_top10.jpg"), p_cor_matrix,
 # Décommenter et modifier la ligne suivante avec vos variables choisies:
 
 selected_vars <- c("prop_at_20m",
-                   "h50",
-                   "max_d1")  # EXEMPLE - À MODIFIER
+                   "auc_norm",
+                   "max_d1",
+                   "h90")  # EXEMPLE - À MODIFIER
 
 # Par défaut, si aucune sélection manuelle, on prend la meilleure variable
 if(!exists("selected_vars") || length(selected_vars) == 0) {
@@ -391,7 +396,6 @@ if(length(selected_vars) >= 2) {
 }
 
 #### 🔟 MODÈLES PRÉDICTIFS ----
-
 # 10A. Modèles simples (une variable à la fois) ----
 # Modèles pour chaque variable sélectionnée
 simple_models <- list()
@@ -477,22 +481,29 @@ write_csv2(comparison_models, file.path(path_tables, "all_models_comparison.csv"
 
 # Préparer données complètes
 varpart_data <- model_data %>%
-  select(WD_BA, PCA1, prop_g_helio, prop_g_shade,
+  select(WD_BA, PCA1, prop_g_helio, prop_g_npld, prop_g_shade,
          starts_with("CA"), starts_with("NSCA")) %>%
   drop_na()
 
 cat("\nDonnées pour varpart: n =", nrow(varpart_data), "\n")
 
-# 11A. Structure (PCA1) vs Tempérament ----
-if(all(c("prop_g_helio", "prop_g_shade") %in% names(varpart_data))) {
+# 11A. Structure (PCA1) vs Tempérament (3 catégories) ----
+# INTERPRÉTATION: Compare la variance de WD expliquée par la structure verticale
+# vs celle expliquée par les proportions de tempéraments des espèces
+if(all(c("prop_g_helio", "prop_g_npld", "prop_g_shade") %in% names(varpart_data))) {
   vp_temp <- varpart(varpart_data$WD_BA,
                      ~ PCA1,
-                     ~ prop_g_helio + prop_g_shade,
+                     ~ prop_g_helio + prop_g_npld + prop_g_shade,
                      data = varpart_data)
 
-  cat("\n=== Partition: Structure vs Tempérament ===\n")
+  cat("\n=== Partition: Structure vs Tempérament (3 catégories) ===\n")
+  cat("INTERPRÉTATION:\n")
+  cat("  [a] = Variance WD expliquée UNIQUEMENT par Structure (effet pur)\n")
+  cat("  [b] = Variance WD expliquée UNIQUEMENT par Tempérament (effet pur)\n")
+  cat("  [c] = Variance PARTAGÉE (covariation Structure-Tempérament)\n")
+  cat("  [d] = Variance RÉSIDUELLE non expliquée\n\n")
   print(vp_temp)
-  export_result("VARPART: Structure (PCA1) vs Tempérament", vp_temp)
+  export_result("VARPART: Structure vs Tempérament (3 catégories)", vp_temp)
 
   # Figure
   jpeg(file.path(path_figures, "varpart_temperament.jpg"),
@@ -503,16 +514,18 @@ if(all(c("prop_g_helio", "prop_g_shade") %in% names(varpart_data))) {
   dev.off()
 }
 
-# 11B. Structure (PCA1) vs CA ----
+# 11B. Structure (PCA1) vs Composition floristique (CA) ----
+# INTERPRÉTATION: CA capture les différences de composition en espèces
 if(all(c("CA1", "CA2") %in% names(varpart_data))) {
   vp_ca <- varpart(varpart_data$WD_BA,
                    ~ PCA1,
                    ~ CA1 + CA2,
                    data = varpart_data)
 
-  cat("\n=== Partition: Structure vs CA ===\n")
+  cat("\n=== Partition: Structure vs Composition floristique (CA) ===\n")
+  cat("INTERPRÉTATION: CA = axes de variation de la composition en espèces\n\n")
   print(vp_ca)
-  export_result("VARPART: Structure (PCA1) vs CA", vp_ca)
+  export_result("VARPART: Structure vs CA", vp_ca)
 
   # Figure
   jpeg(file.path(path_figures, "varpart_ca.jpg"),
@@ -523,7 +536,7 @@ if(all(c("CA1", "CA2") %in% names(varpart_data))) {
   dev.off()
 }
 
-# 11C. Structure vs NSCA_DBH (si disponible) ----
+# 11C. Structure vs NSCA_DBH (composition pondérée par surface terrière) ----
 nsca_cols <- grep("NSCA.*DBH", names(varpart_data), value = TRUE)
 if(length(nsca_cols) >= 2) {
   formula_nsca <- as.formula(paste("~", paste(nsca_cols[1:2], collapse = " + ")))
@@ -534,81 +547,341 @@ if(length(nsca_cols) >= 2) {
                      data = varpart_data)
 
   cat("\n=== Partition: Structure vs NSCA_DBH ===\n")
+  cat("INTERPRÉTATION: NSCA_DBH = composition pondérée par dominance (surface terrière)\n\n")
   print(vp_nsca)
-  export_result("VARPART: Structure (PCA1) vs NSCA_DBH", vp_nsca)
+  export_result("VARPART: Structure vs NSCA_DBH", vp_nsca)
+
+  # Figure
+  jpeg(file.path(path_figures, "varpart_nsca_dbh.jpg"),
+       width = 800, height = 600, quality = 100)
+  plot(vp_nsca, digits = 2,
+       Xnames = c("Structure", "NSCA_DBH"),
+       bg = c("lightblue", "orange"))
+  dev.off()
+}
+
+# 11D. Structure vs TOUTES les dimensions compositionnelles regroupées ----
+# INTERPRÉTATION: Test le plus conservateur - effet structure au-delà de TOUTE la composition
+comp_cols <- c()
+if("CA1" %in% names(varpart_data)) comp_cols <- c(comp_cols, "CA1", "CA2")
+if("NSCA_DBH1" %in% names(varpart_data)) comp_cols <- c(comp_cols, "NSCA_DBH1", "NSCA_DBH2")
+if("prop_g_helio" %in% names(varpart_data)) comp_cols <- c(comp_cols, "prop_g_helio", "prop_g_npld", "prop_g_shade")
+
+if(length(comp_cols) >= 2) {
+  formula_all_comp <- as.formula(paste("~", paste(comp_cols, collapse = " + ")))
+
+  vp_all_comp <- varpart(varpart_data$WD_BA,
+                         ~ PCA1,
+                         formula_all_comp,
+                         data = varpart_data)
+
+  cat("\n=== Partition: Structure vs TOUTE la Composition (CA+NSCA+Temp) ===\n")
+  cat("INTERPRÉTATION: Test conservateur - effet structure RÉSIDUEL après contrôle de:\n")
+  cat("  - Composition en espèces (CA)\n")
+  cat("  - Composition pondérée (NSCA_DBH)\n")
+  cat("  - Tempéraments fonctionnels\n")
+  cat("\nVariables composition:", paste(comp_cols, collapse = ", "), "\n\n")
+  print(vp_all_comp)
+  export_result("VARPART: Structure vs Composition complète (CA+NSCA+Temp)", vp_all_comp)
+
+  # Figure
+  jpeg(file.path(path_figures, "varpart_all_composition.jpg"),
+       width = 800, height = 600, quality = 100)
+  plot(vp_all_comp, digits = 2,
+       Xnames = c("Structure", "Composition\n(CA+NSCA+Temp)"),
+       bg = c("lightblue", "coral"))
+  dev.off()
 }
 
 #### 1️⃣2️⃣ SEM - MODÈLES CAUSAUX ----
+# INTERPRÉTATION: Les SEM testent les relations causales entre composition, structure et WD
+# Question clé: Y a-t-il un effet DIRECT de la structure sur WD, ou tout passe par la composition?
 
-# 12A. Préparer données ----
-sem_data <- model_data %>%
-  select(WD_BA, PCA1, prop_g_helio, prop_g_shade) %>%
-  drop_na() %>%
-  mutate(across(everything(), scale))  # Standardiser
+# 12A. Préparer données avec TOUTES les variables compositionnelles ----
+sem_data_full <- model_data %>%
+  select(WD_BA, PCA1, prop_g_helio, prop_g_npld, prop_g_shade,
+         starts_with("CA"), starts_with("NSCA_DBH")) %>%
+  drop_na()
 
-cat("\nDonnées pour SEM: n =", nrow(sem_data), "\n")
+cat("\nDonnées pour SEM: n =", nrow(sem_data_full), "\n")
+cat("Variables:", paste(names(sem_data_full), collapse = ", "), "\n\n")
 
-# 12B. Modèle 1: Avec lien Structure -> WD ----
-model_sem_full <- '
-  # Composition prédit Structure
-  PCA1 ~ a1*prop_g_helio + a2*prop_g_shade
+# ==============================================================================
+# SÉRIE 1: SEM avec Tempérament (3 catégories)
+# ==============================================================================
 
-  # Composition prédit WD
-  WD_BA ~ b1*prop_g_helio + b2*prop_g_shade
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SÉRIE 1: SEM avec Tempérament (héliophile, NPLD, tolérant)\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
-  # Structure prédit WD (lien résiduel)
-  WD_BA ~ c*PCA1
+# Données standardisées pour SEM tempérament
+sem_data_temp <- sem_data_full %>%
+  select(WD_BA, PCA1, prop_g_helio, prop_g_npld, prop_g_shade) %>%
+  mutate(across(everything(), scale))
+
+# 12A.1. Modèle AVEC lien direct Structure -> WD ----
+model_sem_temp_full <- '
+  # Tempérament prédit Structure
+  PCA1 ~ a1*prop_g_helio + a2*prop_g_npld + a3*prop_g_shade
+
+  # Tempérament ET Structure prédisent WD (tout sur une ligne!)
+  WD_BA ~ b1*prop_g_helio + b2*prop_g_npld + b3*prop_g_shade + c*PCA1
 '
 
-fit_full <- sem(model_sem_full, data = sem_data)
+fit_temp_full <- sem(model_sem_temp_full, data = sem_data_temp)
 
-# 12C. Modèle 2: Sans lien Structure -> WD ----
-model_sem_constrained <- '
-  # Composition prédit Structure
-  PCA1 ~ a1*prop_g_helio + a2*prop_g_shade
+# 12A.2. Modèle SANS lien direct Structure -> WD (contraint à 0) ----
+model_sem_temp_constrained <- '
+  # Tempérament prédit Structure
+  PCA1 ~ a1*prop_g_helio + a2*prop_g_npld + a3*prop_g_shade
 
-  # Composition prédit WD (pas de lien via Structure)
-  WD_BA ~ b1*prop_g_helio + b2*prop_g_shade
+  # Tempérament prédit WD (pas de lien via Structure)
+  WD_BA ~ b1*prop_g_helio + b2*prop_g_npld + b3*prop_g_shade
 
-  # Contrainte: pas de lien direct Structure -> WD
+  # Contrainte: PAS de lien direct Structure -> WD
   WD_BA ~ 0*PCA1
 '
 
-fit_constrained <- sem(model_sem_constrained, data = sem_data)
+fit_temp_constrained <- sem(model_sem_temp_constrained, data = sem_data_temp)
 
-# 12D. Comparaison des modèles ----
-comparison_sem <- anova(fit_constrained, fit_full)
+# 12A.3. Test du lien Structure->WD ----
+comparison_sem_temp <- anova(fit_temp_constrained, fit_temp_full)
 
-cat("\n=== Comparaison SEM: avec vs sans lien Structure->WD ===\n")
-print(comparison_sem)
-export_result("SEM: Comparaison modèles (test du lien Structure->WD)", comparison_sem)
+cat("\n=== SEM Tempérament: Test du lien Structure->WD ===\n")
+cat("H0: Le lien Structure->WD est nul (c = 0)\n")
+cat("H1: Il existe un lien résiduel Structure->WD (c ≠ 0)\n\n")
+print(comparison_sem_temp)
+export_result("SEM Tempérament: Test lien Structure->WD", comparison_sem_temp)
 
-# 12E. Coefficients du modèle complet ----
-sem_params <- parameterEstimates(fit_full, standardized = TRUE) %>%
+# Coefficients
+sem_temp_params <- parameterEstimates(fit_temp_full, standardized = TRUE) %>%
   filter(op == "~") %>%
   select(lhs, op, rhs, est, std.all, pvalue)
 
-cat("\n=== Coefficients SEM (modèle complet) ===\n")
-print(sem_params)
-export_result("SEM: Coefficients standardisés", sem_params)
+cat("\n=== Coefficients SEM Tempérament (standardisés) ===\n")
+print(sem_temp_params)
+export_result("SEM Tempérament: Coefficients", sem_temp_params)
 
-write_csv2(sem_params, file.path(path_tables, "sem_coefficients.csv"))
+# ==============================================================================
+# SÉRIE 2: SEM avec CA (Composition floristique)
+# ==============================================================================
+
+if(all(c("CA1", "CA2") %in% names(sem_data_full))) {
+  cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+  cat("SÉRIE 2: SEM avec CA (axes de composition en espèces)\n")
+  cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+  sem_data_ca <- sem_data_full %>%
+    select(WD_BA, PCA1, CA1, CA2) %>%
+    mutate(across(everything(), scale))
+
+  # 12B.1. Modèle AVEC lien Structure -> WD ----
+  model_sem_ca_full <- '
+    PCA1 ~ a1*CA1 + a2*CA2
+    WD_BA ~ b1*CA1 + b2*CA2 + c*PCA1
+  '
+
+  fit_ca_full <- sem(model_sem_ca_full, data = sem_data_ca)
+
+  # 12B.2. Modèle SANS lien Structure -> WD ----
+  model_sem_ca_constrained <- '
+    PCA1 ~ a1*CA1 + a2*CA2
+    WD_BA ~ b1*CA1 + b2*CA2 + 0*PCA1
+  '
+
+  fit_ca_constrained <- sem(model_sem_ca_constrained, data = sem_data_ca)
+
+  # Test
+  comparison_sem_ca <- anova(fit_ca_constrained, fit_ca_full)
+
+  cat("\n=== SEM CA: Test du lien Structure->WD ===\n")
+  print(comparison_sem_ca)
+  export_result("SEM CA: Test lien Structure->WD", comparison_sem_ca)
+
+  sem_ca_params <- parameterEstimates(fit_ca_full, standardized = TRUE) %>%
+    filter(op == "~") %>%
+    select(lhs, op, rhs, est, std.all, pvalue)
+
+  cat("\n=== Coefficients SEM CA ===\n")
+  print(sem_ca_params)
+  export_result("SEM CA: Coefficients", sem_ca_params)
+}
+
+# ==============================================================================
+# SÉRIE 3: SEM avec NSCA_DBH (Composition pondérée)
+# ==============================================================================
+
+nsca_dbh_cols <- grep("NSCA_DBH[12]", names(sem_data_full), value = TRUE)
+if(length(nsca_dbh_cols) >= 2) {
+  cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+  cat("SÉRIE 3: SEM avec NSCA_DBH (composition pondérée par dominance)\n")
+  cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+  sem_data_nsca <- sem_data_full %>%
+    select(WD_BA, PCA1, all_of(nsca_dbh_cols[1:2])) %>%
+    mutate(across(everything(), scale))
+
+  names(sem_data_nsca)[3:4] <- c("NSCA1", "NSCA2")
+
+  # 12C.1. Modèle AVEC lien ----
+  model_sem_nsca_full <- '
+    PCA1 ~ a1*NSCA1 + a2*NSCA2
+    WD_BA ~ b1*NSCA1 + b2*NSCA2 + c*PCA1
+  '
+
+  fit_nsca_full <- sem(model_sem_nsca_full, data = sem_data_nsca)
+
+  # 12C.2. Modèle SANS lien ----
+  model_sem_nsca_constrained <- '
+    PCA1 ~ a1*NSCA1 + a2*NSCA2
+    WD_BA ~ b1*NSCA1 + b2*NSCA2 + 0*PCA1
+  '
+
+  fit_nsca_constrained <- sem(model_sem_nsca_constrained, data = sem_data_nsca)
+
+  # Test
+  comparison_sem_nsca <- anova(fit_nsca_constrained, fit_nsca_full)
+
+  cat("\n=== SEM NSCA_DBH: Test du lien Structure->WD ===\n")
+  print(comparison_sem_nsca)
+  export_result("SEM NSCA_DBH: Test lien Structure->WD", comparison_sem_nsca)
+
+  sem_nsca_params <- parameterEstimates(fit_nsca_full, standardized = TRUE) %>%
+    filter(op == "~") %>%
+    select(lhs, op, rhs, est, std.all, pvalue)
+
+  cat("\n=== Coefficients SEM NSCA_DBH ===\n")
+  print(sem_nsca_params)
+  export_result("SEM NSCA_DBH: Coefficients", sem_nsca_params)
+}
+
+# ==============================================================================
+# SÉRIE 4: SEM COMPLET avec TOUTES les dimensions compositionnelles
+# ==============================================================================
+
+# Vérifier quelles variables sont disponibles
+comp_vars_sem <- c()
+if("CA1" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "CA1", "CA2")
+if("NSCA_DBH1" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "NSCA_DBH1", "NSCA_DBH2")
+if("prop_g_helio" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "prop_g_helio", "prop_g_npld", "prop_g_shade")
+
+if(length(comp_vars_sem) >= 3) {
+  cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+  cat("SÉRIE 4: SEM COMPLET (CA + NSCA + Tempérament)\n")
+  cat("Test CONSERVATEUR: effet structure après contrôle de TOUTE la composition\n")
+  cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+  sem_data_complete <- sem_data_full %>%
+    select(WD_BA, PCA1, all_of(comp_vars_sem)) %>%
+    mutate(across(everything(), scale))
+
+  # Construire formules dynamiquement
+  formula_pca <- paste("PCA1 ~", paste(comp_vars_sem, collapse = " + "))
+  formula_wd_full <- paste("WD_BA ~", paste(comp_vars_sem, collapse = " + "), "+ c*PCA1")
+  formula_wd_constrained <- paste("WD_BA ~", paste(comp_vars_sem, collapse = " + "), "+ 0*PCA1")
+
+  model_sem_complete_full <- paste(formula_pca, formula_wd_full, sep = "\n  ")
+  model_sem_complete_constrained <- paste(formula_pca, formula_wd_constrained, sep = "\n  ")
+
+  fit_complete_full <- sem(model_sem_complete_full, data = sem_data_complete)
+  fit_complete_constrained <- sem(model_sem_complete_constrained, data = sem_data_complete)
+
+  # Test
+  comparison_sem_complete <- anova(fit_complete_constrained, fit_complete_full)
+
+  cat("\n=== SEM COMPLET: Test du lien résiduel Structure->WD ===\n")
+  cat("Variables composition contrôlées:", paste(comp_vars_sem, collapse = ", "), "\n\n")
+  print(comparison_sem_complete)
+  export_result("SEM COMPLET: Test lien résiduel Structure->WD", comparison_sem_complete)
+
+  sem_complete_params <- parameterEstimates(fit_complete_full, standardized = TRUE) %>%
+    filter(op == "~") %>%
+    select(lhs, op, rhs, est, std.all, pvalue)
+
+  cat("\n=== Coefficients SEM COMPLET ===\n")
+  print(sem_complete_params)
+  export_result("SEM COMPLET: Coefficients", sem_complete_params)
+}
+
+# ==============================================================================
+# SYNTHÈSE DES RÉSULTATS SEM
+# ==============================================================================
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SYNTHÈSE SEM: Lien résiduel Structure->WD selon les modèles\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+sem_summary <- data.frame(
+  Modele = character(),
+  p_value_lien = numeric(),
+  Significatif = character(),
+  stringsAsFactors = FALSE
+)
+
+if(exists("comparison_sem_temp")) {
+  sem_summary <- rbind(sem_summary, data.frame(
+    Modele = "Tempérament (3 cat.)",
+    p_value_lien = comparison_sem_temp$`Pr(>Chisq)`[2],
+    Significatif = ifelse(comparison_sem_temp$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON")
+  ))
+}
+
+if(exists("comparison_sem_ca")) {
+  sem_summary <- rbind(sem_summary, data.frame(
+    Modele = "CA (composition)",
+    p_value_lien = comparison_sem_ca$`Pr(>Chisq)`[2],
+    Significatif = ifelse(comparison_sem_ca$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON")
+  ))
+}
+
+if(exists("comparison_sem_nsca")) {
+  sem_summary <- rbind(sem_summary, data.frame(
+    Modele = "NSCA_DBH (dominance)",
+    p_value_lien = comparison_sem_nsca$`Pr(>Chisq)`[2],
+    Significatif = ifelse(comparison_sem_nsca$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON")
+  ))
+}
+
+if(exists("comparison_sem_complete")) {
+  sem_summary <- rbind(sem_summary, data.frame(
+    Modele = "COMPLET (toutes dim.)",
+    p_value_lien = comparison_sem_complete$`Pr(>Chisq)`[2],
+    Significatif = ifelse(comparison_sem_complete$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON")
+  ))
+}
+
+cat("Résultats:\n")
+print(sem_summary)
+cat("\nINTERPRÉTATION:\n")
+cat("  - Si Significatif = OUI: Lien résiduel structure->WD existe\n")
+cat("  - Si Significatif = NON: Tout l'effet passe par la composition\n\n")
+
+export_result("SEM: SYNTHÈSE - Lien résiduel Structure->WD", sem_summary)
+write_csv2(sem_summary, file.path(path_tables, "sem_summary_all_models.csv"))
 
 #### 1️⃣3️⃣ DIFFÉRENCES STRUCTURELLES PAR WD ----
 
 # 13A. PERMANOVA ----
+# OBJECTIF: Tester si les parcelles groupées par quartiles de WD présentent
+# des structures verticales significativement différentes (approche multivariée)
+#
+# INTERPRÉTATION:
+# - R² élevé = Les quartiles de WD expliquent une forte variance dans la structure
+# - p < 0.05 = Différence significative de structure entre quartiles de WD
+# - Complète le test de Mantel en testant les différences de groupe plutôt que la corrélation continue
+
 permanova_data <- model_data %>%
   select(plot_name, WD_BA, all_of(structure_cols)) %>%
   drop_na()
 
-# Créer quartiles
+# Créer quartiles de WD
 permanova_data <- permanova_data %>%
   mutate(WD_quartile = cut(WD_BA,
                            breaks = quantile(WD_BA, c(0, 0.25, 0.5, 0.75, 1)),
                            labels = c("Q1", "Q2", "Q3", "Q4"),
                            include.lowest = TRUE))
 
-# Matrice de distance
+# Matrice de distance euclidienne sur variables structurelles standardisées
 dist_matrix <- permanova_data %>%
   select(all_of(structure_cols)) %>%
   scale() %>%
@@ -624,6 +897,15 @@ print(permanova_result)
 export_result("PERMANOVA: Structure ~ WD quartiles", permanova_result)
 
 # 13B. Test de Mantel (corrélation continue) ----
+# OBJECTIF: Tester si les distances entre parcelles dans l'espace structural
+# sont corrélées avec les distances dans l'espace WD (approche continue)
+#
+# INTERPRÉTATION:
+# - r positif = Les parcelles similaires en WD ont aussi des structures similaires
+# - r négatif = Relation inverse (rare dans ce contexte)
+# - p < 0.05 = Corrélation significative entre distances structurelles et distances de WD
+# - Complète PERMANOVA: Mantel teste la corrélation continue, PERMANOVA teste les différences de groupes
+
 dist_wd <- dist(permanova_data$WD_BA)
 mantel_result <- mantel(dist_matrix, dist_wd, method = "pearson", permutations = 999)
 
@@ -632,6 +914,8 @@ print(mantel_result)
 export_result("MANTEL: Distance structurelle vs Distance WD", mantel_result)
 
 # 13C. Statistiques descriptives par quartile ----
+# Examiner les valeurs moyennes des métriques clés dans chaque quartile de WD
+
 key_metrics <- head(cor_results$variable, 8)
 
 desc_by_quartile <- permanova_data %>%
@@ -652,6 +936,14 @@ export_result("DESCRIPTION: Métriques par quartile WD", desc_by_quartile)
 write_csv2(desc_by_quartile, file.path(path_tables, "stats_by_wd_quartile.csv"))
 
 # 13D. Tests de différence par métrique ----
+# OBJECTIF: Identifier quelles métriques structurelles individuelles diffèrent
+# significativement entre quartiles de WD (tests univariés)
+#
+# INTERPRÉTATION:
+# - p < 0.05 = Cette métrique varie significativement selon les quartiles de WD
+# - Métriques avec p faible = Candidats importants pour expliquer la relation WD-structure
+# - Complète PERMANOVA: Tests univariés vs test multivarié global
+
 metric_tests <- data.frame()
 
 for(metric in key_metrics) {
@@ -676,9 +968,16 @@ export_result("KRUSKAL-WALLIS: Différences par quartile WD", metric_tests)
 write_csv2(metric_tests, file.path(path_tables, "kruskal_wallis_by_metric.csv"))
 
 #### 1️⃣4️⃣ AUTOCORRÉLATION SPATIALE ----
+# OBJECTIF: Tester si la prise en compte de l'autocorrélation spatiale améliore
+# le modèle de prédiction de WD par la structure verticale
+#
+# INTERPRÉTATION:
+# - AIC spatial < AIC OLS = L'autocorrélation spatiale améliore le modèle
+# - Différence AIC > 2 = Amélioration substantielle
+# - Si modèle spatial meilleur = Nécessité de contrôler l'effet spatial dans les analyses
 
 # 14A. Charger les coordonnées ----
-path_plots_gpkg <- file.path(dirname(project_dir), "0_Inventories_plot_preparation", "final", "plots_unique")
+path_plots_gpkg <- file.path(dirname(project_dir), "LiDAR_functionnal","0_Inventories_plot_preparation", "final", "plots_unique")
 
 if(dir.exists(path_plots_gpkg)) {
   gpkg_files <- list.files(path_plots_gpkg, pattern = "\\.gpkg$", full.names = TRUE)
@@ -708,31 +1007,48 @@ if("X_utm" %in% names(model_data) && sum(!is.na(model_data$X_utm)) > 50) {
   spatial_data <- model_data %>%
     filter(!is.na(X_utm) & !is.na(Y_utm) & !is.na(WD_BA) & !is.na(!!sym(best_var)))
 
-  # Modèle OLS
+  # Modèle OLS classique
   formula_best <- as.formula(paste("WD_BA ~", best_var))
   model_ols <- lm(formula_best, data = spatial_data)
 
-  # Modèle spatial Matérn
+  # Modèle spatial avec corrélation Matérn
   model_spatial <- fitme(
     as.formula(paste("WD_BA ~", best_var, "+ Matern(1 | X_utm + Y_utm)")),
     data = spatial_data,
     method = "REML"
   )
 
+  # Extraire les AIC correctement
+  aic_ols <- AIC(model_ols)
+  aic_spatial <- as.numeric(AIC(model_spatial, which = "marginal"))  # Force conversion to single value
+
   cat("\n=== Modèle OLS vs Spatial ===\n")
-  cat("AIC OLS:", AIC(model_ols), "\n")
-  cat("AIC Spatial (marginal):", AIC(model_spatial, which = "marginal"), "\n")
+  cat("AIC OLS:", aic_ols, "\n")
+  cat("AIC Spatial (marginal):", aic_spatial, "\n")
+  cat("Différence AIC (OLS - Spatial):", aic_ols - aic_spatial, "\n")
 
   spatial_comparison <- data.frame(
     Modele = c("OLS", "Spatial_Matern"),
-    AIC = c(AIC(model_ols), AIC(model_spatial, which = "marginal"))
+    AIC = c(aic_ols, aic_spatial),
+    Delta_AIC = c(0, aic_spatial - aic_ols)
   )
-  export_result("COMPARAISON: OLS vs Spatial", spatial_comparison)
 
+  cat("\nTableau de comparaison:\n")
+  print(spatial_comparison)
+
+  export_result("COMPARAISON: OLS vs Spatial", spatial_comparison)
   write_csv2(spatial_comparison, file.path(path_tables, "spatial_models_comparison.csv"))
 }
 
 #### 1️⃣5️⃣ LEAVE-ONE-OUT CROSS-VALIDATION ----
+# OBJECTIF: Évaluer la capacité prédictive réelle du modèle en testant sur des données
+# non utilisées pour l'entraînement (validation croisée rigoureuse)
+#
+# INTERPRÉTATION:
+# - RMSE faible = Bonnes prédictions en validation
+# - R² proche de celui du modèle complet = Modèle stable et généralisable
+# - Pente proche de 1 et intercept proche de 0 = Prédictions non biaisées
+# - Pente < 1 = Sous-estimation des valeurs élevées, sur-estimation des faibles
 
 # LOOCV simple
 loocv_data <- model_data %>%
@@ -755,29 +1071,57 @@ loocv_results <- data.frame(
   residual = loocv_data$WD_BA - predictions
 )
 
+# Calculer les métriques de qualité incluant pente et intercept
+lm_obs_pred <- lm(observed ~ predicted, data = loocv_results)
+
 loocv_metrics <- data.frame(
   RMSE = sqrt(mean(loocv_results$residual^2)),
   MAE = mean(abs(loocv_results$residual)),
-  R2 = cor(loocv_results$observed, loocv_results$predicted)^2
+  R2 = cor(loocv_results$observed, loocv_results$predicted)^2,
+  Slope = coef(lm_obs_pred)[2],
+  Intercept = coef(lm_obs_pred)[1]
 )
 
 cat("\n=== LOOCV Résultats ===\n")
 print(loocv_metrics)
 export_result("LOOCV: Métriques de validation", loocv_metrics)
 
-# Visualisation
+# Visualisation publication-ready avec toutes les métriques centrées
+metrics_text <- paste0(
+  "RMSE = ", round(loocv_metrics$RMSE, 4), "\n",
+  "R² = ", round(loocv_metrics$R2, 3), "\n",
+  "MAE = ", round(loocv_metrics$MAE, 4), "\n",
+  "Slope = ", round(loocv_metrics$Slope, 3), "\n",
+  "Intercept = ", round(loocv_metrics$Intercept, 3)
+)
+
+# Calculer les limites des axes pour coordonnées égales
+range_vals <- range(c(loocv_results$observed, loocv_results$predicted))
+axis_limits <- c(floor(range_vals[1] * 20) / 20, ceiling(range_vals[2] * 20) / 20)
+
 p_loocv <- ggplot(loocv_results, aes(x = observed, y = predicted)) +
-  geom_point(alpha = 0.7, size = 2) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
+  geom_point(alpha = 0.6, size = 3, color = "#2C3E50") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red", linewidth = 1) +
+  geom_smooth(method = "lm", se = FALSE, color = "#3498DB", linewidth = 1) +
+  annotate("text", x = mean(axis_limits), y = axis_limits[1] + 0.85 * diff(axis_limits),
+           label = metrics_text, hjust = 0.5, vjust = 0.5,
+           size = 4.5, fontface = "bold", family = "sans") +
   labs(title = "Leave-One-Out Cross-Validation",
-       subtitle = paste("RMSE =", round(loocv_metrics$RMSE, 4),
-                        "| R² =", round(loocv_metrics$R2, 3)),
-       x = "WD observé", y = "WD prédit") +
-  theme_minimal() +
-  coord_equal()
+       subtitle = paste0("Prédiction de WD par ", best_var),
+       x = "WD observé (g/cm³)",
+       y = "WD prédit (g/cm³)") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "gray40"),
+    axis.title = element_text(size = 13, face = "bold"),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 0.8)
+  ) +
+  coord_equal(xlim = axis_limits, ylim = axis_limits)
 
 ggsave(file.path(path_figures, "loocv_validation.jpg"), p_loocv,
-       width = 8, height = 8, dpi = 300)
+       width = 10, height = 10, dpi = 600)
 
 write_csv2(loocv_results, file.path(path_tables, "loocv_predictions.csv"))
 write_csv2(loocv_metrics, file.path(path_tables, "loocv_metrics.csv"))
