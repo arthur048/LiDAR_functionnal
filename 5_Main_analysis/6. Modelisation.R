@@ -133,9 +133,7 @@ structure_plots_table <- plot_data_complete %>%
 
 #### 5️⃣ MULTIVARIATE ANALYSIS (NSCA, CA, PCA) ####
 
-# =============================================================================
 # A. NSCA - Analyse de Correspondance Non-Symétrique
-# =============================================================================
 
 # Effectuer la NSCA sur les données floristiques
 nsca_result <- dudi.nsc(species_plot_table, scannf = FALSE, nf = min(nrow(species_plot_table) - 1, ncol(species_plot_table) - 1))
@@ -155,9 +153,7 @@ print(summary(nsca_result))
 print(summary(nsca_dbh_result))
 print(summary(nsca_genus_result))
 
-# =============================================================================
 # B. CA - Correspondance Analysis
-# =============================================================================
 
 # Effectuer la CA sur les données floristiques
 ca_result <- dudi.coa(species_plot_table, scannf = F, nf = min(nrow(species_plot_table) - 1, ncol(species_plot_table) - 1))
@@ -173,9 +169,7 @@ colnames(ca_site_scores_genus) <- paste0("CA_GENUS", 1:ncol(ca_site_scores_genus
 print(summary(ca_result))
 print(summary(ca_genus_result))
 
-# =============================================================================
 # C. PCA - Principal Component Analysis
-# =============================================================================
 
 # Réaliser la PCA sur les données de structure de canopée
 pca_result <- dudi.pca(structure_plots_table, scannf = F, nf = min(nrow(structure_plots_table) - 1, ncol(structure_plots_table) - 1))
@@ -189,73 +183,10 @@ print(summary(pca_result))
 
 fviz_eig(pca_result)
 
-fviz_pca_ind(pca_result,
-             repel = TRUE     # Avoid text overlapping
-)
-
 fviz_pca_var(pca_result,
              col.var = "contrib", # Color by contributions to the PC
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE     # Avoid text overlapping
 )
 
-
-#### EXPLORATION MODELISATION OF WD ####
-
-# =============================================================================
-# A. structure = f(composition) --> PCA = f(NSCA, CA)
-# =============================================================================
-
-data_model1 = tibble(
-  plot_name = plot_data_complete$plot_name,
-  WD = plot_data_complete$WD_BA,
-  PCA1 = pca_site_scores$PCA1,
-  PCA2 = pca_site_scores$PCA2,
-  CA1 = ca_site_scores$CA1,
-  CA2 = ca_site_scores$CA2,
-)
-
-# =============================================================================
-# EXPLORATION
-# =============================================================================
-
-
-hist(data_model1$PCA1, main = "Distribution de PCA1", xlab = "PCA1")
-qqnorm(data_model1$PCA1, main = "Q-Q plot PCA1")
-qqline(data_model1$PCA1, col = "red")
-
-hist(data_model1$PCA2, main = "Distribution de PCA2", xlab = "PCA2")
-qqnorm(data_model1$PCA2, main = "Q-Q plot PCA2")
-qqline(data_model1$PCA2, col = "red")
-
-hist(data_model1$CA1, main = "Distribution de CA1", xlab = "CA1")
-qqnorm(data_model1$CA1, main = "Q-Q plot CA1")
-qqline(data_model1$CA1, col = "red")
-
-hist(data_model1$CA2, main = "Distribution de CA2", xlab = "CA2")
-qqnorm(data_model1$CA2, main = "Q-Q plot CA2")
-qqline(data_model1$CA2, col = "red")
-
-plot(data_model1$PCA1 ~ data_model1$CA1)
-plot(data_model1$PCA1 ~ data_model1$CA1)
-
-plot(data_model1$PCA2 ~ data_model1$CA1)
-plot(data_model1$PCA2 ~ data_model1$CA2)
-
-lm = lm(WD ~ CA1 + CA2, data = data_model1)
-summary(lm)
-plot(WD ~ CA1, data = data_model1)
-plot(WD ~ CA2, data = data_model1)
-
-lm = lm(WD ~ PCA1, data = data_model1)
-summary(lm)
-plot(WD ~ PCA1, data = data_model1)
-plot(WD ~ CA2, data = data_model1)
-
-lm = lm(WD_BA ~ prop_at_20m, data = plot_metrics)
-summary(lm)
-
-lm = lm(WD ~ PCA1 + PCA2 + CA1 + CA2, data = data_model1)
-summary(lm)
-plot(lm)
 
