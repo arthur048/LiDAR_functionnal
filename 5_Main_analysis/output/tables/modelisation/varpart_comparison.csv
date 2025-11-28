@@ -1,0 +1,6 @@
+Modele;Structure_unique;Partage;Composition_unique;Residuel
+PCA1 seul (existant);0,027;0,281;0,551;0,140
+PCA1-4;0,018;0,273;0,564;0,145
+Selected vars;0,023;0,350;0,487;0,140
+Top10 VIF<10;0,020;0,315;0,522;0,143
+Distance floristique;0,056;0,317;0,443;0,185

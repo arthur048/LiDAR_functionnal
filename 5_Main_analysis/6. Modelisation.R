@@ -240,6 +240,306 @@ model_data <- structure_plots_table %>%
 
 cat("\nmodel_data créé: n =", nrow(model_data), "variables =", ncol(model_data), "\n")
 
+
+
+#### 7️⃣ CORRÉLATIONS AXES MULTIVARIÉS - WD ----
+
+# 7A. Inertie cumulée par analyse ----
+cat("\n=== Inertie cumulée par analyse ===\n")
+
+# Fonction pour calculer inertie cumulée
+calc_inertie_cumulee <- function(eig, n_axes = 10) {
+  pct <- eig / sum(eig) * 100
+  cum <- cumsum(pct)
+  data.frame(
+    axe = 1:min(n_axes, length(eig)),
+    pct_variance = pct[1:min(n_axes, length(eig))],
+    cumul = cum[1:min(n_axes, length(eig))]
+  )
+}
+
+inertie_nsca <- calc_inertie_cumulee(nsca_result$eig)
+inertie_ca <- calc_inertie_cumulee(ca_result$eig)
+
+cat("\nNSCA (abondance - Simpson):\n")
+print(inertie_nsca)
+
+cat("\nCA (richesse):\n")
+print(inertie_ca)
+
+# Tableau comparatif
+inertie_summary <- data.frame(
+  Analyse = c("NSCA", "CA"),
+  Axes_1_2 = c(sum(nsca_result$eig[1:2])/sum(nsca_result$eig)*100,
+               sum(ca_result$eig[1:2])/sum(ca_result$eig)*100),
+  Axes_1_4 = c(sum(nsca_result$eig[1:4])/sum(nsca_result$eig)*100,
+               sum(ca_result$eig[1:4])/sum(ca_result$eig)*100),
+  Axes_1_6 = c(sum(nsca_result$eig[1:6])/sum(nsca_result$eig)*100,
+               sum(ca_result$eig[1:6])/sum(ca_result$eig)*100)
+) %>%
+  mutate(across(starts_with("Axes"), ~round(., 1)))
+
+cat("\n=== Résumé inertie cumulée (%) ===\n")
+print(inertie_summary)
+
+export_result("INERTIE CUMULÉE PAR ANALYSE", inertie_summary)
+
+# 7B. Étendre model_data avec tous les axes NSCA et CA ----
+n_axes_max <- 6  # Ajustable selon besoins
+
+# Ajouter axes NSCA
+if(ncol(nsca_site_scores) >= n_axes_max) {
+  nsca_to_add <- data.frame(plot_name = rownames(nsca_site_scores))
+  for(i in 1:n_axes_max) {
+    nsca_to_add[[paste0("NSCA", i)]] <- nsca_site_scores[, i]
+  }
+  model_data <- model_data %>%
+    select(-any_of(paste0("NSCA", 1:n_axes_max))) %>%
+    left_join(nsca_to_add, by = "plot_name")
+}
+
+# Ajouter axes CA
+if(ncol(ca_site_scores) >= n_axes_max) {
+  ca_to_add <- data.frame(plot_name = rownames(ca_site_scores))
+  for(i in 1:n_axes_max) {
+    ca_to_add[[paste0("CA", i)]] <- ca_site_scores[, i]
+  }
+  model_data <- model_data %>%
+    select(-any_of(paste0("CA", 1:n_axes_max))) %>%
+    left_join(ca_to_add, by = "plot_name")
+}
+
+# 7C. Corrélations tous les axes ↔ WD_BA ----
+composition_axes <- c(paste0("NSCA", 1:n_axes_max), paste0("CA", 1:n_axes_max))
+composition_axes <- composition_axes[composition_axes %in% names(model_data)]
+
+cor_axes_wd <- data.frame()
+
+for(axis in composition_axes) {
+  x <- model_data[[axis]]
+  y <- model_data$WD_BA
+  valid <- complete.cases(x, y)
+  
+  if(sum(valid) >= 10) {
+    pearson <- cor.test(x[valid], y[valid], method = "pearson")
+    spearman <- cor.test(x[valid], y[valid], method = "spearman")
+    
+    cor_axes_wd <- rbind(cor_axes_wd, data.frame(
+      axis = axis,
+      r_pearson = pearson$estimate,
+      p_pearson = pearson$p.value,
+      rho_spearman = spearman$estimate,
+      p_spearman = spearman$p.value,
+      n = sum(valid)
+    ))
+  }
+}
+
+cor_axes_wd <- cor_axes_wd %>%
+  mutate(
+    sig_pearson = p_pearson < 0.05,
+    sig_spearman = p_spearman < 0.05,
+    abs_r = abs(r_pearson),
+    stars = case_when(
+      p_pearson < 0.001 ~ "***",
+      p_pearson < 0.01 ~ "**",
+      p_pearson < 0.05 ~ "*",
+      TRUE ~ ""
+    ),
+    label = paste0("r=", round(r_pearson, 2), stars)
+  ) %>%
+  arrange(desc(abs_r))
+
+cat("\n=== Corrélations Axes Composition - WD_BA ===\n")
+print(cor_axes_wd %>% select(axis, r_pearson, p_pearson, rho_spearman, p_spearman, stars))
+
+export_result("CORRÉLATIONS AXES COMPOSITION - WD", 
+              cor_axes_wd %>% select(axis, r_pearson, p_pearson, rho_spearman, p_spearman))
+
+# Visualisation
+p_cor_axes <- cor_axes_wd %>%
+  mutate(axis = fct_reorder(axis, abs_r)) %>%
+  ggplot(aes(x = axis, y = r_pearson, fill = sig_pearson)) +
+  geom_col() +
+  geom_text(aes(label = label, hjust = ifelse(r_pearson > 0, -0.1, 1.1)), size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "grey60"), 
+                    labels = c("TRUE" = "p < 0.05", "FALSE" = "p ≥ 0.05"),
+                    name = "Significativité") +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(title = "Corrélations axes de composition - WD",
+       subtitle = "* p<0.05, ** p<0.01, *** p<0.001",
+       x = NULL, y = "Coefficient de Pearson") +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "bottom")
+
+ggsave(file.path(path_figures, "correlations_axes_wd.jpg"), p_cor_axes,
+       width = 8, height = 8, dpi = 300)
+
+write_csv2(cor_axes_wd, file.path(path_tables, "correlations_axes_composition_wd.csv"))
+
+# 7D. Matrice de corrélation inter-axes complète ----
+cor_inter_axes <- model_data %>%
+  select(all_of(composition_axes)) %>%
+  cor(use = "pairwise.complete.obs")
+
+cat("\n=== Matrice de corrélation inter-axes ===\n")
+print(round(cor_inter_axes, 2))
+
+export_result("MATRICE CORRÉLATION INTER-AXES COMPLÈTE", round(cor_inter_axes, 2))
+
+# Visualisation
+p_inter_axes <- cor_inter_axes %>%
+  as.data.frame() %>%
+  rownames_to_column("axis1") %>%
+  pivot_longer(-axis1, names_to = "axis2", values_to = "correlation") %>%
+  mutate(
+    axis1 = factor(axis1, levels = composition_axes),
+    axis2 = factor(axis2, levels = composition_axes)
+  ) %>%
+  ggplot(aes(x = axis1, y = axis2, fill = correlation)) +
+  geom_tile() +
+  geom_text(aes(label = round(correlation, 2)), size = 2.5) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                       midpoint = 0, limits = c(-1, 1)) +
+  theme_minimal(base_size = 10) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Corrélations entre axes de composition",
+       subtitle = paste0("NSCA1-", n_axes_max, " et CA1-", n_axes_max),
+       x = NULL, y = NULL)
+
+ggsave(file.path(path_figures, "correlation_inter_axes.jpg"), p_inter_axes,
+       width = 10, height = 9, dpi = 300)
+
+# 7E. Corrélations tempéraments ↔ WD_BA ----
+cat("\n=== Corrélations Tempéraments - WD_BA ===\n")
+
+temperament_vars <- c("prop_g_helio", "prop_g_npld", "prop_g_shade")
+temperament_vars <- temperament_vars[temperament_vars %in% names(model_data)]
+
+cor_temp_wd <- data.frame()
+
+for(var in temperament_vars) {
+  x <- model_data[[var]]
+  y <- model_data$WD_BA
+  valid <- complete.cases(x, y)
+  
+  if(sum(valid) >= 10) {
+    pearson <- cor.test(x[valid], y[valid], method = "pearson")
+    spearman <- cor.test(x[valid], y[valid], method = "spearman")
+    
+    cor_temp_wd <- rbind(cor_temp_wd, data.frame(
+      variable = var,
+      r_pearson = pearson$estimate,
+      p_pearson = pearson$p.value,
+      rho_spearman = spearman$estimate,
+      p_spearman = spearman$p.value,
+      n = sum(valid)
+    ))
+  }
+}
+
+cor_temp_wd <- cor_temp_wd %>%
+  mutate(
+    sig = ifelse(p_pearson < 0.05, "*", ""),
+    stars = case_when(
+      p_pearson < 0.001 ~ "***",
+      p_pearson < 0.01 ~ "**",
+      p_pearson < 0.05 ~ "*",
+      TRUE ~ ""
+    )
+  )
+
+print(cor_temp_wd)
+export_result("CORRÉLATIONS TEMPÉRAMENTS - WD", cor_temp_wd)
+
+# 7F. Matrice inter-axes + tempéraments ----
+cat("\n=== Corrélations axes-tempéraments ===\n")
+
+all_comp_vars <- c(composition_axes, "prop_g_helio", "prop_g_shade")
+all_comp_vars <- all_comp_vars[all_comp_vars %in% names(model_data)]
+
+cor_all_comp <- model_data %>%
+  select(all_of(all_comp_vars)) %>%
+  cor(use = "pairwise.complete.obs")
+
+cat("Corrélations tempéraments vs axes:\n")
+print(round(cor_all_comp[c("prop_g_helio", "prop_g_shade"), composition_axes], 2))
+
+export_result("CORRÉLATIONS TEMPÉRAMENTS - AXES", 
+              round(cor_all_comp[c("prop_g_helio", "prop_g_shade"), composition_axes], 2))
+
+# Visualisation complète
+p_all_comp <- cor_all_comp %>%
+  as.data.frame() %>%
+  rownames_to_column("var1") %>%
+  pivot_longer(-var1, names_to = "var2", values_to = "correlation") %>%
+  mutate(
+    var1 = factor(var1, levels = all_comp_vars),
+    var2 = factor(var2, levels = all_comp_vars)
+  ) %>%
+  ggplot(aes(x = var1, y = var2, fill = correlation)) +
+  geom_tile() +
+  geom_text(aes(label = round(correlation, 2)), size = 2.2) +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                       midpoint = 0, limits = c(-1, 1)) +
+  theme_minimal(base_size = 10) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Corrélations entre variables de composition",
+       subtitle = "Axes NSCA/CA + tempéraments",
+       x = NULL, y = NULL)
+
+ggsave(file.path(path_figures, "correlation_composition_complete.jpg"), p_all_comp,
+       width = 11, height = 10, dpi = 300)
+
+# 7G. Résumé descriptif ----
+cat("\n", paste(rep("=", 60), collapse = ""), "\n")
+cat("RÉSUMÉ SECTION 7 - ANALYSE EXPLORATOIRE COMPOSITION\n")
+cat(paste(rep("=", 60), collapse = ""), "\n\n")
+
+cat("Axes analysés:", length(composition_axes), "\n")
+cat("  NSCA:", sum(grepl("NSCA", composition_axes)), "axes\n")
+cat("  CA:", sum(grepl("CA", composition_axes)), "axes\n\n")
+
+cat("Inertie cumulée (axes 1-4):\n")
+cat("  NSCA:", round(sum(nsca_result$eig[1:4])/sum(nsca_result$eig)*100, 1), "%\n")
+cat("  CA:", round(sum(ca_result$eig[1:4])/sum(ca_result$eig)*100, 1), "%\n\n")
+
+cat("Axes significativement corrélés avec WD (p < 0.05):\n")
+axes_sig <- cor_axes_wd %>% filter(sig_pearson) %>% pull(axis)
+cat("  ", paste(axes_sig, collapse = ", "), "\n\n")
+
+cat("Tempéraments significatifs:\n")
+temp_sig <- cor_temp_wd %>% filter(p_pearson < 0.05) %>% pull(variable)
+cat("  ", paste(temp_sig, collapse = ", "), "\n\n")
+
+cat("Blocs de colinéarité identifiés (|r| > 0.7):\n")
+high_cor <- which(abs(cor_inter_axes) > 0.7 & abs(cor_inter_axes) < 1, arr.ind = TRUE)
+if(nrow(high_cor) > 0) {
+  for(i in 1:nrow(high_cor)) {
+    if(high_cor[i, 1] < high_cor[i, 2]) {
+      cat("  ", rownames(cor_inter_axes)[high_cor[i, 1]], "-", 
+          colnames(cor_inter_axes)[high_cor[i, 2]], 
+          "(r =", round(cor_inter_axes[high_cor[i, 1], high_cor[i, 2]], 2), ")\n")
+    }
+  }
+}
+
+cat("\n→ Sélection définitive reportée aux sections 11 (varpart) et 12 (SEM)\n")
+
+export_result("RÉSUMÉ SECTION 7", capture.output({
+  cat("Axes significatifs:", paste(axes_sig, collapse = ", "), "\n")
+  cat("Tempéraments significatifs:", paste(temp_sig, collapse = ", "), "\n")
+  cat("Inertie NSCA 1-4:", round(sum(nsca_result$eig[1:4])/sum(nsca_result$eig)*100, 1), "%\n")
+  cat("Inertie CA 1-4:", round(sum(ca_result$eig[1:4])/sum(ca_result$eig)*100, 1), "%\n")
+}))
+
+write_csv2(cor_all_comp %>% as.data.frame() %>% rownames_to_column("variable"),
+           file.path(path_tables, "correlation_composition_complete.csv"))
+
+
+
 #### 8️⃣ CORRÉLATIONS AVEC WD ----
 
 # 8A. Corrélations de Pearson et Spearman ----
@@ -619,6 +919,332 @@ if(rda_test$`Pr(>F)`[1] < 0.05) {
 } else {
   cat("\n✗ La fraction unique de la structure n'est PAS significative\n")
 }
+
+# 11F. Varpart avec PCA1-4 vs Composition (CA1-5 + helio) ----
+cat("\n=== Varpart : Structure (PCA1-4) vs Composition (CA1-5 + helio) ===\n")
+
+# Ajouter PCA3-4 si nécessaire
+if(!"PCA3" %in% names(model_data) && ncol(pca_site_scores) >= 4) {
+  model_data <- model_data %>%
+    left_join(
+      data.frame(
+        plot_name = rownames(pca_site_scores),
+        PCA3 = pca_site_scores[,3],
+        PCA4 = pca_site_scores[,4]
+      ), by = "plot_name"
+    )
+}
+
+varpart_data_extended <- model_data %>%
+  select(WD_BA, PCA1, PCA2, PCA3, PCA4,
+         CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na()
+
+cat("Données: n =", nrow(varpart_data_extended), "\n")
+cat("Inertie PCA1-4:", round(sum(pca_result$eig[1:4])/sum(pca_result$eig)*100, 1), "%\n")
+cat("Inertie CA1-5:", round(sum(ca_result$eig[1:5])/sum(ca_result$eig)*100, 1), "%\n")
+
+# Varpart
+vp_pca4 <- varpart(varpart_data_extended$WD_BA,
+                   ~ PCA1 + PCA2 + PCA3 + PCA4,
+                   ~ CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio,
+                   data = varpart_data_extended)
+
+cat("\n=== Partition: Structure (PCA1-4) vs Composition (CA1-5 + helio) ===\n")
+print(vp_pca4)
+export_result("VARPART: Structure PCA1-4 vs Composition CA1-5+helio", vp_pca4)
+
+jpeg(file.path(path_figures, "varpart_pca4_composition.jpg"),
+     width = 800, height = 600, quality = 100)
+plot(vp_pca4, digits = 3,
+     Xnames = c("Structure\n(PCA1-4)", "Composition\n(CA1-5+helio)"),
+     bg = c("lightblue", "lightgreen"))
+dev.off()
+
+# Test RDA fraction unique Structure
+rda_pca4_partial <- rda(varpart_data_extended$WD_BA ~ PCA1 + PCA2 + PCA3 + PCA4 +
+                          Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio),
+                        data = varpart_data_extended)
+
+set.seed(42)
+rda_pca4_test <- anova(rda_pca4_partial, permutations = 999)
+
+cat("\nTest fraction unique Structure (PCA1-4):\n")
+print(rda_pca4_test)
+export_result("RDA: Test fraction unique Structure PCA1-4", rda_pca4_test)
+
+# 11G. Varpart avec variables structure originales (selected_vars) ----
+cat("\n=== Varpart : Structure (selected_vars) vs Composition ===\n")
+
+varpart_data_vars <- model_data %>%
+  select(WD_BA, all_of(selected_vars),
+         CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na()
+
+cat("Variables structure:", paste(selected_vars, collapse = ", "), "\n")
+
+# Vérifier VIF des variables structure
+formula_vif_struct <- as.formula(paste("WD_BA ~", paste(selected_vars, collapse = " + ")))
+vif_struct <- car::vif(lm(formula_vif_struct, data = varpart_data_vars))
+cat("\nVIF variables structure:\n")
+print(round(vif_struct, 2))
+
+if(any(vif_struct > 10)) {
+  cat("⚠️  VIF > 10 détecté\n")
+} else if(any(vif_struct > 5)) {
+  cat("⚠️  VIF > 5 détecté (colinéarité modérée)\n")
+} else {
+  cat("✓ VIF < 5\n")
+}
+
+formula_struct_vars <- as.formula(paste("~", paste(selected_vars, collapse = " + ")))
+
+vp_vars <- varpart(varpart_data_vars$WD_BA,
+                   formula_struct_vars,
+                   ~ CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio,
+                   data = varpart_data_vars)
+
+cat("\n=== Partition: Structure (selected_vars) vs Composition ===\n")
+print(vp_vars)
+export_result("VARPART: Structure selected_vars vs Composition", vp_vars)
+
+jpeg(file.path(path_figures, "varpart_structure_vars_composition.jpg"),
+     width = 800, height = 600, quality = 100)
+plot(vp_vars, digits = 3,
+     Xnames = c("Structure\n(selected_vars)", "Composition\n(CA1-5+helio)"),
+     bg = c("lightblue", "lightgreen"))
+dev.off()
+
+# Test RDA
+formula_rda_vars <- as.formula(paste("varpart_data_vars$WD_BA ~", 
+                                     paste(selected_vars, collapse = " + "),
+                                     "+ Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio)"))
+rda_vars_partial <- rda(formula_rda_vars, data = varpart_data_vars)
+
+set.seed(42)
+rda_vars_test <- anova(rda_vars_partial, permutations = 999)
+cat("\nTest fraction unique Structure (selected_vars):\n")
+print(rda_vars_test)
+export_result("RDA: Test fraction unique Structure selected_vars", rda_vars_test)
+
+# 11H. Varpart avec Top 10 variables structure ----
+cat("\n=== Varpart : Structure (Top 10 corrélées) vs Composition ===\n")
+
+top10_vars <- cor_results %>% head(10) %>% pull(variable)
+cat("Top 10 variables:", paste(top10_vars, collapse = ", "), "\n")
+
+varpart_data_top10 <- model_data %>%
+  select(WD_BA, all_of(top10_vars),
+         CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na()
+
+# VIF top 10
+formula_vif_top10 <- as.formula(paste("WD_BA ~", paste(top10_vars, collapse = " + ")))
+vif_top10 <- car::vif(lm(formula_vif_top10, data = varpart_data_top10))
+cat("\nVIF Top 10:\n")
+print(round(vif_top10, 2))
+
+# Filtrer variables VIF < 10
+vars_vif_ok <- names(vif_top10)[vif_top10 < 10]
+cat("\nVariables retenues (VIF < 10):", paste(vars_vif_ok, collapse = ", "), "\n")
+
+formula_struct_top10 <- as.formula(paste("~", paste(vars_vif_ok, collapse = " + ")))
+
+vp_top10 <- varpart(varpart_data_top10$WD_BA,
+                    formula_struct_top10,
+                    ~ CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio,
+                    data = varpart_data_top10)
+
+cat("\n=== Partition: Structure (Top 10 VIF<10) vs Composition ===\n")
+print(vp_top10)
+export_result("VARPART: Structure Top10 vs Composition", vp_top10)
+
+jpeg(file.path(path_figures, "varpart_top10_composition.jpg"),
+     width = 800, height = 600, quality = 100)
+plot(vp_top10, digits = 3,
+     Xnames = c("Structure\n(Top10 VIF<10)", "Composition\n(CA1-5+helio)"),
+     bg = c("lightblue", "lightgreen"))
+dev.off()
+
+# 11I. Varpart avec distance floristique (db-RDA) ----
+cat("\n=== Varpart : Structure vs Distance floristique (Bray-Curtis) ===\n")
+
+# Préparer données floristiques alignées avec model_data
+plots_communs <- intersect(rownames(species_plot_table), model_data$plot_name)
+
+floristic_aligned <- species_plot_table[plots_communs, ]
+model_data_aligned <- model_data %>% 
+  filter(plot_name %in% plots_communs) %>%
+  arrange(match(plot_name, plots_communs))
+
+# Distance Bray-Curtis
+dist_floristic <- vegdist(floristic_aligned, method = "bray")
+
+cat("Plots avec données floristiques:", length(plots_communs), "\n")
+
+# db-RDA : WD ~ Structure | Distance floristique
+# Utiliser capscale pour db-RDA
+
+# Extraire variables structure pour les plots communs
+struct_data <- model_data_aligned %>%
+  select(all_of(c("WD_BA", selected_vars))) %>%
+  drop_na()
+
+# Réaligner
+plots_final <- model_data_aligned$plot_name[complete.cases(model_data_aligned[, c("WD_BA", selected_vars)])]
+dist_floristic_aligned <- as.dist(as.matrix(dist_floristic)[plots_final, plots_final])
+
+struct_data_final <- model_data_aligned %>%
+  filter(plot_name %in% plots_final) %>%
+  select(WD_BA, all_of(selected_vars))
+
+# db-RDA partielle : WD expliqué par Structure après contrôle de la distance floristique
+# On utilise les coordonnées PCoA de la distance comme covariables
+pcoa_floristic <- cmdscale(dist_floristic_aligned, k = min(10, length(plots_final) - 1), eig = TRUE)
+pcoa_axes <- pcoa_floristic$points[, 1:min(5, ncol(pcoa_floristic$points))]
+colnames(pcoa_axes) <- paste0("PCoA", 1:ncol(pcoa_axes))
+
+dbRDA_data <- cbind(struct_data_final, pcoa_axes)
+
+# Varpart avec PCoA floristique
+formula_struct_dbrda <- as.formula(paste("~", paste(selected_vars, collapse = " + ")))
+formula_pcoa <- as.formula(paste("~", paste(colnames(pcoa_axes), collapse = " + ")))
+
+vp_dbrda <- varpart(dbRDA_data$WD_BA,
+                    formula_struct_dbrda,
+                    formula_pcoa,
+                    data = dbRDA_data)
+
+cat("\n=== Partition: Structure vs Distance floristique (PCoA) ===\n")
+print(vp_dbrda)
+export_result("VARPART: Structure vs Distance floristique (PCoA)", vp_dbrda)
+
+jpeg(file.path(path_figures, "varpart_structure_distance_floristique.jpg"),
+     width = 800, height = 600, quality = 100)
+plot(vp_dbrda, digits = 3,
+     Xnames = c("Structure", "Distance\nfloristique"),
+     bg = c("lightblue", "salmon"))
+dev.off()
+
+# Test RDA partielle
+formula_rda_dbrda <- as.formula(paste("dbRDA_data$WD_BA ~", 
+                                      paste(selected_vars, collapse = " + "),
+                                      "+ Condition(", paste(colnames(pcoa_axes), collapse = " + "), ")"))
+rda_dbrda <- rda(formula_rda_dbrda, data = dbRDA_data)
+
+set.seed(42)
+rda_dbrda_test <- anova(rda_dbrda, permutations = 999)
+cat("\nTest fraction unique Structure | Distance floristique:\n")
+print(rda_dbrda_test)
+export_result("RDA: Structure | Distance floristique", rda_dbrda_test)
+
+# 11J. Mantel partiel ----
+cat("\n=== Mantel partiel : Distance WD ~ Distance Structure | Distance floristique ===\n")
+
+# Matrices de distance
+dist_wd <- dist(struct_data_final$WD_BA)
+dist_struct <- dist(scale(struct_data_final[, selected_vars]))
+
+# Mantel simple
+mantel_wd_struct <- mantel(dist_wd, dist_struct, method = "pearson", permutations = 999)
+mantel_wd_flor <- mantel(dist_wd, dist_floristic_aligned, method = "pearson", permutations = 999)
+
+cat("Mantel WD ~ Structure:", round(mantel_wd_struct$statistic, 3), 
+    "p =", mantel_wd_struct$signif, "\n")
+cat("Mantel WD ~ Floristique:", round(mantel_wd_flor$statistic, 3), 
+    "p =", mantel_wd_flor$signif, "\n")
+
+# Mantel partiel
+mantel_partial <- mantel.partial(dist_wd, dist_struct, dist_floristic_aligned, 
+                                 method = "pearson", permutations = 999)
+
+cat("\nMantel partiel WD ~ Structure | Floristique:\n")
+cat("  r =", round(mantel_partial$statistic, 3), "\n")
+cat("  p =", mantel_partial$signif, "\n")
+
+mantel_results <- data.frame(
+  Test = c("WD ~ Structure", "WD ~ Floristique", "WD ~ Structure | Floristique"),
+  r = c(mantel_wd_struct$statistic, mantel_wd_flor$statistic, mantel_partial$statistic),
+  p_value = c(mantel_wd_struct$signif, mantel_wd_flor$signif, mantel_partial$signif)
+) %>%
+  mutate(r = round(r, 3))
+
+print(mantel_results)
+export_result("MANTEL: Tests simples et partiel", mantel_results)
+write_csv2(mantel_results, file.path(path_tables, "mantel_tests.csv"))
+
+
+
+# 11K. Comparaison des partitions ----
+cat("\n=== Comparaison des partitions de variance ===\n")
+
+varpart_comparison <- data.frame(
+  Modele = c("PCA1 seul (existant)", 
+             "PCA1-4", 
+             "Selected vars",
+             "Top10 VIF<10",
+             "Distance floristique"),
+  Structure_unique = c(
+    vp_all_comp$part$indfract$Adj.R.squared[1],
+    vp_pca4$part$indfract$Adj.R.squared[1],
+    vp_vars$part$indfract$Adj.R.squared[1],
+    vp_top10$part$indfract$Adj.R.squared[1],
+    vp_dbrda$part$indfract$Adj.R.squared[1]
+  ),
+  Partage = c(
+    vp_all_comp$part$indfract$Adj.R.squared[3],
+    vp_pca4$part$indfract$Adj.R.squared[3],
+    vp_vars$part$indfract$Adj.R.squared[3],
+    vp_top10$part$indfract$Adj.R.squared[3],
+    vp_dbrda$part$indfract$Adj.R.squared[3]
+  ),
+  Composition_unique = c(
+    vp_all_comp$part$indfract$Adj.R.squared[2],
+    vp_pca4$part$indfract$Adj.R.squared[2],
+    vp_vars$part$indfract$Adj.R.squared[2],
+    vp_top10$part$indfract$Adj.R.squared[2],
+    vp_dbrda$part$indfract$Adj.R.squared[2]
+  ),
+  Residuel = c(
+    vp_all_comp$part$indfract$Adj.R.squared[4],
+    vp_pca4$part$indfract$Adj.R.squared[4],
+    vp_vars$part$indfract$Adj.R.squared[4],
+    vp_top10$part$indfract$Adj.R.squared[4],
+    vp_dbrda$part$indfract$Adj.R.squared[4]
+  )
+) %>%
+  mutate(across(where(is.numeric), ~round(., 3)))
+
+print(varpart_comparison)
+export_result("VARPART: Comparaison tous modèles", varpart_comparison)
+write_csv2(varpart_comparison, file.path(path_tables, "varpart_comparison.csv"))
+
+# Visualisation
+p_varpart_comp <- varpart_comparison %>%
+  pivot_longer(-Modele, names_to = "Fraction", values_to = "R2_adj") %>%
+  mutate(
+    Fraction = factor(Fraction, 
+                      levels = c("Structure_unique", "Partage", 
+                                 "Composition_unique", "Residuel")),
+    Modele = factor(Modele, levels = varpart_comparison$Modele)
+  ) %>%
+  ggplot(aes(x = Modele, y = R2_adj, fill = Fraction)) +
+  geom_col(position = "stack") +
+  scale_fill_manual(values = c("Structure_unique" = "steelblue",
+                               "Partage" = "mediumpurple",
+                               "Composition_unique" = "forestgreen",
+                               "Residuel" = "grey70"),
+                    labels = c("Structure (unique)", "Partagé", 
+                               "Composition (unique)", "Résiduel")) +
+  labs(title = "Comparaison des partitions de variance",
+       x = NULL, y = "R² ajusté") +
+  theme_minimal(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
+
+ggsave(file.path(path_figures, "varpart_comparison.jpg"), p_varpart_comp,
+       width = 11, height = 6, dpi = 300)
+
+
 #### 1️⃣2️⃣ SEM - MODÈLES CAUSAUX ----
 # INTERPRÉTATION: Les SEM testent les relations causales entre composition, structure et WD
 # Question clé: Y a-t-il un effet DIRECT de la structure sur WD, ou tout passe par la composition?
@@ -885,6 +1511,539 @@ cat("  - Si Significatif = NON: Tout l'effet passe par la composition\n\n")
 
 export_result("SEM: SYNTHÈSE - Lien résiduel Structure->WD", sem_summary)
 write_csv2(sem_summary, file.path(path_tables, "sem_summary_all_models.csv"))
+
+
+# ==============================================================================
+# SÉRIE 5: SEM avec latente réflective STRUCTURE
+# ==============================================================================
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SÉRIE 5: SEM avec latente réflective STRUCTURE\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+# Préparer données
+sem_data_latent <- model_data %>%
+  select(WD_BA, all_of(selected_vars), 
+         CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na() %>%
+  mutate(across(everything(), scale))
+
+cat("Données SEM latent: n =", nrow(sem_data_latent), "\n")
+cat("Variables structure:", paste(selected_vars, collapse = ", "), "\n\n")
+
+# 5A. Modèle de mesure seul (CFA) ----
+model_cfa_struct <- '
+  # Latente réflective Structure
+  Structure =~ prop_at_20m + auc_norm + max_d1 + h90
+'
+
+fit_cfa_struct <- cfa(model_cfa_struct, data = sem_data_latent)
+
+cat("=== CFA Structure ===\n")
+summary(fit_cfa_struct, fit.measures = TRUE, standardized = TRUE)
+
+# Extraire fit indices
+fit_cfa <- fitMeasures(fit_cfa_struct, c("cfi", "rmsea", "srmr", "chisq", "df", "pvalue"))
+cat("\nFit indices CFA:\n")
+print(round(fit_cfa, 3))
+
+# Loadings
+loadings_struct <- parameterEstimates(fit_cfa_struct, standardized = TRUE) %>%
+  filter(op == "=~") %>%
+  select(lhs, rhs, est, std.all, pvalue)
+
+cat("\nLoadings standardisés:\n")
+print(loadings_struct)
+
+export_result("SEM Série 5: CFA Structure - Fit", fit_cfa)
+export_result("SEM Série 5: CFA Structure - Loadings", loadings_struct)
+
+# 5B. SEM complet AVEC lien Structure → WD ----
+model_sem5_full <- '
+  # Latente Structure
+  Structure =~ prop_at_20m + auc_norm + max_d1 + h90
+  
+  # Composition → Structure
+  Structure ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  
+  # Composition + Structure → WD
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + c*Structure
+'
+
+fit_sem5_full <- sem(model_sem5_full, data = sem_data_latent)
+
+cat("\n=== SEM Structure latente - Modèle complet ===\n")
+summary(fit_sem5_full, fit.measures = TRUE, standardized = TRUE)
+
+fit_sem5_full_indices <- fitMeasures(fit_sem5_full, c("cfi", "rmsea", "srmr", "chisq", "df", "pvalue"))
+
+# 5C. SEM SANS lien Structure → WD (contraint à 0) ----
+model_sem5_constrained <- '
+  Structure =~ prop_at_20m + auc_norm + max_d1 + h90
+  Structure ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + 0*Structure
+'
+
+fit_sem5_constrained <- sem(model_sem5_constrained, data = sem_data_latent)
+
+# 5D. Comparaison ----
+comparison_sem5 <- anova(fit_sem5_constrained, fit_sem5_full)
+
+cat("\n=== Test du lien Structure → WD (Série 5) ===\n")
+print(comparison_sem5)
+
+# Coefficients
+sem5_params <- parameterEstimates(fit_sem5_full, standardized = TRUE) %>%
+  filter(op == "~") %>%
+  select(lhs, op, rhs, est, std.all, pvalue)
+
+cat("\n=== Coefficients SEM Série 5 ===\n")
+print(sem5_params)
+
+export_result("SEM Série 5: Fit indices", fit_sem5_full_indices)
+export_result("SEM Série 5: Test lien Structure→WD", comparison_sem5)
+export_result("SEM Série 5: Coefficients", sem5_params)
+
+# ==============================================================================
+# SÉRIE 6: SEM avec latente formative COMPOSITION
+# ==============================================================================
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SÉRIE 6: SEM avec latente formative COMPOSITION\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+# Note: En lavaan, les modèles formatifs utilisent <~ mais nécessitent
+# des contraintes d'identification. Alternative: composite avec bloc
+
+# 6A. Approche par composite (bloc de régression) ----
+# On utilise les indicateurs directement dans les régressions
+# mais on calcule aussi un score composite pour interprétation
+
+# Créer score composite (moyenne pondérée par corrélation avec WD)
+cor_weights <- abs(cor(sem_data_latent[, c("CA1", "CA2", "CA3", "CA4", "CA5", "prop_g_helio")],
+                       sem_data_latent$WD_BA, use = "complete.obs"))
+cor_weights <- cor_weights / sum(cor_weights)
+
+sem_data_latent <- sem_data_latent %>%
+  mutate(Composition_score = CA1 * cor_weights[1] + CA2 * cor_weights[2] + 
+           CA3 * cor_weights[3] + CA4 * cor_weights[4] + 
+           CA5 * cor_weights[5] + prop_g_helio * cor_weights[6])
+
+# 6B. SEM avec latente formative (syntaxe composite) ----
+# Pour l'identification, on fixe la variance de la latente
+
+model_sem6_full <- '
+  # Latente formative Composition (bloc d indicateurs)
+  # En lavaan: utiliser les indicateurs directement
+  
+  # PCA1 comme proxy de Structure (simplifié pour ce test)
+  PCA1 ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  
+  # WD expliqué par Composition + Structure
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + c*PCA1
+'
+
+# Ajouter PCA1 aux données
+sem_data_s6 <- model_data %>%
+  select(WD_BA, PCA1, CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na() %>%
+  mutate(across(everything(), scale))
+
+fit_sem6_full <- sem(model_sem6_full, data = sem_data_s6)
+
+cat("=== SEM Composition formative - Modèle complet ===\n")
+summary(fit_sem6_full, fit.measures = TRUE, standardized = TRUE)
+
+fit_sem6_full_indices <- fitMeasures(fit_sem6_full, c("cfi", "rmsea", "srmr", "chisq", "df", "pvalue"))
+
+# 6C. SEM SANS lien Structure → WD ----
+model_sem6_constrained <- '
+  PCA1 ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + 0*PCA1
+'
+
+fit_sem6_constrained <- sem(model_sem6_constrained, data = sem_data_s6)
+
+# Comparaison
+comparison_sem6 <- anova(fit_sem6_constrained, fit_sem6_full)
+
+cat("\n=== Test du lien Structure → WD (Série 6) ===\n")
+print(comparison_sem6)
+
+sem6_params <- parameterEstimates(fit_sem6_full, standardized = TRUE) %>%
+  filter(op == "~") %>%
+  select(lhs, op, rhs, est, std.all, pvalue)
+
+cat("\n=== Coefficients SEM Série 6 ===\n")
+print(sem6_params)
+
+export_result("SEM Série 6: Fit indices", fit_sem6_full_indices)
+export_result("SEM Série 6: Test lien Structure→WD", comparison_sem6)
+export_result("SEM Série 6: Coefficients", sem6_params)
+
+# ==============================================================================
+# SÉRIE 7: SEM COMBINÉ (deux latentes)
+# ==============================================================================
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SÉRIE 7: SEM COMBINÉ - Latente Structure + Composition\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+# Préparer données complètes
+sem_data_s7 <- model_data %>%
+  select(WD_BA, all_of(selected_vars), 
+         CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  drop_na() %>%
+  mutate(across(everything(), scale))
+
+cat("Données SEM combiné: n =", nrow(sem_data_s7), "\n\n")
+
+# 7A. Modèle complet avec deux latentes ----
+model_sem7_full <- '
+  # Latente réflective Structure
+  Structure =~ prop_at_20m + auc_norm + max_d1 + h90
+  
+  # Composition → Structure (effets directs des indicateurs)
+  Structure ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  
+  # Composition + Structure → WD
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + c*Structure
+'
+
+fit_sem7_full <- sem(model_sem7_full, data = sem_data_s7)
+
+cat("=== SEM Combiné - Modèle complet ===\n")
+summary(fit_sem7_full, fit.measures = TRUE, standardized = TRUE)
+
+fit_sem7_full_indices <- fitMeasures(fit_sem7_full, 
+                                     c("cfi", "rmsea", "srmr", "chisq", "df", "pvalue"))
+
+# 7B. Modèle SANS lien Structure → WD ----
+model_sem7_constrained <- '
+  Structure =~ prop_at_20m + auc_norm + max_d1 + h90
+  Structure ~ a1*CA1 + a2*CA2 + a3*CA3 + a4*CA4 + a5*CA5 + a6*prop_g_helio
+  WD_BA ~ b1*CA1 + b2*CA2 + b3*CA3 + b4*CA4 + b5*CA5 + b6*prop_g_helio + 0*Structure
+'
+
+fit_sem7_constrained <- sem(model_sem7_constrained, data = sem_data_s7)
+
+# 7C. Comparaison ----
+comparison_sem7 <- anova(fit_sem7_constrained, fit_sem7_full)
+
+cat("\n=== Test du lien Structure → WD (Série 7) ===\n")
+print(comparison_sem7)
+
+# Coefficients
+sem7_params <- parameterEstimates(fit_sem7_full, standardized = TRUE) %>%
+  filter(op == "~") %>%
+  select(lhs, op, rhs, est, std.all, pvalue)
+
+cat("\n=== Coefficients SEM Série 7 ===\n")
+print(sem7_params)
+
+# Loadings de la latente Structure
+sem7_loadings <- parameterEstimates(fit_sem7_full, standardized = TRUE) %>%
+  filter(op == "=~") %>%
+  select(lhs, rhs, est, std.all, pvalue)
+
+cat("\n=== Loadings Structure (Série 7) ===\n")
+print(sem7_loadings)
+
+export_result("SEM Série 7: Fit indices", fit_sem7_full_indices)
+export_result("SEM Série 7: Test lien Structure→WD", comparison_sem7)
+export_result("SEM Série 7: Coefficients", sem7_params)
+export_result("SEM Série 7: Loadings Structure", sem7_loadings)
+
+# ==============================================================================
+# SYNTHÈSE SÉRIES 5-6-7
+# ==============================================================================
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SYNTHÈSE SEM SÉRIES 5-6-7\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+# Tableau comparatif fit indices
+fit_comparison <- data.frame(
+  Serie = c("5: Latente Structure", "6: Composition formative", "7: Combiné"),
+  CFI = c(fit_sem5_full_indices["cfi"], 
+          fit_sem6_full_indices["cfi"], 
+          fit_sem7_full_indices["cfi"]),
+  RMSEA = c(fit_sem5_full_indices["rmsea"], 
+            fit_sem6_full_indices["rmsea"], 
+            fit_sem7_full_indices["rmsea"]),
+  SRMR = c(fit_sem5_full_indices["srmr"], 
+           fit_sem6_full_indices["srmr"], 
+           fit_sem7_full_indices["srmr"])
+) %>%
+  mutate(across(where(is.numeric), ~round(., 3)))
+
+cat("=== Fit indices ===\n")
+print(fit_comparison)
+
+# Tableau comparatif test du lien
+link_comparison <- data.frame(
+  Serie = c("5: Latente Structure", "6: Composition formative", "7: Combiné"),
+  Chi2_diff = c(comparison_sem5$`Chisq diff`[2],
+                comparison_sem6$`Chisq diff`[2],
+                comparison_sem7$`Chisq diff`[2]),
+  df_diff = c(comparison_sem5$`Df diff`[2],
+              comparison_sem6$`Df diff`[2],
+              comparison_sem7$`Df diff`[2]),
+  p_value = c(comparison_sem5$`Pr(>Chisq)`[2],
+              comparison_sem6$`Pr(>Chisq)`[2],
+              comparison_sem7$`Pr(>Chisq)`[2])
+) %>%
+  mutate(
+    Significatif = ifelse(p_value < 0.05, "OUI", "NON"),
+    Chi2_diff = round(Chi2_diff, 2),
+    p_value = round(p_value, 4)
+  )
+
+cat("\n=== Test lien résiduel Structure → WD ===\n")
+print(link_comparison)
+
+# Coefficient c (effet Structure → WD) standardisé
+coef_c_comparison <- data.frame(
+  Serie = c("5: Latente Structure", "6: Composition formative", "7: Combiné"),
+  Coef_c_std = c(
+    sem5_params$std.all[sem5_params$rhs == "Structure" & sem5_params$lhs == "WD_BA"],
+    sem6_params$std.all[sem6_params$rhs == "PCA1" & sem6_params$lhs == "WD_BA"],
+    sem7_params$std.all[sem7_params$rhs == "Structure" & sem7_params$lhs == "WD_BA"]
+  ),
+  p_value = c(
+    sem5_params$pvalue[sem5_params$rhs == "Structure" & sem5_params$lhs == "WD_BA"],
+    sem6_params$pvalue[sem6_params$rhs == "PCA1" & sem6_params$lhs == "WD_BA"],
+    sem7_params$pvalue[sem7_params$rhs == "Structure" & sem7_params$lhs == "WD_BA"]
+  )
+) %>%
+  mutate(across(where(is.numeric), ~round(., 3)))
+
+cat("\n=== Coefficient c (Structure → WD) ===\n")
+print(coef_c_comparison)
+
+export_result("SEM Séries 5-7: Fit comparison", fit_comparison)
+export_result("SEM Séries 5-7: Test lien comparison", link_comparison)
+export_result("SEM Séries 5-7: Coefficient c comparison", coef_c_comparison)
+
+write_csv2(fit_comparison, file.path(path_tables, "sem_series567_fit.csv"))
+write_csv2(link_comparison, file.path(path_tables, "sem_series567_link_test.csv"))
+write_csv2(coef_c_comparison, file.path(path_tables, "sem_series567_coef_c.csv"))
+
+# Mise à jour synthèse SEM globale (toutes séries)
+cat("\n=== Synthèse SEM complète (Séries 1-7) ===\n")
+
+sem_summary_all <- rbind(
+  sem_summary,  # Séries 1-4 existantes
+  data.frame(
+    Modele = c("5: Latente Structure", "6: Composition formative", "7: Combiné"),
+    p_value_lien = c(comparison_sem5$`Pr(>Chisq)`[2],
+                     comparison_sem6$`Pr(>Chisq)`[2],
+                     comparison_sem7$`Pr(>Chisq)`[2]),
+    Significatif = c(
+      ifelse(comparison_sem5$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON"),
+      ifelse(comparison_sem6$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON"),
+      ifelse(comparison_sem7$`Pr(>Chisq)`[2] < 0.05, "OUI", "NON")
+    )
+  )
+)
+
+print(sem_summary_all)
+export_result("SEM: Synthèse complète toutes séries", sem_summary_all)
+write_csv2(sem_summary_all, file.path(path_tables, "sem_summary_all_series.csv"))
+
+
+
+
+#### 1️⃣3️⃣bis. db-RDA - DISTANCE FLORISTIQUE ----
+
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
+cat("SECTION 13bis: db-RDA - DISTANCE FLORISTIQUE\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
+
+# 13bis.A. Préparer données alignées ----
+plots_communs <- intersect(rownames(species_plot_table), model_data$plot_name)
+
+floristic_aligned <- species_plot_table[plots_communs, ]
+model_data_aligned <- model_data %>% 
+  
+  filter(plot_name %in% plots_communs) %>%
+  arrange(match(plot_name, plots_communs))
+
+# Garder plots complets pour les variables d'intérêt
+vars_dbrda <- c("WD_BA", selected_vars, "CA1", "CA2", "CA3", "CA4", "CA5", "prop_g_helio")
+complete_idx <- complete.cases(model_data_aligned[, vars_dbrda])
+
+floristic_final <- floristic_aligned[complete_idx, ]
+model_data_final <- model_data_aligned[complete_idx, ]
+
+cat("Plots pour db-RDA: n =", nrow(floristic_final), "\n")
+
+# Matrice distance Bray-Curtis
+dist_bray <- vegdist(floristic_final, method = "bray")
+
+# 13bis.B. db-RDA complète : WD ~ Structure ----
+cat("\n=== db-RDA: WD ~ Structure (sans contrôle composition) ===\n")
+
+# Standardiser prédicteurs
+env_data <- model_data_final %>%
+  select(all_of(selected_vars)) %>%
+  mutate(across(everything(), scale))
+
+# db-RDA avec capscale
+dbrda_struct <- capscale(dist_bray ~ ., data = env_data)
+
+cat("\nRésumé db-RDA Structure:\n")
+print(dbrda_struct)
+
+# Variance expliquée
+dbrda_struct_summary <- summary(dbrda_struct)
+cat("\nInertie totale:", round(dbrda_struct_summary$tot.chi, 3), "\n")
+cat("Inertie contrainte:", round(dbrda_struct_summary$constr.chi, 3), 
+    "(", round(dbrda_struct_summary$constr.chi/dbrda_struct_summary$tot.chi*100, 1), "%)\n")
+
+# Test global
+set.seed(42)
+anova_dbrda_struct <- anova(dbrda_struct, permutations = 999)
+cat("\nTest global db-RDA Structure:\n")
+print(anova_dbrda_struct)
+
+# Test par axe
+set.seed(42)
+anova_dbrda_struct_axes <- anova(dbrda_struct, by = "axis", permutations = 999)
+cat("\nTest par axe:\n")
+print(anova_dbrda_struct_axes)
+
+# Test par terme (variable)
+set.seed(42)
+anova_dbrda_struct_terms <- anova(dbrda_struct, by = "terms", permutations = 999)
+cat("\nTest par variable:\n")
+print(anova_dbrda_struct_terms)
+
+export_result("db-RDA Structure: Test global", anova_dbrda_struct)
+export_result("db-RDA Structure: Test par axe", anova_dbrda_struct_axes)
+export_result("db-RDA Structure: Test par terme", anova_dbrda_struct_terms)
+
+# 13bis.C. db-RDA partielle : Structure | Composition ----
+cat("\n=== db-RDA partielle: Structure | Composition ===\n")
+
+env_struct <- model_data_final %>%
+  select(all_of(selected_vars)) %>%
+  mutate(across(everything(), scale))
+
+env_comp <- model_data_final %>%
+  select(CA1, CA2, CA3, CA4, CA5, prop_g_helio) %>%
+  mutate(across(everything(), scale))
+
+# db-RDA partielle
+dbrda_partial <- capscale(dist_bray ~ . + Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio),
+                          data = cbind(env_struct, env_comp))
+
+cat("\nRésumé db-RDA partielle:\n")
+print(dbrda_partial)
+
+dbrda_partial_summary <- summary(dbrda_partial)
+cat("\nInertie contrainte (Structure | Composition):", 
+    round(dbrda_partial_summary$constr.chi, 3), "\n")
+cat("Proportion:", round(dbrda_partial_summary$constr.chi/dbrda_partial_summary$tot.chi*100, 1), "%\n")
+
+# Test
+set.seed(42)
+anova_dbrda_partial <- anova(dbrda_partial, permutations = 999)
+cat("\nTest db-RDA partielle (Structure | Composition):\n")
+print(anova_dbrda_partial)
+
+export_result("db-RDA partielle: Structure | Composition", anova_dbrda_partial)
+
+# 13bis.D. db-RDA partielle inverse : Composition | Structure ----
+cat("\n=== db-RDA partielle: Composition | Structure ===\n")
+
+formula_comp_partial <- as.formula(
+  paste("dist_bray ~ CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio + Condition(",
+        paste(selected_vars, collapse = " + "), ")")
+)
+
+dbrda_comp_partial <- capscale(formula_comp_partial, data = cbind(env_comp, env_struct))
+
+dbrda_comp_summary <- summary(dbrda_comp_partial)
+cat("Inertie contrainte (Composition | Structure):", 
+    round(dbrda_comp_summary$constr.chi, 3), "\n")
+
+set.seed(42)
+anova_dbrda_comp <- anova(dbrda_comp_partial, permutations = 999)
+cat("\nTest db-RDA partielle (Composition | Structure):\n")
+print(anova_dbrda_comp)
+
+export_result("db-RDA partielle: Composition | Structure", anova_dbrda_comp)
+
+# 13bis.E. Synthèse db-RDA ----
+cat("\n=== Synthèse db-RDA ===\n")
+
+dbrda_summary <- data.frame(
+  Modele = c("Structure seule", 
+             "Structure | Composition",
+             "Composition | Structure"),
+  Inertie_contrainte = c(
+    dbrda_struct_summary$constr.chi,
+    dbrda_partial_summary$constr.chi,
+    dbrda_comp_summary$constr.chi
+  ),
+  Pct_total = c(
+    dbrda_struct_summary$constr.chi / dbrda_struct_summary$tot.chi * 100,
+    dbrda_partial_summary$constr.chi / dbrda_partial_summary$tot.chi * 100,
+    dbrda_comp_summary$constr.chi / dbrda_comp_summary$tot.chi * 100
+  ),
+  F_stat = c(
+    anova_dbrda_struct$F[1],
+    anova_dbrda_partial$F[1],
+    anova_dbrda_comp$F[1]
+  ),
+  p_value = c(
+    anova_dbrda_struct$`Pr(>F)`[1],
+    anova_dbrda_partial$`Pr(>F)`[1],
+    anova_dbrda_comp$`Pr(>F)`[1]
+  )
+) %>%
+  mutate(
+    Inertie_contrainte = round(Inertie_contrainte, 3),
+    Pct_total = round(Pct_total, 1),
+    F_stat = round(F_stat, 2),
+    Significatif = ifelse(p_value < 0.05, "OUI", "NON")
+  )
+
+print(dbrda_summary)
+export_result("db-RDA: Synthèse", dbrda_summary)
+write_csv2(dbrda_summary, file.path(path_tables, "dbrda_summary.csv"))
+
+# 13bis.F. Visualisation db-RDA ----
+# Triplot
+jpeg(file.path(path_figures, "dbrda_triplot.jpg"),
+     width = 1000, height = 800, quality = 100)
+plot(dbrda_struct, display = c("sites", "bp"), 
+     main = "db-RDA: Distance floristique ~ Structure")
+dev.off()
+
+# Ordination avec WD
+site_scores <- scores(dbrda_struct, display = "sites")
+site_data <- data.frame(
+  CAP1 = site_scores[, 1],
+  CAP2 = site_scores[, 2],
+  WD = model_data_final$WD_BA
+)
+
+p_dbrda <- ggplot(site_data, aes(x = CAP1, y = CAP2, color = WD)) +
+  geom_point(size = 3, alpha = 0.8) +
+  scale_color_viridis_c(option = "plasma", name = "WD (g/cm³)") +
+  labs(title = "db-RDA: Distance floristique ~ Structure",
+       subtitle = paste0("Inertie contrainte: ", 
+                         round(dbrda_struct_summary$constr.chi/dbrda_struct_summary$tot.chi*100, 1), "%"),
+       x = paste0("CAP1 (", round(dbrda_struct_summary$cont$importance[2,1]*100, 1), "%)"),
+       y = paste0("CAP2 (", round(dbrda_struct_summary$cont$importance[2,2]*100, 1), "%)")) +
+  theme_minimal(base_size = 12)
+
+ggsave(file.path(path_figures, "dbrda_ordination_wd.jpg"), p_dbrda,
+       width = 9, height = 7, dpi = 300)
+
+cat("\nSection 13bis terminée.\n")
 
 #### 1️⃣3️⃣ DIFFÉRENCES STRUCTURELLES PAR WD ----
 
@@ -1354,6 +2513,10 @@ if("X_utm" %in% names(model_data) && sum(!is.na(model_data$X_utm)) > 50) {
     as.formula(paste("WD_BA ~", best_var, "+ CA1 + CA2")),
     data = spatial_data_full
   )
+  
+  export_result("Modèle 1: Structure seule + Matérn", model_spatial_struct)
+  export_result("Modèle 2: Structure + Composition + Matérn", model_spatial_full)
+  export_result("Modèle 3: Structure + Composition SANS Matérn (pour comparer)", model_ols_full)
   
   # Extraire lambda (variance spatiale) - méthodes multiples pour spaMM
   # Essayer plusieurs approches car VarCorr peut retourner différentes structures

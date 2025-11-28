@@ -1,0 +1,4 @@
+Modele;Inertie_contrainte;Pct_total;F_stat;p_value;Significatif
+Structure seule;3,287;10,4;2,06;0,001;OUI
+Structure | Composition;2,228;7,1;1,74;1,000;NON
+Composition | Structure;7,480;23,7;3,90;0,001;OUI

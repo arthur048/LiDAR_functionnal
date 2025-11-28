@@ -1,5 +1,79 @@
 === RÉSULTATS D'ANALYSE - WD ~ STRUCTURE ===
-Date: 2025-11-28 11:26:33.562653 
+Date: 2025-11-28 13:48:50.537477 
+
+
+ ============================================================ 
+INERTIE CUMULÉE PAR ANALYSE 
+============================================================ 
+
+  Analyse Axes_1_2 Axes_1_4 Axes_1_6
+1    NSCA     21.5     34.8     45.3
+2      CA      8.4     16.2     23.6
+
+
+ ============================================================ 
+CORRÉLATIONS AXES COMPOSITION - WD 
+============================================================ 
+
+       axis    r_pearson    p_pearson rho_spearman   p_spearman
+cor   NSCA1  0.771080159 3.698651e-16   0.59540670 2.765904e-08
+cor6    CA1 -0.720806112 2.106214e-13  -0.75600820 0.000000e+00
+cor7    CA2  0.382231970 6.559480e-04   0.28995215 1.130289e-02
+cor10   CA5  0.322634215 4.476389e-03   0.32144908 4.808490e-03
+cor3  NSCA4  0.319936075 4.841856e-03   0.24259740 3.497122e-02
+cor1  NSCA2 -0.269659999 1.848789e-02  -0.72344498 0.000000e+00
+cor8    CA3 -0.176056377 1.281854e-01  -0.35609023 1.695033e-03
+cor9    CA4  0.084665868 4.671191e-01  -0.11568011 3.189630e-01
+cor2  NSCA3  0.074883375 5.202874e-01   0.04082023 7.257270e-01
+cor11   CA6 -0.054261800 6.415399e-01  -0.11157895 3.365094e-01
+cor5  NSCA6 -0.017206523 8.827154e-01   0.05014354 6.664418e-01
+cor4  NSCA5  0.006179549 9.577481e-01  -0.28907724 1.156040e-02
+
+
+ ============================================================ 
+MATRICE CORRÉLATION INTER-AXES COMPLÈTE 
+============================================================ 
+
+      NSCA1 NSCA2 NSCA3 NSCA4 NSCA5 NSCA6   CA1   CA2   CA3   CA4   CA5   CA6
+NSCA1  1.00  0.02 -0.02  0.17  0.01 -0.01 -0.57  0.63 -0.36  0.21  0.08 -0.03
+NSCA2  0.02  1.00  0.01 -0.02  0.01  0.00  0.18  0.32 -0.33 -0.30 -0.79  0.16
+NSCA3 -0.02  0.01  1.00  0.01 -0.07 -0.07 -0.27 -0.31  0.16  0.14 -0.08  0.80
+NSCA4  0.17 -0.02  0.01  1.00  0.03  0.03 -0.12  0.17 -0.16  0.06  0.05 -0.05
+NSCA5  0.01  0.01 -0.07  0.03  1.00 -0.17 -0.02  0.25  0.71  0.02 -0.11 -0.05
+NSCA6 -0.01  0.00 -0.07  0.03 -0.17  1.00  0.10  0.21  0.22 -0.07 -0.09 -0.17
+CA1   -0.57  0.18 -0.27 -0.12 -0.02  0.10  1.00  0.07  0.04  0.02  0.01  0.00
+CA2    0.63  0.32 -0.31  0.17  0.25  0.21  0.07  1.00 -0.21 -0.02  0.03 -0.06
+CA3   -0.36 -0.33  0.16 -0.16  0.71  0.22  0.04 -0.21  1.00  0.02  0.06 -0.02
+CA4    0.21 -0.30  0.14  0.06  0.02 -0.07  0.02 -0.02  0.02  1.00 -0.04 -0.02
+CA5    0.08 -0.79 -0.08  0.05 -0.11 -0.09  0.01  0.03  0.06 -0.04  1.00  0.00
+CA6   -0.03  0.16  0.80 -0.05 -0.05 -0.17  0.00 -0.06 -0.02 -0.02  0.00  1.00
+
+
+ ============================================================ 
+CORRÉLATIONS TEMPÉRAMENTS - WD 
+============================================================ 
+
+         variable   r_pearson    p_pearson rho_spearman   p_spearman  n sig stars
+cor  prop_g_helio -0.84832876 3.975069e-22  -0.62020506 3.616302e-09 76   *   ***
+cor1  prop_g_npld  0.08136249 4.847358e-01  -0.06274778 5.895024e-01 76          
+cor2 prop_g_shade  0.70097095 1.784867e-12   0.56645249 1.693169e-07 76   *   ***
+
+
+ ============================================================ 
+CORRÉLATIONS TEMPÉRAMENTS - AXES 
+============================================================ 
+
+             NSCA1 NSCA2 NSCA3 NSCA4 NSCA5 NSCA6   CA1   CA2   CA3   CA4   CA5   CA6
+prop_g_helio -0.84  0.16  -0.1 -0.23 -0.07  0.12  0.59 -0.49  0.22 -0.21 -0.28 -0.07
+prop_g_shade  0.50 -0.38   0.2  0.12 -0.20 -0.23 -0.51  0.13 -0.26  0.07  0.53  0.20
+
+
+ ============================================================ 
+RÉSUMÉ SECTION 7 
+============================================================ 
+
+[1] "Axes significatifs: NSCA1, CA1, CA2, CA5, NSCA4, NSCA2 " "Tempéraments significatifs: prop_g_helio, prop_g_shade "
+[3] "Inertie NSCA 1-4: 34.8 %"                                "Inertie CA 1-4: 16.2 %"                                 
 
 
  ============================================================ 
@@ -285,6 +359,206 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 
  ============================================================ 
+VARPART: Structure PCA1-4 vs Composition CA1-5+helio 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data_extended$WD_BA, X = ~PCA1 + PCA2 + PCA3 + PCA4, ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio, data =
+varpart_data_extended)
+
+Explanatory tables:
+X1:  ~PCA1 + PCA2 + PCA3 + PCA4
+X2:  ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            4   0.32883       0.29102     TRUE
+[b+c] = X2            6   0.84991       0.83686     TRUE
+[a+b+c] = X1+X2      10   0.87460       0.85530     TRUE
+Individual fractions                                    
+[a] = X1|X2           4                 0.01844     TRUE
+[b] = X2|X1           6                 0.56429     TRUE
+[c]                   0                 0.27258    FALSE
+[d] = Residuals                         0.14470    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+RDA: Test fraction unique Structure PCA1-4 
+============================================================ 
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = varpart_data_extended$WD_BA ~ PCA1 + PCA2 + PCA3 + PCA4 + Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio), data = varpart_data_extended)
+         Df   Variance      F Pr(>F)  
+Model     4 0.00024183 3.1988  0.024 *
+Residual 65 0.00122852                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+VARPART: Structure selected_vars vs Composition 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data_vars$WD_BA, X = formula_struct_vars, ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio, data = varpart_data_vars)
+
+Explanatory tables:
+X1:  formula_struct_vars
+X2:  ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            4   0.40581       0.37234     TRUE
+[b+c] = X2            6   0.84991       0.83686     TRUE
+[a+b+c] = X1+X2      10   0.87837       0.85965     TRUE
+Individual fractions                                    
+[a] = X1|X2           4                 0.02279     TRUE
+[b] = X2|X1           6                 0.48732     TRUE
+[c]                   0                 0.34954    FALSE
+[d] = Residuals                         0.14035    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+RDA: Test fraction unique Structure selected_vars 
+============================================================ 
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = varpart_data_vars$WD_BA ~ prop_at_20m + auc_norm + max_d1 + h90 + Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio), data = varpart_data_vars)
+         Df   Variance      F Pr(>F)  
+Model     4 0.00027876 3.8015  0.011 *
+Residual 65 0.00119159                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+VARPART: Structure Top10 vs Composition 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = varpart_data_top10$WD_BA, X = formula_struct_top10, ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio, data =
+varpart_data_top10)
+
+Explanatory tables:
+X1:  formula_struct_top10
+X2:  ~CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            2   0.35239       0.33464     TRUE
+[b+c] = X2            6   0.84991       0.83686     TRUE
+[a+b+c] = X1+X2       8   0.87201       0.85673     TRUE
+Individual fractions                                    
+[a] = X1|X2           2                 0.01987     TRUE
+[b] = X2|X1           6                 0.52209     TRUE
+[c]                   0                 0.31478    FALSE
+[d] = Residuals                         0.14327    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+VARPART: Structure vs Distance floristique (PCoA) 
+============================================================ 
+
+
+Partition of variance in RDA 
+
+Call: varpart(Y = dbRDA_data$WD_BA, X = formula_struct_dbrda, formula_pcoa, data = dbRDA_data)
+
+Explanatory tables:
+X1:  formula_struct_dbrda
+X2:  formula_pcoa 
+
+No. of explanatory tables: 2 
+Total variation (SS): 0.73474 
+            Variance: 0.0097966 
+No. of observations: 76 
+
+Partition table:
+                     Df R.squared Adj.R.squared Testable
+[a+c] = X1            4   0.40581       0.37234     TRUE
+[b+c] = X2            5   0.77562       0.75959     TRUE
+[a+b+c] = X1+X2       9   0.83734       0.81516     TRUE
+Individual fractions                                    
+[a] = X1|X2           4                 0.05557     TRUE
+[b] = X2|X1           5                 0.44282     TRUE
+[c]                   0                 0.31677    FALSE
+[d] = Residuals                         0.18484    FALSE
+---
+Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+RDA: Structure | Distance floristique 
+============================================================ 
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = dbRDA_data$WD_BA ~ prop_at_20m + auc_norm + max_d1 + h90 + Condition(PCoA1 + PCoA2 + PCoA3 + PCoA4 + PCoA5), data = dbRDA_data)
+         Df   Variance      F Pr(>F)    
+Model     4 0.00060464 6.2606  0.001 ***
+Residual 66 0.00159353                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+MANTEL: Tests simples et partiel 
+============================================================ 
+
+                          Test     r p_value
+1               WD ~ Structure 0.375   0.001
+2             WD ~ Floristique 0.315   0.001
+3 WD ~ Structure | Floristique 0.324   0.002
+
+
+ ============================================================ 
+VARPART: Comparaison tous modèles 
+============================================================ 
+
+                Modele Structure_unique Partage Composition_unique Residuel
+1 PCA1 seul (existant)            0.027   0.281              0.551    0.140
+2               PCA1-4            0.018   0.273              0.564    0.145
+3        Selected vars            0.023   0.350              0.487    0.140
+4         Top10 VIF<10            0.020   0.315              0.522    0.143
+5 Distance floristique            0.056   0.317              0.443    0.185
+
+
+ ============================================================ 
 SEM Tempérament: Test lien Structure->WD 
 ============================================================ 
 
@@ -405,6 +679,302 @@ SEM: SYNTHÈSE - Lien résiduel Structure->WD
 2      CA (composition) 1.109728e-04          OUI
 3  NSCA_DBH (dominance) 5.754533e-08          OUI
 4 COMPLET (toutes dim.) 1.247086e-04          OUI
+
+
+ ============================================================ 
+SEM Série 5: CFA Structure - Fit 
+============================================================ 
+
+   cfi  rmsea   srmr  chisq     df pvalue 
+ 0.838  0.465  0.119 34.929  2.000  0.000 
+
+
+ ============================================================ 
+SEM Série 5: CFA Structure - Loadings 
+============================================================ 
+
+        lhs         rhs    est std.all pvalue
+1 Structure prop_at_20m  1.000   1.055     NA
+2 Structure    auc_norm  0.700   0.738      0
+3 Structure      max_d1  0.380   0.401      0
+4 Structure         h90 -0.739  -0.779      0
+
+
+ ============================================================ 
+SEM Série 5: Fit indices 
+============================================================ 
+
+   cfi  rmsea   srmr  chisq     df pvalue 
+ 0.850  0.186  0.072 83.764 23.000  0.000 
+
+
+ ============================================================ 
+SEM Série 5: Test lien Structure→WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                     Df    AIC    BIC  Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)  
+fit_sem5_full        23 757.14 808.42 83.764                                        
+fit_sem5_constrained 24 759.76 808.70 88.381     4.6168 0.21815       1    0.03166 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM Série 5: Coefficients 
+============================================================ 
+
+         lhs op          rhs    est std.all pvalue
+1  Structure  ~          CA1  0.169   0.168  0.263
+2  Structure  ~          CA2  0.214   0.213  0.112
+3  Structure  ~          CA3  0.009   0.009  0.923
+4  Structure  ~          CA4  0.055   0.054  0.588
+5  Structure  ~          CA5 -0.121  -0.121  0.248
+6  Structure  ~ prop_g_helio  0.535   0.531  0.005
+7      WD_BA  ~          CA1 -0.549  -0.549  0.000
+8      WD_BA  ~          CA2  0.290   0.290  0.000
+9      WD_BA  ~          CA3 -0.047  -0.047  0.295
+10     WD_BA  ~          CA4  0.058   0.058  0.239
+11     WD_BA  ~          CA5  0.229   0.229  0.000
+12     WD_BA  ~ prop_g_helio -0.226  -0.226  0.021
+13     WD_BA  ~    Structure -0.123  -0.123  0.026
+
+
+ ============================================================ 
+SEM Série 6: Fit indices 
+============================================================ 
+
+   cfi  rmsea   srmr  chisq     df pvalue 
+     1      0      0      0      0     NA 
+
+
+ ============================================================ 
+SEM Série 6: Test lien Structure→WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                     Df    AIC    BIC  Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)   
+fit_sem6_full         0 271.58 306.54 0.0000                                         
+fit_sem6_constrained  1 276.78 309.41 7.2054     7.2054 0.28575       1   0.007268 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM Série 6: Coefficients 
+============================================================ 
+
+     lhs op          rhs    est std.all pvalue
+1   PCA1  ~          CA1 -0.233  -0.233  0.128
+2   PCA1  ~          CA2 -0.298  -0.298  0.030
+3   PCA1  ~          CA3 -0.033  -0.033  0.732
+4   PCA1  ~          CA4 -0.098  -0.098  0.342
+5   PCA1  ~          CA5  0.066   0.066  0.534
+6   PCA1  ~ prop_g_helio -0.470  -0.470  0.016
+7  WD_BA  ~          CA1 -0.535  -0.535  0.000
+8  WD_BA  ~          CA2  0.308   0.308  0.000
+9  WD_BA  ~          CA3 -0.044  -0.044  0.328
+10 WD_BA  ~          CA4  0.066   0.066  0.177
+11 WD_BA  ~          CA5  0.234   0.234  0.000
+12 WD_BA  ~ prop_g_helio -0.222  -0.222  0.020
+13 WD_BA  ~         PCA1  0.148   0.148  0.006
+
+
+ ============================================================ 
+SEM Série 7: Fit indices 
+============================================================ 
+
+   cfi  rmsea   srmr  chisq     df pvalue 
+ 0.850  0.186  0.072 83.764 23.000  0.000 
+
+
+ ============================================================ 
+SEM Série 7: Test lien Structure→WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                     Df    AIC    BIC  Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)  
+fit_sem7_full        23 757.14 808.42 83.764                                        
+fit_sem7_constrained 24 759.76 808.70 88.381     4.6168 0.21815       1    0.03166 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM Série 7: Coefficients 
+============================================================ 
+
+         lhs op          rhs    est std.all pvalue
+1  Structure  ~          CA1  0.169   0.168  0.263
+2  Structure  ~          CA2  0.214   0.213  0.112
+3  Structure  ~          CA3  0.009   0.009  0.923
+4  Structure  ~          CA4  0.055   0.054  0.588
+5  Structure  ~          CA5 -0.121  -0.121  0.248
+6  Structure  ~ prop_g_helio  0.535   0.531  0.005
+7      WD_BA  ~          CA1 -0.549  -0.549  0.000
+8      WD_BA  ~          CA2  0.290   0.290  0.000
+9      WD_BA  ~          CA3 -0.047  -0.047  0.295
+10     WD_BA  ~          CA4  0.058   0.058  0.239
+11     WD_BA  ~          CA5  0.229   0.229  0.000
+12     WD_BA  ~ prop_g_helio -0.226  -0.226  0.021
+13     WD_BA  ~    Structure -0.123  -0.123  0.026
+
+
+ ============================================================ 
+SEM Série 7: Loadings Structure 
+============================================================ 
+
+        lhs         rhs    est std.all pvalue
+1 Structure prop_at_20m  1.000   1.006     NA
+2 Structure    auc_norm  0.755   0.760      0
+3 Structure      max_d1  0.443   0.446      0
+4 Structure         h90 -0.818  -0.823      0
+
+
+ ============================================================ 
+SEM Séries 5-7: Fit comparison 
+============================================================ 
+
+                     Serie  CFI RMSEA  SRMR
+1     5: Latente Structure 0.85 0.186 0.072
+2 6: Composition formative 1.00 0.000 0.000
+3               7: Combiné 0.85 0.186 0.072
+
+
+ ============================================================ 
+SEM Séries 5-7: Test lien comparison 
+============================================================ 
+
+                     Serie Chi2_diff df_diff p_value Significatif
+1     5: Latente Structure      4.62       1  0.0317          OUI
+2 6: Composition formative      7.21       1  0.0073          OUI
+3               7: Combiné      4.62       1  0.0317          OUI
+
+
+ ============================================================ 
+SEM Séries 5-7: Coefficient c comparison 
+============================================================ 
+
+                     Serie Coef_c_std p_value
+1     5: Latente Structure     -0.123   0.026
+2 6: Composition formative      0.148   0.006
+3               7: Combiné     -0.123   0.026
+
+
+ ============================================================ 
+SEM: Synthèse complète toutes séries 
+============================================================ 
+
+                    Modele p_value_lien Significatif
+1     Tempérament (3 cat.) 2.458032e-03          OUI
+2         CA (composition) 1.109728e-04          OUI
+3     NSCA_DBH (dominance) 5.754533e-08          OUI
+4    COMPLET (toutes dim.) 1.247086e-04          OUI
+5     5: Latente Structure 3.165978e-02          OUI
+6 6: Composition formative 7.268297e-03          OUI
+7               7: Combiné 3.165978e-02          OUI
+
+
+ ============================================================ 
+db-RDA Structure: Test global 
+============================================================ 
+
+Permutation test for capscale under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = dist_bray ~ prop_at_20m + auc_norm + max_d1 + h90, data = env_data)
+         Df SumOfSqs      F Pr(>F)    
+Model     4   3.2873 2.0632  0.001 ***
+Residual 71  28.2810                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+db-RDA Structure: Test par axe 
+============================================================ 
+
+Permutation test for capscale under reduced model
+Forward tests for axes
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = dist_bray ~ prop_at_20m + auc_norm + max_d1 + h90, data = env_data)
+         Df SumOfSqs      F Pr(>F)    
+CAP1      1   1.5281 3.8364  0.001 ***
+CAP2      1   0.7399 1.8838  0.069 .  
+CAP3      1   0.5391 1.3916  0.211    
+CAP4      1   0.4801 1.2563  0.211    
+Residual 71  28.2810                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+db-RDA Structure: Test par terme 
+============================================================ 
+
+Permutation test for capscale under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = dist_bray ~ prop_at_20m + auc_norm + max_d1 + h90, data = env_data)
+            Df SumOfSqs      F Pr(>F)    
+prop_at_20m  1   1.5048 3.7777  0.001 ***
+auc_norm     1   0.6196 1.5556  0.032 *  
+max_d1       1   0.5078 1.2750  0.144    
+h90          1   0.6550 1.6444  0.016 *  
+Residual    71  28.2810                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+db-RDA partielle: Structure | Composition 
+============================================================ 
+
+Permutation test for capscale under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = dist_bray ~ prop_at_20m + auc_norm + max_d1 + h90 + CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio + Condition(CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio), data = cbind(env_struct, env_comp))
+         Df SumOfSqs      F Pr(>F)
+Model     4   2.2276 1.7402      1
+Residual 65  20.8006              
+
+
+ ============================================================ 
+db-RDA partielle: Composition | Structure 
+============================================================ 
+
+Permutation test for capscale under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = dist_bray ~ CA1 + CA2 + CA3 + CA4 + CA5 + prop_g_helio + Condition(prop_at_20m + auc_norm + max_d1 + h90), data = cbind(env_comp, env_struct))
+         Df SumOfSqs      F Pr(>F)    
+Model     6   7.4804 3.8959  0.001 ***
+Residual 65  20.8006                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+db-RDA: Synthèse 
+============================================================ 
+
+                   Modele Inertie_contrainte Pct_total F_stat p_value Significatif
+1         Structure seule              3.287      10.4   2.06   0.001          OUI
+2 Structure | Composition              2.228       7.1   1.74   1.000          NON
+3 Composition | Structure              7.480      23.7   3.90   0.001          OUI
 
 
  ============================================================ 
@@ -559,6 +1129,83 @@ OUTLIERS: Plots mal prédits
 3                Betamba_3 0.4673139   0.1308000 0.6646120 -0.1972981    -2.509738
 4                     JEU3 0.3126815   0.9626459 0.4808392 -0.1681577    -2.139056
 5 WWF-DIAF_supp1_Principal 0.7052080   0.6826263 0.5427016  0.1625064     2.067168
+
+
+ ============================================================ 
+Modèle 1: Structure seule + Matérn 
+============================================================ 
+
+formula: WD_BA ~ prop_at_20m + Matern(1 | X_utm + Y_utm)
+REML: Estimation of corrPars, lambda and phi by REML.
+      Estimation of fixed effects by ML.
+Estimation of lambda and phi by 'outer' REML, maximizing restricted logL.
+family: gaussian( link = identity ) 
+ ------------ Fixed effects (beta) ------------
+            Estimate Cond. SE t-value
+(Intercept)   0.6910  0.01634  42.303
+prop_at_20m  -0.1951  0.02962  -6.586
+ --------------- Random effects ---------------
+Family: gaussian( link = identity ) 
+                   --- Correlation parameters:
+        1.nu        1.rho 
+0.1363802412 0.0000886709 
+           --- Variance parameters ('lambda'):
+lambda = var(u) for u ~ Gaussian; 
+   X_utm + Y.  :  0.005514  
+# of obs: 76; # of groups: X_utm + Y., 76 
+ -------------- Residual variance  ------------
+phi estimate was 1.74817e-06 
+ ------------- Likelihood values  -------------
+                       logLik
+logL       (p_v(h)): 98.60592
+Re.logL  (p_b,v(h)): 92.49614
+
+
+ ============================================================ 
+Modèle 2: Structure + Composition + Matérn 
+============================================================ 
+
+formula: WD_BA ~ prop_at_20m + CA1 + CA2 + Matern(1 | X_utm + Y_utm)
+REML: Estimation of corrPars, lambda and phi by REML.
+      Estimation of fixed effects by ML.
+Estimation of lambda and phi by 'outer' REML, maximizing restricted logL.
+family: gaussian( link = identity ) 
+ ------------ Fixed effects (beta) ------------
+            Estimate Cond. SE t-value
+(Intercept)  0.65209 0.011596  56.237
+prop_at_20m -0.08548 0.025191  -3.393
+CA1         -0.07131 0.009886  -7.213
+CA2          0.04551 0.008438   5.393
+ --------------- Random effects ---------------
+Family: gaussian( link = identity ) 
+                   --- Correlation parameters:
+        1.nu        1.rho 
+0.1070564149 0.0001630591 
+           --- Variance parameters ('lambda'):
+lambda = var(u) for u ~ Gaussian; 
+   X_utm + Y.  :  0.002502  
+# of obs: 76; # of groups: X_utm + Y., 76 
+ -------------- Residual variance  ------------
+phi estimate was 1.05692e-05 
+ ------------- Likelihood values  -------------
+                       logLik
+logL       (p_v(h)): 125.3027
+Re.logL  (p_b,v(h)): 110.8214
+
+
+ ============================================================ 
+Modèle 3: Structure + Composition SANS Matérn (pour comparer) 
+============================================================ 
+
+
+Call:
+lm(formula = as.formula(paste("WD_BA ~", best_var, "+ CA1 + CA2")), 
+    data = spatial_data_full)
+
+Coefficients:
+(Intercept)  prop_at_20m          CA1          CA2  
+    0.65218     -0.10314     -0.06621      0.04854  
+
 
 
  ============================================================ 
