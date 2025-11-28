@@ -1355,27 +1355,90 @@ if("X_utm" %in% names(model_data) && sum(!is.na(model_data$X_utm)) > 50) {
     data = spatial_data_full
   )
   
-  # Extraire lambda (variance spatiale)
-  lambda_struct <- VarCorr(model_spatial_struct)$`X_utm + Y.`$`(Intercept)`
-  lambda_full <- VarCorr(model_spatial_full)$`X_utm + Y.`$`(Intercept)`
-  
+  # Extraire lambda (variance spatiale) - méthodes multiples pour spaMM
+  # Essayer plusieurs approches car VarCorr peut retourner différentes structures
+
+  extract_lambda <- function(model) {
+    # Méthode 1: VarCorr avec extraction du premier élément
+    val <- tryCatch({
+      vc <- VarCorr(model)
+      if(is.list(vc) && length(vc) > 0) {
+        # Prendre seulement le premier élément numérique
+        temp <- as.numeric(vc[[1]])[1]
+        if(!is.na(temp)) return(temp)
+      }
+      NA
+    }, error = function(e) NA, warning = function(w) NA)
+
+    if(!is.na(val)) return(val)
+
+    # Méthode 2: get_ranPars
+    val <- tryCatch({
+      ranpars <- get_ranPars(model)
+      if("lambda" %in% names(ranpars)) {
+        temp <- as.numeric(ranpars$lambda)[1]
+        if(!is.na(temp)) return(temp)
+      }
+      NA
+    }, error = function(e) NA)
+
+    if(!is.na(val)) return(val)
+
+    # Méthode 3: Accès direct aux paramètres du modèle
+    val <- tryCatch({
+      if("lambda" %in% names(model)) {
+        temp <- as.numeric(model$lambda)[1]
+        if(!is.na(temp)) return(temp)
+      }
+      NA
+    }, error = function(e) NA)
+
+    return(val)
+  }
+
+  lambda_struct <- extract_lambda(model_spatial_struct)
+  lambda_full <- extract_lambda(model_spatial_full)
+
+  # Debug: afficher les valeurs extraites
+  cat("\nDebug - Variances extraites:\n")
+  cat("  Lambda structure seule:", ifelse(is.na(lambda_struct), "NA", lambda_struct), "\n")
+  cat("  Lambda avec composition:", ifelse(is.na(lambda_full), "NA", lambda_full), "\n")
+
+  # Créer le data.frame en s'assurant que les valeurs sont des scalaires
   spatial_evolution <- data.frame(
     Modele = c("Structure + Matérn", "Structure + Compo + Matérn", "Structure + Compo (OLS)"),
     AIC = c(AIC(model_spatial_struct)[1], AIC(model_spatial_full)[1], AIC(model_ols_full)),
-    Lambda_spatial = c(lambda_struct, lambda_full, NA)
+    Lambda_spatial = c(
+      ifelse(is.na(lambda_struct), NA, lambda_struct),
+      ifelse(is.na(lambda_full), NA, lambda_full),
+      NA
+    )
   )
-  
+
   cat("\nÉvolution de la variance spatiale:\n")
   print(spatial_evolution)
   export_result("SPATIAL: Évolution avec composition", spatial_evolution)
-  
-  reduction_pct <- (1 - lambda_full / lambda_struct) * 100
-  cat("\nRéduction de la variance spatiale avec composition:", round(reduction_pct, 1), "%\n")
-  
-  if(reduction_pct > 50) {
-    cat("→ La structure spatiale est largement expliquée par la composition\n")
+
+  # Calculer réduction seulement si les deux lambda sont valides
+  if(!is.na(lambda_struct) && !is.na(lambda_full) && lambda_struct > 0) {
+    reduction_pct <- (1 - lambda_full / lambda_struct) * 100
+    cat("\nRéduction de la variance spatiale avec composition:", round(reduction_pct, 1), "%\n")
+
+    if(reduction_pct > 50) {
+      cat("→ La structure spatiale est largement expliquée par la composition\n")
+    } else {
+      cat("→ La structure spatiale persiste même après contrôle de la composition\n")
+    }
   } else {
-    cat("→ La structure spatiale persiste même après contrôle de la composition\n")
+    cat("\n⚠️  Impossible d'extraire la variance spatiale Lambda\n")
+    cat("   Comparaison basée uniquement sur les AIC:\n")
+    aic_improvement <- AIC(model_spatial_struct)[1] - AIC(model_spatial_full)[1]
+    cat("   Amélioration AIC avec composition:", round(aic_improvement, 2), "\n")
+    if(aic_improvement > 2) {
+      cat("→ La composition améliore substantiellement le modèle (ΔAIC >2)\n")
+    } else {
+      cat("→ La composition apporte peu au modèle spatial\n")
+    }
   }
   
   write_csv2(spatial_evolution, file.path(path_tables, "spatial_models_evolution.csv"))

@@ -1,5 +1,5 @@
 === RÉSULTATS D'ANALYSE - WD ~ STRUCTURE ===
-Date: 2025-11-28 11:11:28.48587 
+Date: 2025-11-28 11:26:33.562653 
 
 
  ============================================================ 
@@ -566,7 +566,15 @@ SPATIAL: Évolution avec composition
 ============================================================ 
 
                       Modele       AIC Lambda_spatial
-1         Structure + Matérn -185.2118             NA
-2 Structure + Compo + Matérn -234.6054             NA
+1         Structure + Matérn -185.2118    0.005514245
+2 Structure + Compo + Matérn -234.6054    0.002501713
 3    Structure + Compo (OLS) -238.1780             NA
+
+
+ ============================================================ 
+SYNTHÈSE COMPLÈTE 
+============================================================ 
+
+[1] "1. Meilleur prédicteur: prop_at_20m " "2. PERMANOVA R²: 0.187 "              "3. Mantel r: 0.243 "                 
+[4] "4. Varpart Structure unique: 0.027 "  "5. LOOCV RMSE: 0.0807 "              
 

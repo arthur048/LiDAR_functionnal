@@ -1,0 +1,4 @@
+Modele;AIC;Lambda_spatial
+Structure + Matérn;-185,211839671458;0,00551424493541721
+Structure + Compo + Matérn;-234,605359269277;0,00250171334999324
+Structure + Compo (OLS);-238,178028188006;NA
