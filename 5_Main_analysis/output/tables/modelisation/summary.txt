@@ -1,0 +1,62 @@
+2. Analyse détaillée des résultats
+Objectif 1 : Prédire WD à partir de la structure
+AspectRésultatInterprétationMeilleur prédicteurprop_at_20m (r = -0.61)Proportion d'ouverture à 20m = seuil sous-bois/canopéeR² simple36%Relation modérée mais significativeModèle multipleR² = 37%Gain négligeable (+1%), pas justifiéLOOCVRMSE = 0.081, R² = 0.33, Slope = 0.94Prédictions robustes, peu biaiséesModèle spatialΔAIC = -19 vs OLSAmélioration substantielle avec autocorrélation
+Conclusion Obj. 1 : On peut prédire ~36% de la variance de WD avec une seule métrique LiDAR. Le modèle spatial améliore nettement les prédictions. Le coefficient prop_at_20m = -0.22 signifie qu'une augmentation de 10% d'ouverture à 20m correspond à une diminution de WD de 0.022 g/cm³.
+
+Objectif 2 : Rôle médiateur de la composition
+Partition de variance (résumé des 4 tests) :
+Composition testéeStructure uniqueComposition uniquePartagéeRésidusTempérament2.7%45.1%28.2%24.0%CA5.0%44.2%25.9%24.9%NSCA_DBH11.0%44.8%19.8%24.4%TOUT (CA+NSCA+Temp)2.7%55.1%28.1%14.0%
+Interprétation clé : Sur les 31% de variance expliquée par la structure (PCA1), seulement 2.7-11% sont uniques. Le reste (19-28%) est partagé avec la composition.
+→ La structure fonctionne principalement comme un proxy de la composition.
+SEM — Test formel du lien résiduel :
+Modèlep-valueLien significatif ?Tempérament0.0025OUICA0.00011OUINSCA_DBH< 0.0001OUICOMPLET0.00012OUI
+Surprise importante : Contrairement à ce qu'on pourrait attendre, le lien résiduel Structure→WD reste significatif même après contrôle de toute la composition (β = 0.215, p < 0.001).
+Interprétation : Bien que la variance unique soit faible (2.7%), elle est statistiquement significative. Cela suggère que :
+
+La structure capture quelque chose que nos variables de composition ne mesurent pas complètement
+Ou il y a des aspects de la relation WD-structure qui ne passent pas par la composition mesurée
+Cela pourrait être lié à l'histoire des perturbations, à des effets d'âge, ou à des aspects de la composition non captés par CA/NSCA/tempérament
+
+
+Objectif 3 : Différences structurelles par catégorie WD
+PERMANOVA : R² = 18.7%, p = 0.001
+→ Les quartiles de WD expliquent significativement la variation structurelle multivariée.
+Mantel : r = 0.24, p = 0.003
+→ Corrélation continue significative entre distances structurelles et distances WD.
+Kruskal-Wallis par métrique (toutes p < 0.001) :
+MétriqueChi²Interprétationprop_at_20m25.7Plus d'ouverture dans Q1 (WD faible)prop_at_25m25.6Idemh2523.9Canopée plus basse dans Q1h50, h75, h9021-23Idem, gradient continu
+Tableau descriptif (valeurs moyennes) :
+QuartileWD moyenprop_at_20mh75Q1 (faible WD)0.4859%23mQ20.6235%28mQ30.6719%33mQ4 (fort WD)0.7121%33m
+Conclusion Obj. 3 : Les forêts à faible WD (succession précoce) ont une canopée plus ouverte et plus basse. La signature structurelle est claire et discriminante.
+
+Autocorrélation spatiale
+Résultat majeur : Le modèle spatial améliore l'AIC de 19 points.
+Cela signifie :
+
+Il y a une structure spatiale significative dans les données
+Les plots proches ont des WD plus similaires que prévu par la structure seule
+Les analyses non-spatiales sous-estiment peut-être l'incertitude
+
+Les paramètres Matérn (nu = 0.14, rho très petit) suggèrent une corrélation à courte portée.
+
+3. Analyses complémentaires suggérées
+Essentielles pour l'article
+
+Test de significativité des fractions varpart : Utiliser rda() puis anova() pour tester si les 2.7% uniques sont significatifs (complémentaire au SEM)
+Figure de synthèse SEM : Un diagramme de type path diagram avec les coefficients standardisés
+Profils de courbes par quartile : Montrer les courbes cumulatives moyennes par catégorie WD (tu as déjà fait ça dans tes figures précédentes, à intégrer)
+
+Optionnelles mais intéressantes
+
+Modèle spatial avec composition : Tester si l'autocorrélation disparaît quand on ajoute CA1/CA2 → indiquerait que la structure spatiale vient de la composition
+Analyse des outliers : Identifier les plots où la prédiction est mauvaise (résidus élevés) → probablement Gilbertiodendron ou forêts secondaires extrêmes
+Bootstrap des coefficients : Intervalles de confiance robustes pour le coefficient de prop_at_20m
+
+
+4. Messages clés pour l'article
+
+La structure LiDAR prédit modérément le WD (R² ~ 36%) avec une seule variable (prop_at_20m)
+Cette relation est majoritairement indirecte : ~90% de la variance expliquée est partagée avec la composition floristique
+Mais un effet résiduel existe : 2.7% de variance unique, statistiquement significatif — la structure capture quelque chose au-delà de nos mesures de composition
+Les signatures structurelles sont distinctes : les forêts à faible WD (pionnières) ont des canopées plus ouvertes et plus basses
+L'autocorrélation spatiale est importante : les modèles doivent en tenir compte pour des prédictions fiables

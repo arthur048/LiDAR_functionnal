@@ -11,7 +11,7 @@ gc()
 pkgs <- c("tidyverse", "here", "FactoMineR", "factoextra", "vegan",
           "lavaan", "spaMM", "sf", "e1071", "ade4")
 to_install <- !pkgs %in% installed.packages()
-if(any(to_install)) install.packages(pkgs[to_install])
+if(any(to_install)) renv::install(pkgs[to_install])
 lapply(pkgs, library, character.only = TRUE)
 
 #### 2️⃣ CHEMINS ----
@@ -593,6 +593,32 @@ if(length(comp_cols) >= 2) {
   dev.off()
 }
 
+# 11E. Test de significativité des fractions varpart ----
+# OBJECTIF: Tester si la fraction unique de la structure (2.7%) est significative
+# via permutations sur le modèle RDA partiel
+
+cat("\n=== Test RDA - Significativité des fractions ===\n")
+
+# RDA partielle : Structure | Composition
+rda_struct_partial <- rda(varpart_data$WD_BA ~ PCA1 + 
+                            Condition(prop_g_helio + prop_g_shade + CA1 + CA2 + NSCA_DBH1 + NSCA_DBH2),
+                          data = varpart_data)
+
+set.seed(42)
+rda_test <- anova(rda_struct_partial, permutations = 999)
+
+cat("\nTest permutationnel - Structure | Composition :\n")
+print(rda_test)
+export_result("RDA: Test fraction unique Structure", rda_test)
+
+# Interpréter
+if(rda_test$`Pr(>F)`[1] < 0.05) {
+  cat("\n✓ La fraction unique de la structure (", 
+      round(vp_all_comp$part$indfract$Adj.R.squared[1] * 100, 1), 
+      "%) est SIGNIFICATIVE\n")
+} else {
+  cat("\n✗ La fraction unique de la structure n'est PAS significative\n")
+}
 #### 1️⃣2️⃣ SEM - MODÈLES CAUSAUX ----
 # INTERPRÉTATION: Les SEM testent les relations causales entre composition, structure et WD
 # Question clé: Y a-t-il un effet DIRECT de la structure sur WD, ou tout passe par la composition?
@@ -611,21 +637,22 @@ cat("Variables:", paste(names(sem_data_full), collapse = ", "), "\n\n")
 # ==============================================================================
 
 cat("\n", paste(rep("=", 70), collapse = ""), "\n")
-cat("SÉRIE 1: SEM avec Tempérament (héliophile, NPLD, tolérant)\n")
+cat("SÉRIE 1: SEM avec Tempérament (héliophile, tolérant)\n")
 cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
 # Données standardisées pour SEM tempérament
 sem_data_temp <- sem_data_full %>%
-  select(WD_BA, PCA1, prop_g_helio, prop_g_npld, prop_g_shade) %>%
+  select(WD_BA, PCA1, prop_g_helio, prop_g_shade) %>%
+  drop_na() %>%
   mutate(across(everything(), scale))
 
 # 12A.1. Modèle AVEC lien direct Structure -> WD ----
 model_sem_temp_full <- '
   # Tempérament prédit Structure
-  PCA1 ~ a1*prop_g_helio + a2*prop_g_npld + a3*prop_g_shade
+  PCA1 ~ a1*prop_g_helio + a2*prop_g_shade
 
   # Tempérament ET Structure prédisent WD (tout sur une ligne!)
-  WD_BA ~ b1*prop_g_helio + b2*prop_g_npld + b3*prop_g_shade + c*PCA1
+  WD_BA ~ b1*prop_g_helio + b2*prop_g_shade + c*PCA1
 '
 
 fit_temp_full <- sem(model_sem_temp_full, data = sem_data_temp)
@@ -633,10 +660,10 @@ fit_temp_full <- sem(model_sem_temp_full, data = sem_data_temp)
 # 12A.2. Modèle SANS lien direct Structure -> WD (contraint à 0) ----
 model_sem_temp_constrained <- '
   # Tempérament prédit Structure
-  PCA1 ~ a1*prop_g_helio + a2*prop_g_npld + a3*prop_g_shade
+  PCA1 ~ a1*prop_g_helio + a2*prop_g_shade
 
   # Tempérament prédit WD (pas de lien via Structure)
-  WD_BA ~ b1*prop_g_helio + b2*prop_g_npld + b3*prop_g_shade
+  WD_BA ~ b1*prop_g_helio + b2*prop_g_shade
 
   # Contrainte: PAS de lien direct Structure -> WD
   WD_BA ~ 0*PCA1
@@ -763,7 +790,7 @@ if(length(nsca_dbh_cols) >= 2) {
 comp_vars_sem <- c()
 if("CA1" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "CA1", "CA2")
 if("NSCA_DBH1" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "NSCA_DBH1", "NSCA_DBH2")
-if("prop_g_helio" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "prop_g_helio", "prop_g_npld", "prop_g_shade")
+if("prop_g_helio" %in% names(sem_data_full)) comp_vars_sem <- c(comp_vars_sem, "prop_g_helio", "prop_g_shade")
 
 if(length(comp_vars_sem) >= 3) {
   cat("\n", paste(rep("=", 70), collapse = ""), "\n")
@@ -1002,45 +1029,58 @@ if(dir.exists(path_plots_gpkg)) {
 }
 
 # 14B. Modèle spatial (si coordonnées disponibles) ----
+# 14B. Modèle spatial (si coordonnées disponibles) ----
 if("X_utm" %in% names(model_data) && sum(!is.na(model_data$X_utm)) > 50) {
-
+  
   spatial_data <- model_data %>%
     filter(!is.na(X_utm) & !is.na(Y_utm) & !is.na(WD_BA) & !is.na(!!sym(best_var)))
-
+  
   # Modèle OLS classique
   formula_best <- as.formula(paste("WD_BA ~", best_var))
   model_ols <- lm(formula_best, data = spatial_data)
-
+  
   # Modèle spatial avec corrélation Matérn
   model_spatial <- fitme(
     as.formula(paste("WD_BA ~", best_var, "+ Matern(1 | X_utm + Y_utm)")),
     data = spatial_data,
     method = "REML"
   )
-
+  
   # Extraire les AIC correctement
   aic_ols <- AIC(model_ols)
-  aic_spatial <- as.numeric(AIC(model_spatial, which = "marginal"))  # Force conversion to single value
-
+  aic_spatial_all <- AIC(model_spatial)
+  aic_spatial <- aic_spatial_all[1]  # Premier élément = marginal AIC (mAIC)
+  
   cat("\n=== Modèle OLS vs Spatial ===\n")
-  cat("AIC OLS:", aic_ols, "\n")
-  cat("AIC Spatial (marginal):", aic_spatial, "\n")
-  cat("Différence AIC (OLS - Spatial):", aic_ols - aic_spatial, "\n")
-
+  cat("AIC OLS:", round(aic_ols, 2), "\n")
+  cat("AIC Spatial (mAIC):", round(aic_spatial, 2), "\n")
+  cat("Différence (OLS - Spatial):", round(aic_ols - aic_spatial, 2), "\n")
+  
+  if(aic_spatial < aic_ols) {
+    cat("→ Le modèle spatial est meilleur (ΔAIC =", round(aic_ols - aic_spatial, 1), ")\n")
+  } else {
+    cat("→ Le modèle OLS est suffisant\n")
+  }
+  
   spatial_comparison <- data.frame(
     Modele = c("OLS", "Spatial_Matern"),
     AIC = c(aic_ols, aic_spatial),
     Delta_AIC = c(0, aic_spatial - aic_ols)
   )
-
+  
   cat("\nTableau de comparaison:\n")
   print(spatial_comparison)
-
+  
   export_result("COMPARAISON: OLS vs Spatial", spatial_comparison)
+  export_result("MODÈLE SPATIAL (détail)", summary(model_spatial))
+  
   write_csv2(spatial_comparison, file.path(path_tables, "spatial_models_comparison.csv"))
 }
 
-#### 1️⃣5️⃣ LEAVE-ONE-OUT CROSS-VALIDATION ----
+#### 1️⃣5️⃣  CROSS-VALIDATION ----
+
+# 15B. VALIDATION CROISÉE LOOCV ----
+
 # OBJECTIF: Évaluer la capacité prédictive réelle du modèle en testant sur des données
 # non utilisées pour l'entraînement (validation croisée rigoureuse)
 #
@@ -1072,7 +1112,7 @@ loocv_results <- data.frame(
 )
 
 # Calculer les métriques de qualité incluant pente et intercept
-lm_obs_pred <- lm(observed ~ predicted, data = loocv_results)
+lm_obs_pred <- lm(predicted ~ observed, data = loocv_results)
 
 loocv_metrics <- data.frame(
   RMSE = sqrt(mean(loocv_results$residual^2)),
@@ -1126,7 +1166,222 @@ ggsave(file.path(path_figures, "loocv_validation.jpg"), p_loocv,
 write_csv2(loocv_results, file.path(path_tables, "loocv_predictions.csv"))
 write_csv2(loocv_metrics, file.path(path_tables, "loocv_metrics.csv"))
 
-#### 1️⃣6️⃣ SYNTHÈSE FINALE ----
+# 15B. VALIDATION CROISÉE SPATIALE (Leave-Site-Out) ----
+# OBJECTIF: Évaluer la capacité de généralisation à de NOUVEAUX sites
+# Plus conservateur que LOOCV car teste la transférabilité géographique
+
+cat("\n=== Leave-Site-Out Cross-Validation ===\n")
+
+# Extraire le site depuis le nom du plot (ex: "MAB01h" -> "MAB")
+# Extraire le site avec la correspondance fournie
+loocv_spatial_data <- model_data %>%
+  select(plot_name, WD_BA, all_of(best_var), X_utm, Y_utm) %>%
+  drop_na() %>%
+  mutate(site = case_when(
+    # Malebo : chiffres simples + M2P*
+    plot_name %in% c("123", "148", "162", "166", "180", "184", "189", "199", "41", "53") ~ "Malebo",
+    str_detect(plot_name, "^M2P") ~ "Malebo",
+    
+    # Yangambi : GIL*, JEU*, MIX*
+    str_detect(plot_name, "^GIL|^JEU|^MIX") ~ "Yangambi",
+    
+    # Monkoto : Lokofa*, Betamba*
+    str_detect(plot_name, "^Lokofa|^Betamba") ~ "Monkoto",
+    
+    # Mabounie : MAB*
+    str_detect(plot_name, "^MAB") ~ "Mabounie",
+    
+    # Lac Mai Ndombe : FRM 289, 373, 408
+    plot_name %in% c("FRM 289", "FRM 373", "FRM 408") ~ "Lac_Mai_Ndombe",
+    
+    # Mbala : FRM 546, 627
+    plot_name %in% c("FRM 546", "FRM 627") ~ "Mbala",
+    
+    # Kiri : FRM 162, 227
+    plot_name %in% c("FRM 162", "FRM 227") ~ "Kiri",
+    
+    # Bongimba : FRM 15, 39, 80, 102
+    plot_name %in% c("FRM 15", "FRM 39", "FRM 80", "FRM 102") ~ "Bongimba",
+    
+    # Kabambare
+    plot_name %in% c("PARAP_Maniema_178", "Modele_4503_Principal") ~ "Kabambare",
+    
+    # Autres = sites individuels (nom du plot = site)
+    TRUE ~ plot_name
+  ))
+
+table(loocv_spatial_data$site)
+
+# Vérifier les sites
+sites <- unique(loocv_spatial_data$site)
+cat("Sites identifiés:", length(sites), "\n")
+cat(paste(sites, collapse = ", "), "\n\n")
+
+# Leave-Site-Out CV
+predictions_spatial <- numeric(nrow(loocv_spatial_data))
+
+for(s in sites) {
+  train_idx <- loocv_spatial_data$site != s
+  test_idx <- loocv_spatial_data$site == s
+  
+  if(sum(train_idx) >= 10 && sum(test_idx) >= 1) {
+    model_cv <- lm(as.formula(paste("WD_BA ~", best_var)), 
+                   data = loocv_spatial_data[train_idx, ])
+    predictions_spatial[test_idx] <- predict(model_cv, 
+                                             newdata = loocv_spatial_data[test_idx, ])
+  }
+}
+
+loocv_spatial_results <- data.frame(
+  observed = loocv_spatial_data$WD_BA,
+  predicted = predictions_spatial,
+  site = loocv_spatial_data$site,
+  residual = loocv_spatial_data$WD_BA - predictions_spatial
+)
+
+# Métriques
+lm_spatial <- lm(predicted ~ observed, data = loocv_spatial_results)
+
+loocv_spatial_metrics <- data.frame(
+  Method = "Leave-Site-Out",
+  RMSE = sqrt(mean(loocv_spatial_results$residual^2, na.rm = TRUE)),
+  MAE = mean(abs(loocv_spatial_results$residual), na.rm = TRUE),
+  R2 = cor(loocv_spatial_results$observed, loocv_spatial_results$predicted, 
+           use = "complete.obs")^2,
+  Slope = coef(lm_spatial)[2],
+  Intercept = coef(lm_spatial)[1]
+)
+
+# Comparaison avec LOOCV simple
+loocv_comparison <- rbind(
+  data.frame(Method = "LOOCV simple", loocv_metrics),
+  loocv_spatial_metrics
+)
+
+cat("\n=== Comparaison LOOCV simple vs Leave-Site-Out ===\n")
+print(loocv_comparison)
+export_result("LOOCV: Comparaison simple vs spatial", loocv_comparison)
+
+# Figure
+p_loocv_spatial <- ggplot(loocv_spatial_results, aes(x = observed, y = predicted)) +
+  geom_point(aes(color = site), alpha = 0.7, size = 3) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red", linewidth = 1) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linewidth = 1) +
+  labs(title = "Leave-Site-Out Cross-Validation",
+       subtitle = paste0("RMSE = ", round(loocv_spatial_metrics$RMSE, 4),
+                         ", R² = ", round(loocv_spatial_metrics$R2, 3)),
+       x = "WD observé (g/cm³)",
+       y = "WD prédit (g/cm³)",
+       color = "Site") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "right") +
+  coord_equal()
+
+ggsave(file.path(path_figures, "loocv_spatial_validation.jpg"), p_loocv_spatial,
+       width = 12, height = 10, dpi = 600)
+
+write_csv2(loocv_comparison, file.path(path_tables, "loocv_comparison.csv"))
+
+
+#### 1️⃣6️⃣ANALYSE COMPLÉMENTAIRES ----
+# 16A. IDENTIFICATION DES OUTLIERS ----
+# OBJECTIF: Identifier les plots où la prédiction est mauvaise
+# Potentiellement Gilbertiodendron ou forêts secondaires extrêmes
+
+cat("\n=== Identification des outliers ===\n")
+
+# Calculer résidus standardisés
+outlier_data <- model_data %>%
+  select(plot_name, WD_BA, all_of(best_var)) %>%
+  drop_na() %>%
+  mutate(
+    predicted = predict(best_model, newdata = .),
+    residual = WD_BA - predicted,
+    residual_std = scale(residual)[,1]
+  ) %>%
+  arrange(desc(abs(residual_std)))
+
+# Outliers = résidus standardisés > 2
+outliers <- outlier_data %>%
+  filter(abs(residual_std) > 2)
+
+cat("\nPlots avec résidus standardisés > 2:\n")
+print(outliers %>% select(plot_name, WD_BA, predicted, residual, residual_std))
+export_result("OUTLIERS: Plots mal prédits", outliers)
+
+# Catégoriser les outliers
+outliers_summary <- outliers %>%
+  mutate(
+    type = case_when(
+      residual > 0 ~ "WD sous-estimé (observé > prédit)",
+      residual < 0 ~ "WD sur-estimé (observé < prédit)"
+    )
+  )
+
+cat("\nRésumé des outliers:\n")
+print(table(outliers_summary$type))
+
+# Sauvegarder
+write_csv2(outlier_data, file.path(path_tables, "residuals_all_plots.csv"))
+write_csv2(outliers, file.path(path_tables, "outliers_identified.csv"))
+
+# 16B. MODÈLE SPATIAL AVEC COMPOSITION ----
+# OBJECTIF: Tester si l'autocorrélation spatiale disparaît quand on ajoute la composition
+# Si oui → la structure spatiale vient de la composition
+
+if("X_utm" %in% names(model_data) && sum(!is.na(model_data$X_utm)) > 50) {
+  
+  cat("\n=== Modèle spatial avec composition ===\n")
+  
+  spatial_data_full <- model_data %>%
+    filter(!is.na(X_utm) & !is.na(Y_utm) & !is.na(WD_BA) & 
+             !is.na(!!sym(best_var)) & !is.na(CA1) & !is.na(CA2))
+  
+  # Modèle 1: Structure seule + Matérn
+  model_spatial_struct <- fitme(
+    as.formula(paste("WD_BA ~", best_var, "+ Matern(1 | X_utm + Y_utm)")),
+    data = spatial_data_full, method = "REML"
+  )
+  
+  # Modèle 2: Structure + Composition + Matérn
+  model_spatial_full <- fitme(
+    as.formula(paste("WD_BA ~", best_var, "+ CA1 + CA2 + Matern(1 | X_utm + Y_utm)")),
+    data = spatial_data_full, method = "REML"
+  )
+  
+  # Modèle 3: Structure + Composition SANS Matérn (pour comparer)
+  model_ols_full <- lm(
+    as.formula(paste("WD_BA ~", best_var, "+ CA1 + CA2")),
+    data = spatial_data_full
+  )
+  
+  # Extraire lambda (variance spatiale)
+  lambda_struct <- VarCorr(model_spatial_struct)$`X_utm + Y.`$`(Intercept)`
+  lambda_full <- VarCorr(model_spatial_full)$`X_utm + Y.`$`(Intercept)`
+  
+  spatial_evolution <- data.frame(
+    Modele = c("Structure + Matérn", "Structure + Compo + Matérn", "Structure + Compo (OLS)"),
+    AIC = c(AIC(model_spatial_struct)[1], AIC(model_spatial_full)[1], AIC(model_ols_full)),
+    Lambda_spatial = c(lambda_struct, lambda_full, NA)
+  )
+  
+  cat("\nÉvolution de la variance spatiale:\n")
+  print(spatial_evolution)
+  export_result("SPATIAL: Évolution avec composition", spatial_evolution)
+  
+  reduction_pct <- (1 - lambda_full / lambda_struct) * 100
+  cat("\nRéduction de la variance spatiale avec composition:", round(reduction_pct, 1), "%\n")
+  
+  if(reduction_pct > 50) {
+    cat("→ La structure spatiale est largement expliquée par la composition\n")
+  } else {
+    cat("→ La structure spatiale persiste même après contrôle de la composition\n")
+  }
+  
+  write_csv2(spatial_evolution, file.path(path_tables, "spatial_models_evolution.csv"))
+}
+
+#### SYNTHÈSE FINALE ----
 
 cat("\n")
 cat(paste(rep("=", 70), collapse = ""), "\n")

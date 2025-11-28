@@ -1,36 +1,36 @@
 === RÉSULTATS D'ANALYSE - WD ~ STRUCTURE ===
-Date: 2025-11-27 20:18:44.068454 
+Date: 2025-11-28 11:11:28.48587 
 
 
  ============================================================ 
 CORRÉLATIONS STRUCTURE - WD 
 ============================================================ 
 
-              variable  r_pearson rho_spearman         p_pearson  n
-cor3       prop_at_20m -0.6075916  -0.57268626 0.000000005885472 76
-cor4       prop_at_25m -0.6068837  -0.57098135 0.000000006196434 76
-cor11              h75  0.5684723   0.54083390 0.000000084694477 76
-cor12              h90  0.5617734   0.53624060 0.000000129236229 76
-cor10              h50  0.5375787   0.54641148 0.000000551699772 76
-cor9               h25  0.5229594   0.55384826 0.000001257009222 76
-cor5       prop_at_30m -0.4782091  -0.49945311 0.000012482461302 76
-cor8               h10  0.4510207   0.49156528 0.000043357447598 76
-cor22           max_d1 -0.4409091  -0.30447027 0.000067106600931 76
-cor18         auc_norm -0.4387304  -0.34315789 0.000073597289610 76
-cor2       prop_at_15m -0.4242637  -0.49952495 0.000133757105721 76
-cor23    height_max_d1  0.4080326   0.41849559 0.000253401670741 76
-cor6       prop_at_35m -0.3990196  -0.47730228 0.000356387840713 76
-cor16      slope_upper  0.3641300   0.42567327 0.001222492325862 76
-cor1       prop_at_10m -0.3272020  -0.42667414 0.003913197018181 76
-cor7       prop_at_40m -0.3168034  -0.41433883 0.005299153087738 76
-cor15 slope_transition -0.2951321  -0.12174983 0.009648238773687 76
-cor         prop_at_5m -0.2566326  -0.41139357 0.025233225889445 76
-cor13             h100  0.2276365   0.36776359 0.047968565799152 76
-cor21       auc_75_100 -0.2254269  -0.05861928 0.050237398612372 76
-cor19         auc_0_25  0.2075948   0.20989747 0.071950117543137 76
-cor14      slope_basal -0.1967950  -0.49361586 0.088401273837739 76
-cor20        auc_25_75  0.1902974   0.14416951 0.099647843245236 76
-cor17              auc -0.1123744   0.01356118 0.333800778590617 76
+              variable  r_pearson rho_spearman    p_pearson  n
+cor3       prop_at_20m -0.6075916  -0.57268626 5.885472e-09 76
+cor4       prop_at_25m -0.6068837  -0.57098135 6.196434e-09 76
+cor11              h75  0.5684723   0.54083390 8.469448e-08 76
+cor12              h90  0.5617734   0.53624060 1.292362e-07 76
+cor10              h50  0.5375787   0.54641148 5.516998e-07 76
+cor9               h25  0.5229594   0.55384826 1.257009e-06 76
+cor5       prop_at_30m -0.4782091  -0.49945311 1.248246e-05 76
+cor8               h10  0.4510207   0.49156528 4.335745e-05 76
+cor22           max_d1 -0.4409091  -0.30447027 6.710660e-05 76
+cor18         auc_norm -0.4387304  -0.34315789 7.359729e-05 76
+cor2       prop_at_15m -0.4242637  -0.49952495 1.337571e-04 76
+cor23    height_max_d1  0.4080326   0.41849559 2.534017e-04 76
+cor6       prop_at_35m -0.3990196  -0.47730228 3.563878e-04 76
+cor16      slope_upper  0.3641300   0.42567327 1.222492e-03 76
+cor1       prop_at_10m -0.3272020  -0.42667414 3.913197e-03 76
+cor7       prop_at_40m -0.3168034  -0.41433883 5.299153e-03 76
+cor15 slope_transition -0.2951321  -0.12174983 9.648239e-03 76
+cor         prop_at_5m -0.2566326  -0.41139357 2.523323e-02 76
+cor13             h100  0.2276365   0.36776359 4.796857e-02 76
+cor21       auc_75_100 -0.2254269  -0.05861928 5.023740e-02 76
+cor19         auc_0_25  0.2075948   0.20989747 7.195012e-02 76
+cor14      slope_basal -0.1967950  -0.49361586 8.840127e-02 76
+cor20        auc_25_75  0.1902974   0.14416951 9.964784e-02 76
+cor17              auc -0.1123744   0.01356118 3.338008e-01 76
 
 
  ============================================================ 
@@ -45,11 +45,11 @@ prop_at_20m    auc_norm      max_d1         h90
 MODÈLES SIMPLES WD ~ variable 
 ============================================================ 
 
-               variable        R2    R2_adj         coef            pvalue       AIC       RMSE
-prop_at_20m prop_at_20m 0.3691676 0.3606428 -0.220921630 0.000000005885472 -165.8971 0.07809414
-h90                 h90 0.3155893 0.3063405  0.007391875 0.000000129236229 -159.7017 0.08134293
-max_d1           max_d1 0.1944008 0.1835143 -1.803406690 0.000067106600931 -147.3116 0.08825127
-auc_norm       auc_norm 0.1924844 0.1815720 -0.413736801 0.000073597289610 -147.1310 0.08835617
+               variable        R2    R2_adj         coef       pvalue       AIC       RMSE
+prop_at_20m prop_at_20m 0.3691676 0.3606428 -0.220921630 5.885472e-09 -165.8971 0.07809414
+h90                 h90 0.3155893 0.3063405  0.007391875 1.292362e-07 -159.7017 0.08134293
+max_d1           max_d1 0.1944008 0.1835143 -1.803406690 6.710660e-05 -147.3116 0.08825127
+auc_norm       auc_norm 0.1924844 0.1815720 -0.413736801 7.359729e-05 -147.1310 0.08835617
 
 
  ============================================================ 
@@ -65,15 +65,15 @@ Residuals:
 -0.254705 -0.029722  0.009052  0.046546  0.162506 
 
 Coefficients:
-            Estimate Std. Error t value             Pr(>|t|)    
-(Intercept)  0.69351    0.01444  48.021 < 0.0000000000000002 ***
-prop_at_20m -0.22092    0.03357  -6.581        0.00000000589 ***
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.69351    0.01444  48.021  < 2e-16 ***
+prop_at_20m -0.22092    0.03357  -6.581 5.89e-09 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.07914 on 74 degrees of freedom
 Multiple R-squared:  0.3692,	Adjusted R-squared:  0.3606 
-F-statistic: 43.31 on 1 and 74 DF,  p-value: 0.000000005885
+F-statistic: 43.31 on 1 and 74 DF,  p-value: 5.885e-09
 
 
 
@@ -90,18 +90,18 @@ Residuals:
 -0.22130 -0.03302  0.01241  0.04926  0.13255 
 
 Coefficients:
-              Estimate Std. Error t value    Pr(>|t|)    
-(Intercept)  0.7601382  0.1306040   5.820 0.000000156 ***
-prop_at_20m -0.1501689  0.0814565  -1.844      0.0694 .  
-auc_norm    -0.0810520  0.1469084  -0.552      0.5829    
-max_d1      -0.9139137  0.5185131  -1.763      0.0823 .  
-h90          0.0004368  0.0025037   0.174      0.8620    
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.7601382  0.1306040   5.820 1.56e-07 ***
+prop_at_20m -0.1501689  0.0814565  -1.844   0.0694 .  
+auc_norm    -0.0810520  0.1469084  -0.552   0.5829    
+max_d1      -0.9139137  0.5185131  -1.763   0.0823 .  
+h90          0.0004368  0.0025037   0.174   0.8620    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.07842 on 71 degrees of freedom
 Multiple R-squared:  0.4058,	Adjusted R-squared:  0.3723 
-F-statistic: 12.12 on 4 and 71 DF,  p-value: 0.0000001452
+F-statistic: 12.12 on 4 and 71 DF,  p-value: 1.452e-07
 
 
 
@@ -118,15 +118,15 @@ Residuals:
 -0.28183 -0.02565  0.01053  0.04999  0.16503 
 
 Coefficients:
-            Estimate Std. Error t value             Pr(>|t|)    
-(Intercept) 0.619597   0.009439  65.643 < 0.0000000000000002 ***
-PCA1        0.015835   0.002696   5.875          0.000000113 ***
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.619597   0.009439  65.643  < 2e-16 ***
+PCA1        0.015835   0.002696   5.875 1.13e-07 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.08229 on 74 degrees of freedom
 Multiple R-squared:  0.318,	Adjusted R-squared:  0.3088 
-F-statistic: 34.51 on 1 and 74 DF,  p-value: 0.0000001127
+F-statistic: 34.51 on 1 and 74 DF,  p-value: 1.127e-07
 
 
 
@@ -266,4 +266,307 @@ Individual fractions
 [d] = Residuals                         0.14013    FALSE
 ---
 Use function ‘rda’ to test significance of fractions of interest
+
+
+ ============================================================ 
+RDA: Test fraction unique Structure 
+============================================================ 
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = varpart_data$WD_BA ~ PCA1 + Condition(prop_g_helio + prop_g_shade + CA1 + CA2 + NSCA_DBH1 + NSCA_DBH2), data = varpart_data)
+         Df  Variance      F Pr(>F)    
+Model     1 0.0002660 14.533  0.001 ***
+Residual 68 0.0012446                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM Tempérament: Test lien Structure->WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                     Df    AIC    BIC  Chisq Chisq diff  RMSEA Df diff Pr(>Chisq)   
+fit_temp_full         0 311.51 327.82 0.0000                                        
+fit_temp_constrained  1 318.68 332.66 9.1716     9.1716 0.3279       1   0.002458 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM Tempérament: Coefficients 
+============================================================ 
+
+    lhs op          rhs    est std.all pvalue
+1  PCA1  ~ prop_g_helio -0.337  -0.337  0.017
+2  PCA1  ~ prop_g_shade  0.181   0.181  0.201
+3 WD_BA  ~ prop_g_helio -0.639  -0.639  0.000
+4 WD_BA  ~ prop_g_shade  0.167   0.167  0.033
+5 WD_BA  ~         PCA1  0.196   0.196  0.002
+
+
+ ============================================================ 
+SEM CA: Test lien Structure->WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                   Df    AIC    BIC Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)    
+fit_ca_full         0 308.69 325.00  0.00                                          
+fit_ca_constrained  1 321.63 335.61 14.94      14.94 0.42828       1   0.000111 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM CA: Coefficients 
+============================================================ 
+
+    lhs op  rhs    est std.all pvalue
+1  PCA1  ~  CA1 -0.533  -0.533  0.000
+2  PCA1  ~  CA2 -0.033  -0.033  0.734
+3 WD_BA  ~  CA1 -0.609  -0.609  0.000
+4 WD_BA  ~  CA2  0.446   0.446  0.000
+5 WD_BA  ~ PCA1  0.270   0.270  0.000
+
+
+ ============================================================ 
+SEM NSCA_DBH: Test lien Structure->WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                     Df    AIC    BIC  Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)    
+fit_nsca_full         0 324.37 340.68  0.000                                          
+fit_nsca_constrained  1 351.81 365.79 29.444     29.444 0.61177       1  5.755e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM NSCA_DBH: Coefficients 
+============================================================ 
+
+    lhs op   rhs    est std.all pvalue
+1  PCA1  ~ NSCA1 -0.142  -0.142  0.191
+2  PCA1  ~ NSCA2 -0.287  -0.287  0.008
+3 WD_BA  ~ NSCA1 -0.045  -0.045  0.420
+4 WD_BA  ~ NSCA2 -0.699  -0.699  0.000
+5 WD_BA  ~  PCA1  0.352   0.352  0.000
+
+
+ ============================================================ 
+SEM COMPLET: Test lien résiduel Structure->WD 
+============================================================ 
+
+
+Chi-Squared Difference Test
+
+                         Df    AIC    BIC Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)    
+fit_complete_full         0 261.78 296.74  0.00                                          
+fit_complete_constrained  1 274.50 307.13 14.72      14.72 0.42489       1  0.0001247 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+SEM COMPLET: Coefficients 
+============================================================ 
+
+     lhs op          rhs    est std.all pvalue
+1   PCA1  ~          CA1 -0.353  -0.353  0.009
+2   PCA1  ~          CA2 -0.250  -0.250  0.052
+3   PCA1  ~    NSCA_DBH1 -0.155  -0.155  0.117
+4   PCA1  ~    NSCA_DBH2  0.310   0.310  0.061
+5   PCA1  ~ prop_g_helio -0.690  -0.690  0.002
+6   PCA1  ~ prop_g_shade -0.110  -0.110  0.447
+7  WD_BA  ~          CA1 -0.298  -0.298  0.000
+8  WD_BA  ~          CA2  0.235   0.235  0.000
+9  WD_BA  ~    NSCA_DBH1  0.026   0.026  0.574
+10 WD_BA  ~    NSCA_DBH2 -0.317  -0.317  0.000
+11 WD_BA  ~ prop_g_helio -0.009  -0.009  0.932
+12 WD_BA  ~ prop_g_shade  0.268   0.268  0.000
+13 WD_BA  ~         PCA1  0.215   0.215  0.000
+
+
+ ============================================================ 
+SEM: SYNTHÈSE - Lien résiduel Structure->WD 
+============================================================ 
+
+                 Modele p_value_lien Significatif
+1  Tempérament (3 cat.) 2.458032e-03          OUI
+2      CA (composition) 1.109728e-04          OUI
+3  NSCA_DBH (dominance) 5.754533e-08          OUI
+4 COMPLET (toutes dim.) 1.247086e-04          OUI
+
+
+ ============================================================ 
+PERMANOVA: Structure ~ WD quartiles 
+============================================================ 
+
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist_matrix ~ WD_quartile, data = permanova_data, permutations = 999)
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     3   337.21 0.18734 5.5327  0.001 ***
+Residual 72  1462.79 0.81266                  
+Total    75  1800.00 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+ ============================================================ 
+MANTEL: Distance structurelle vs Distance WD 
+============================================================ 
+
+
+Mantel statistic based on Pearson's product-moment correlation 
+
+Call:
+mantel(xdis = dist_matrix, ydis = dist_wd, method = "pearson",      permutations = 999) 
+
+Mantel statistic r: 0.2429 
+      Significance: 0.003 
+
+Upper quantiles of permutations (null model):
+   90%    95%  97.5%    99% 
+0.0969 0.1222 0.1702 0.1942 
+Permutation: free
+Number of permutations: 999
+
+
+
+ ============================================================ 
+DESCRIPTION: Métriques par quartile WD 
+============================================================ 
+
+# A tibble: 4 × 19
+  WD_quartile     n WD_mean prop_at_20m_mean prop_at_20m_sd prop_at_25m_mean prop_at_25m_sd h75_mean h75_sd h90_mean h90_sd h50_mean h50_sd h25_mean h25_sd
+  <fct>       <int>   <dbl>            <dbl>          <dbl>            <dbl>          <dbl>    <dbl>  <dbl>    <dbl>  <dbl>    <dbl>  <dbl>    <dbl>  <dbl>
+1 Q1             19   0.479            0.594          0.246            0.802          0.199     23.1   6.00     26.6   6.21     18.7   6.10     13.7   4.66
+2 Q2             19   0.619            0.345          0.291            0.533          0.270     28.4   6.12     31.7   6.37     24.1   5.82     19.2   5.40
+3 Q3             19   0.670            0.185          0.159            0.346          0.228     32.6   4.54     35.8   4.63     28.1   4.62     23.1   5.30
+4 Q4             19   0.711            0.214          0.169            0.412          0.246     32.9   7.74     36.6   8.29     28.1   7.30     22.3   6.54
+# ℹ 4 more variables: prop_at_30m_mean <dbl>, prop_at_30m_sd <dbl>, h10_mean <dbl>, h10_sd <dbl>
+
+
+ ============================================================ 
+KRUSKAL-WALLIS: Différences par quartile WD 
+============================================================ 
+
+                                 metric chi_squared df      p_value
+Kruskal-Wallis chi-squared  prop_at_20m    25.74720  3 1.077334e-05
+Kruskal-Wallis chi-squared1 prop_at_25m    25.60191  3 1.155469e-05
+Kruskal-Wallis chi-squared5         h25    23.85355  3 2.680182e-05
+Kruskal-Wallis chi-squared4         h50    22.84833  3 4.343186e-05
+Kruskal-Wallis chi-squared2         h75    21.96939  3 6.619493e-05
+Kruskal-Wallis chi-squared3         h90    21.40494  3 8.673651e-05
+Kruskal-Wallis chi-squared7         h10    19.39083  3 2.269596e-04
+Kruskal-Wallis chi-squared6 prop_at_30m    18.87450  3 2.902298e-04
+
+
+ ============================================================ 
+COMPARAISON: OLS vs Spatial 
+============================================================ 
+
+                             Modele       AIC Delta_AIC
+                                OLS -165.8971   0.00000
+       marginal AIC: Spatial_Matern -185.2118 -19.31477
+
+
+ ============================================================ 
+MODÈLE SPATIAL (détail) 
+============================================================ 
+
+formula: WD_BA ~ prop_at_20m + Matern(1 | X_utm + Y_utm)
+REML: Estimation of corrPars, lambda and phi by REML.
+      Estimation of fixed effects by ML.
+Estimation of lambda and phi by 'outer' REML, maximizing restricted logL.
+family: gaussian( link = identity ) 
+ ------------ Fixed effects (beta) ------------
+            Estimate Cond. SE t-value
+(Intercept)   0.6910  0.01634  42.303
+prop_at_20m  -0.1951  0.02962  -6.586
+ --------------- Random effects ---------------
+Family: gaussian( link = identity ) 
+                   --- Correlation parameters:
+        1.nu        1.rho 
+0.1363802412 0.0000886709 
+           --- Variance parameters ('lambda'):
+lambda = var(u) for u ~ Gaussian; 
+   X_utm + Y.  :  0.005514  
+# of obs: 76; # of groups: X_utm + Y., 76 
+ -------------- Residual variance  ------------
+phi estimate was 1.74817e-06 
+ ------------- Likelihood values  -------------
+                       logLik
+logL       (p_v(h)): 98.60592
+Re.logL  (p_b,v(h)): 92.49614
+$family
+
+Family: gaussian 
+Link function: identity 
+
+
+$beta_table
+              Estimate   Cond. SE   t-value
+(Intercept)  0.6910262 0.01633528 42.302688
+prop_at_20m -0.1950755 0.02961749 -6.586497
+
+$lambda_table
+                Group        Term        Var.
+X_utm + Y. X_utm + Y. (Intercept) 0.005514245
+
+$likelihoods
+logL       (p_v(h)): Re.logL  (p_b,v(h)): 
+            98.60592             92.49614 
+
+
+
+ ============================================================ 
+LOOCV: Métriques de validation 
+============================================================ 
+
+               RMSE        MAE        R2     Slope Intercept
+observed 0.08071753 0.05874479 0.3275841 0.3498276 0.4027578
+
+
+ ============================================================ 
+LOOCV: Comparaison simple vs spatial 
+============================================================ 
+
+                  Method       RMSE        MAE        R2     Slope Intercept
+observed    LOOCV simple 0.08071753 0.05874479 0.3275841 0.3498276 0.4027578
+observed1 Leave-Site-Out 0.08522185 0.06218420 0.2549893 0.2924820 0.4357429
+
+
+ ============================================================ 
+OUTLIERS: Plots mal prédits 
+============================================================ 
+
+                 plot_name     WD_BA prop_at_20m predicted   residual residual_std
+1                     JEU2 0.2818604   0.7104000 0.5365658 -0.2547054    -3.239989
+2                     JEU4 0.3444663   0.5527000 0.5714051 -0.2269388    -2.886783
+3                Betamba_3 0.4673139   0.1308000 0.6646120 -0.1972981    -2.509738
+4                     JEU3 0.3126815   0.9626459 0.4808392 -0.1681577    -2.139056
+5 WWF-DIAF_supp1_Principal 0.7052080   0.6826263 0.5427016  0.1625064     2.067168
+
+
+ ============================================================ 
+SPATIAL: Évolution avec composition 
+============================================================ 
+
+                      Modele       AIC Lambda_spatial
+1         Structure + Matérn -185.2118             NA
+2 Structure + Compo + Matérn -234.6054             NA
+3    Structure + Compo (OLS) -238.1780             NA
 
